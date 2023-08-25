@@ -13,6 +13,26 @@
 		68C4A2B12A928B6000A2E204 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C4A2AF2A928B6000A2E204 /* Main.storyboard */; };
 		68C4A2B32A928B6300A2E204 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C4A2B22A928B6300A2E204 /* Assets.xcassets */; };
 		68C4A2B62A928B6300A2E204 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C4A2B42A928B6300A2E204 /* LaunchScreen.storyboard */; };
+		68C4A2D02A928CD400A2E204 /* Nunito-Black.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CD2A928BDE00A2E204 /* Nunito-Black.ttf */; };
+		68C4A2D12A928CD400A2E204 /* Nunito-BlackItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CC2A928BDE00A2E204 /* Nunito-BlackItalic.ttf */; };
+		68C4A2D22A928CD400A2E204 /* Nunito-Bold.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C12A928BDC00A2E204 /* Nunito-Bold.ttf */; };
+		68C4A2D32A928CD400A2E204 /* Nunito-BoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C92A928BDD00A2E204 /* Nunito-BoldItalic.ttf */; };
+		68C4A2D42A928CD400A2E204 /* Nunito-ExtraBold.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CB2A928BDE00A2E204 /* Nunito-ExtraBold.ttf */; };
+		68C4A2D52A928CD400A2E204 /* Nunito-ExtraBoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C22A928BDC00A2E204 /* Nunito-ExtraBoldItalic.ttf */; };
+		68C4A2D62A928CD400A2E204 /* Nunito-ExtraLight.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C02A928BDC00A2E204 /* Nunito-ExtraLight.ttf */; };
+		68C4A2D72A928CD400A2E204 /* Nunito-ExtraLightItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CF2A928BDE00A2E204 /* Nunito-ExtraLightItalic.ttf */; };
+		68C4A2D82A928CD400A2E204 /* Nunito-Italic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C32A928BDC00A2E204 /* Nunito-Italic.ttf */; };
+		68C4A2D92A928CD400A2E204 /* Nunito-Light.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C62A928BDD00A2E204 /* Nunito-Light.ttf */; };
+		68C4A2DA2A928CD400A2E204 /* Nunito-LightItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C82A928BDD00A2E204 /* Nunito-LightItalic.ttf */; };
+		68C4A2DB2A928CD400A2E204 /* Nunito-Medium.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C42A928BDD00A2E204 /* Nunito-Medium.ttf */; };
+		68C4A2DC2A928CD400A2E204 /* Nunito-MediumItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CA2A928BDD00A2E204 /* Nunito-MediumItalic.ttf */; };
+		68C4A2DD2A928CD400A2E204 /* Nunito-Regular.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C52A928BDD00A2E204 /* Nunito-Regular.ttf */; };
+		68C4A2DE2A928CD400A2E204 /* Nunito-SemiBold.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C72A928BDD00A2E204 /* Nunito-SemiBold.ttf */; };
+		68C4A2DF2A928CD400A2E204 /* Nunito-SemiBoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CE2A928BDE00A2E204 /* Nunito-SemiBoldItalic.ttf */; };
+		68C4A2E12A928CEE00A2E204 /* NunitoFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */; };
+		68C4A2E42A928F6A00A2E204 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E32A928F6A00A2E204 /* SnapKit */; };
+		68C4A2E62A928F6A00A2E204 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E52A928F6A00A2E204 /* SnapKit-Dynamic */; };
+		68C4A2E92A92908000A2E204 /* GlidingCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E82A92908000A2E204 /* GlidingCollection */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +44,23 @@
 		68C4A2B22A928B6300A2E204 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68C4A2B52A928B6300A2E204 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68C4A2B72A928B6300A2E204 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68C4A2C02A928BDC00A2E204 /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
+		68C4A2C12A928BDC00A2E204 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		68C4A2C22A928BDC00A2E204 /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		68C4A2C32A928BDC00A2E204 /* Nunito-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic.ttf"; sourceTree = "<group>"; };
+		68C4A2C42A928BDD00A2E204 /* Nunito-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Medium.ttf"; sourceTree = "<group>"; };
+		68C4A2C52A928BDD00A2E204 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		68C4A2C62A928BDD00A2E204 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		68C4A2C72A928BDD00A2E204 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		68C4A2C82A928BDD00A2E204 /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
+		68C4A2C92A928BDD00A2E204 /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
+		68C4A2CA2A928BDD00A2E204 /* Nunito-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-MediumItalic.ttf"; sourceTree = "<group>"; };
+		68C4A2CB2A928BDE00A2E204 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		68C4A2CC2A928BDE00A2E204 /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
+		68C4A2CD2A928BDE00A2E204 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
+		68C4A2CE2A928BDE00A2E204 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		68C4A2CF2A928BDE00A2E204 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NunitoFonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C4A2E42A928F6A00A2E204 /* SnapKit in Frameworks */,
+				68C4A2E92A92908000A2E204 /* GlidingCollection in Frameworks */,
+				68C4A2E62A928F6A00A2E204 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +96,7 @@
 		68C4A2A82A928B6000A2E204 /* Short Videos App */ = {
 			isa = PBXGroup;
 			children = (
+				68C4A2BD2A928B9400A2E204 /* NunitoFonts */,
 				68C4A2A92A928B6000A2E204 /* AppDelegate.swift */,
 				68C4A2AB2A928B6000A2E204 /* SceneDelegate.swift */,
 				68C4A2AD2A928B6000A2E204 /* ViewController.swift */,
@@ -65,6 +106,30 @@
 				68C4A2B72A928B6300A2E204 /* Info.plist */,
 			);
 			path = "Short Videos App";
+			sourceTree = "<group>";
+		};
+		68C4A2BD2A928B9400A2E204 /* NunitoFonts */ = {
+			isa = PBXGroup;
+			children = (
+				68C4A2CD2A928BDE00A2E204 /* Nunito-Black.ttf */,
+				68C4A2CC2A928BDE00A2E204 /* Nunito-BlackItalic.ttf */,
+				68C4A2C12A928BDC00A2E204 /* Nunito-Bold.ttf */,
+				68C4A2C92A928BDD00A2E204 /* Nunito-BoldItalic.ttf */,
+				68C4A2CB2A928BDE00A2E204 /* Nunito-ExtraBold.ttf */,
+				68C4A2C22A928BDC00A2E204 /* Nunito-ExtraBoldItalic.ttf */,
+				68C4A2C02A928BDC00A2E204 /* Nunito-ExtraLight.ttf */,
+				68C4A2CF2A928BDE00A2E204 /* Nunito-ExtraLightItalic.ttf */,
+				68C4A2C32A928BDC00A2E204 /* Nunito-Italic.ttf */,
+				68C4A2C62A928BDD00A2E204 /* Nunito-Light.ttf */,
+				68C4A2C82A928BDD00A2E204 /* Nunito-LightItalic.ttf */,
+				68C4A2C42A928BDD00A2E204 /* Nunito-Medium.ttf */,
+				68C4A2CA2A928BDD00A2E204 /* Nunito-MediumItalic.ttf */,
+				68C4A2C52A928BDD00A2E204 /* Nunito-Regular.ttf */,
+				68C4A2C72A928BDD00A2E204 /* Nunito-SemiBold.ttf */,
+				68C4A2CE2A928BDE00A2E204 /* Nunito-SemiBoldItalic.ttf */,
+				68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */,
+			);
+			path = NunitoFonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +148,11 @@
 			dependencies = (
 			);
 			name = "Short Videos App";
+			packageProductDependencies = (
+				68C4A2E32A928F6A00A2E204 /* SnapKit */,
+				68C4A2E52A928F6A00A2E204 /* SnapKit-Dynamic */,
+				68C4A2E82A92908000A2E204 /* GlidingCollection */,
+			);
 			productName = "Short Videos App";
 			productReference = 68C4A2A62A928B6000A2E204 /* Short Videos App.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +181,10 @@
 				Base,
 			);
 			mainGroup = 68C4A29D2A928B6000A2E204;
+			packageReferences = (
+				68C4A2E22A928F6A00A2E204 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				68C4A2E72A92908000A2E204 /* XCRemoteSwiftPackageReference "gliding-collection" */,
+			);
 			productRefGroup = 68C4A2A72A928B6000A2E204 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +212,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C4A2D02A928CD400A2E204 /* Nunito-Black.ttf in Sources */,
+				68C4A2D12A928CD400A2E204 /* Nunito-BlackItalic.ttf in Sources */,
+				68C4A2D22A928CD400A2E204 /* Nunito-Bold.ttf in Sources */,
+				68C4A2D32A928CD400A2E204 /* Nunito-BoldItalic.ttf in Sources */,
+				68C4A2D42A928CD400A2E204 /* Nunito-ExtraBold.ttf in Sources */,
+				68C4A2D52A928CD400A2E204 /* Nunito-ExtraBoldItalic.ttf in Sources */,
+				68C4A2D62A928CD400A2E204 /* Nunito-ExtraLight.ttf in Sources */,
+				68C4A2D72A928CD400A2E204 /* Nunito-ExtraLightItalic.ttf in Sources */,
+				68C4A2D82A928CD400A2E204 /* Nunito-Italic.ttf in Sources */,
+				68C4A2D92A928CD400A2E204 /* Nunito-Light.ttf in Sources */,
+				68C4A2DA2A928CD400A2E204 /* Nunito-LightItalic.ttf in Sources */,
+				68C4A2DB2A928CD400A2E204 /* Nunito-Medium.ttf in Sources */,
+				68C4A2DC2A928CD400A2E204 /* Nunito-MediumItalic.ttf in Sources */,
+				68C4A2DD2A928CD400A2E204 /* Nunito-Regular.ttf in Sources */,
+				68C4A2DE2A928CD400A2E204 /* Nunito-SemiBold.ttf in Sources */,
+				68C4A2E12A928CEE00A2E204 /* NunitoFonts.swift in Sources */,
+				68C4A2DF2A928CD400A2E204 /* Nunito-SemiBoldItalic.ttf in Sources */,
 				68C4A2AE2A928B6000A2E204 /* ViewController.swift in Sources */,
 				68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */,
 				68C4A2AC2A928B6000A2E204 /* SceneDelegate.swift in Sources */,
@@ -216,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +361,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -290,11 +381,13 @@
 				DEVELOPMENT_TEAM = DJ25AAF2X9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Short Videos App/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +395,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shortvideos.app.Short-Videos-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -318,11 +414,13 @@
 				DEVELOPMENT_TEAM = DJ25AAF2X9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Short Videos App/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +428,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.shortvideos.app.Short-Videos-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -358,6 +459,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		68C4A2E22A928F6A00A2E204 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		68C4A2E72A92908000A2E204 /* XCRemoteSwiftPackageReference "gliding-collection" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ramotion/gliding-collection.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		68C4A2E32A928F6A00A2E204 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 68C4A2E22A928F6A00A2E204 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		68C4A2E52A928F6A00A2E204 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 68C4A2E22A928F6A00A2E204 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		68C4A2E82A92908000A2E204 /* GlidingCollection */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 68C4A2E72A92908000A2E204 /* XCRemoteSwiftPackageReference "gliding-collection" */;
+			productName = GlidingCollection;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 68C4A29E2A928B6000A2E204 /* Project object */;
 }
