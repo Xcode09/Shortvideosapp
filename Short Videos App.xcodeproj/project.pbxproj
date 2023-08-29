@@ -40,6 +40,11 @@
 		68C4A2DF2A928CD400A2E204 /* Nunito-SemiBoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CE2A928BDE00A2E204 /* Nunito-SemiBoldItalic.ttf */; };
 		68C4A2E12A928CEE00A2E204 /* NunitoFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */; };
 		68C4A2E92A92908000A2E204 /* GlidingCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E82A92908000A2E204 /* GlidingCollection */; };
+		B5B45E4E2A9E433A0076C51F /* LikeFollowButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B45E492A9E43390076C51F /* LikeFollowButtonsView.swift */; };
+		B5B45E4F2A9E433A0076C51F /* VideoPlayFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B45E4A2A9E43390076C51F /* VideoPlayFooterView.swift */; };
+		B5B45E502A9E433A0076C51F /* CustomAppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B45E4B2A9E43390076C51F /* CustomAppColors.swift */; };
+		B5B45E512A9E433A0076C51F /* VideoPlayHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B45E4C2A9E433A0076C51F /* VideoPlayHeaderView.swift */; };
+		B5B45E522A9E433A0076C51F /* VideoPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B45E4D2A9E433A0076C51F /* VideoPlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +95,11 @@
 		68C4A2CE2A928BDE00A2E204 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		68C4A2CF2A928BDE00A2E204 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NunitoFonts.swift; sourceTree = "<group>"; };
+		B5B45E492A9E43390076C51F /* LikeFollowButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeFollowButtonsView.swift; sourceTree = "<group>"; };
+		B5B45E4A2A9E43390076C51F /* VideoPlayFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayFooterView.swift; sourceTree = "<group>"; };
+		B5B45E4B2A9E43390076C51F /* CustomAppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAppColors.swift; sourceTree = "<group>"; };
+		B5B45E4C2A9E433A0076C51F /* VideoPlayHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayHeaderView.swift; sourceTree = "<group>"; };
+		B5B45E4D2A9E433A0076C51F /* VideoPlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,7 @@
 		6879824B2A99208D00E021A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B5B45E482A9E431A0076C51F /* VideoPlayerView */,
 				6879824C2A99215D00E021A7 /* CustomTabBarView.swift */,
 				6879824E2A9921F300E021A7 /* CustomTabBarController.swift */,
 				687982592A9A5E1300E021A7 /* ProfileView.swift */,
@@ -182,6 +193,18 @@
 				68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */,
 			);
 			path = NunitoFonts;
+			sourceTree = "<group>";
+		};
+		B5B45E482A9E431A0076C51F /* VideoPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				B5B45E4B2A9E43390076C51F /* CustomAppColors.swift */,
+				B5B45E492A9E43390076C51F /* LikeFollowButtonsView.swift */,
+				B5B45E4A2A9E43390076C51F /* VideoPlayFooterView.swift */,
+				B5B45E4C2A9E433A0076C51F /* VideoPlayHeaderView.swift */,
+				B5B45E4D2A9E433A0076C51F /* VideoPlayView.swift */,
+			);
+			path = VideoPlayerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,17 +286,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5B45E4E2A9E433A0076C51F /* LikeFollowButtonsView.swift in Sources */,
 				687982602A9CCDC200E021A7 /* SuggestedCoursesCellView.swift in Sources */,
 				687982522A9922ED00E021A7 /* Extensions.swift in Sources */,
+				B5B45E512A9E433A0076C51F /* VideoPlayHeaderView.swift in Sources */,
 				6879824D2A99215D00E021A7 /* CustomTabBarView.swift in Sources */,
 				68C4A2D02A928CD400A2E204 /* Nunito-Black.ttf in Sources */,
 				68C4A2D12A928CD400A2E204 /* Nunito-BlackItalic.ttf in Sources */,
 				68C4A2D22A928CD400A2E204 /* Nunito-Bold.ttf in Sources */,
 				68C4A2D32A928CD400A2E204 /* Nunito-BoldItalic.ttf in Sources */,
 				68C4A2D42A928CD400A2E204 /* Nunito-ExtraBold.ttf in Sources */,
+				B5B45E4F2A9E433A0076C51F /* VideoPlayFooterView.swift in Sources */,
 				68C4A2D52A928CD400A2E204 /* Nunito-ExtraBoldItalic.ttf in Sources */,
 				68C4A2D62A928CD400A2E204 /* Nunito-ExtraLight.ttf in Sources */,
 				68C4A2D72A928CD400A2E204 /* Nunito-ExtraLightItalic.ttf in Sources */,
+				B5B45E522A9E433A0076C51F /* VideoPlayView.swift in Sources */,
 				68C4A2D82A928CD400A2E204 /* Nunito-Italic.ttf in Sources */,
 				68C4A2D92A928CD400A2E204 /* Nunito-Light.ttf in Sources */,
 				68C4A2DA2A928CD400A2E204 /* Nunito-LightItalic.ttf in Sources */,
@@ -291,6 +318,7 @@
 				68C4A2AE2A928B6000A2E204 /* ViewController.swift in Sources */,
 				687982542A99233000E021A7 /* AppColors.swift in Sources */,
 				68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */,
+				B5B45E502A9E433A0076C51F /* CustomAppColors.swift in Sources */,
 				68C4A2AC2A928B6000A2E204 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,7 +466,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DJ25AAF2X9;
+				DEVELOPMENT_TEAM = WTYBMWQ95G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Short Videos App/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -453,7 +481,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shortvideos.app.Short-Videos-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shortvideos.app.Short-Videos-Appp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -471,7 +499,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DJ25AAF2X9;
+				DEVELOPMENT_TEAM = WTYBMWQ95G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Short Videos App/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -486,7 +514,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.shortvideos.app.Short-Videos-App";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shortvideos.app.Short-Videos-Appp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

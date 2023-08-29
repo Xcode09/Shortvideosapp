@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct VideosTabView: View {
+    @State private var videoTapped = false
+
     var body: some View {
         VStack{
             headerView
@@ -18,6 +20,11 @@ struct VideosTabView: View {
                 
                 suggestCourses
             }
+        }
+        .fullScreenCover(isPresented: $videoTapped) {
+            
+                 VideoPlayView()
+                .navigationBarHidden(true)
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
     }
@@ -100,6 +107,11 @@ struct VideosTabView: View {
                     ForEach(0..<8) { index in
                         VideoSmallCell()
                             .frame(maxWidth: 200,maxHeight: 200)
+                            .onTapGesture {
+                                videoTapped = true
+                                print("Did Tap Video")
+                            }
+
                     }
                 }
 
