@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6879824D2A99215D00E021A7 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879824C2A99215D00E021A7 /* CustomTabBarView.swift */; };
+		6879824F2A9921F300E021A7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879824E2A9921F300E021A7 /* CustomTabBarController.swift */; };
+		687982522A9922ED00E021A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687982512A9922ED00E021A7 /* Extensions.swift */; };
+		687982542A99233000E021A7 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687982532A99233000E021A7 /* AppColors.swift */; };
+		687982582A9A56B100E021A7 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687982572A9A56B100E021A7 /* AppTheme.swift */; };
+		6879825A2A9A5E1300E021A7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687982592A9A5E1300E021A7 /* ProfileView.swift */; };
+		6879825C2A9B45D100E021A7 /* VideosTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879825B2A9B45D100E021A7 /* VideosTabView.swift */; };
+		6879825E2A9B4EB100E021A7 /* VideoSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879825D2A9B4EB100E021A7 /* VideoSmallCell.swift */; };
+		687982602A9CCDC200E021A7 /* SuggestedCoursesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879825F2A9CCDC200E021A7 /* SuggestedCoursesCellView.swift */; };
 		68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2A92A928B6000A2E204 /* AppDelegate.swift */; };
 		68C4A2AC2A928B6000A2E204 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2AB2A928B6000A2E204 /* SceneDelegate.swift */; };
 		68C4A2AE2A928B6000A2E204 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2AD2A928B6000A2E204 /* ViewController.swift */; };
@@ -30,12 +39,32 @@
 		68C4A2DE2A928CD400A2E204 /* Nunito-SemiBold.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2C72A928BDD00A2E204 /* Nunito-SemiBold.ttf */; };
 		68C4A2DF2A928CD400A2E204 /* Nunito-SemiBoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CE2A928BDE00A2E204 /* Nunito-SemiBoldItalic.ttf */; };
 		68C4A2E12A928CEE00A2E204 /* NunitoFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */; };
-		68C4A2E42A928F6A00A2E204 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E32A928F6A00A2E204 /* SnapKit */; };
-		68C4A2E62A928F6A00A2E204 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E52A928F6A00A2E204 /* SnapKit-Dynamic */; };
 		68C4A2E92A92908000A2E204 /* GlidingCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E82A92908000A2E204 /* GlidingCollection */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		687982562A99251E00E021A7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6879824C2A99215D00E021A7 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
+		6879824E2A9921F300E021A7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		687982512A9922ED00E021A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		687982532A99233000E021A7 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		687982572A9A56B100E021A7 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		687982592A9A5E1300E021A7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		6879825B2A9B45D100E021A7 /* VideosTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosTabView.swift; sourceTree = "<group>"; };
+		6879825D2A9B4EB100E021A7 /* VideoSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSmallCell.swift; sourceTree = "<group>"; };
+		6879825F2A9CCDC200E021A7 /* SuggestedCoursesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedCoursesCellView.swift; sourceTree = "<group>"; };
 		68C4A2A62A928B6000A2E204 /* Short Videos App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Short Videos App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C4A2A92A928B6000A2E204 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C4A2AB2A928B6000A2E204 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,15 +97,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68C4A2E42A928F6A00A2E204 /* SnapKit in Frameworks */,
 				68C4A2E92A92908000A2E204 /* GlidingCollection in Frameworks */,
-				68C4A2E62A928F6A00A2E204 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6879824B2A99208D00E021A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6879824C2A99215D00E021A7 /* CustomTabBarView.swift */,
+				6879824E2A9921F300E021A7 /* CustomTabBarController.swift */,
+				687982592A9A5E1300E021A7 /* ProfileView.swift */,
+				6879825B2A9B45D100E021A7 /* VideosTabView.swift */,
+				6879825D2A9B4EB100E021A7 /* VideoSmallCell.swift */,
+				6879825F2A9CCDC200E021A7 /* SuggestedCoursesCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		687982502A9922AB00E021A7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				687982512A9922ED00E021A7 /* Extensions.swift */,
+				687982532A99233000E021A7 /* AppColors.swift */,
+				687982572A9A56B100E021A7 /* AppTheme.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		68C4A29D2A928B6000A2E204 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +146,8 @@
 		68C4A2A82A928B6000A2E204 /* Short Videos App */ = {
 			isa = PBXGroup;
 			children = (
+				687982502A9922AB00E021A7 /* Utilities */,
+				6879824B2A99208D00E021A7 /* Views */,
 				68C4A2BD2A928B9400A2E204 /* NunitoFonts */,
 				68C4A2A92A928B6000A2E204 /* AppDelegate.swift */,
 				68C4A2AB2A928B6000A2E204 /* SceneDelegate.swift */,
@@ -142,6 +194,7 @@
 				68C4A2A22A928B6000A2E204 /* Sources */,
 				68C4A2A32A928B6000A2E204 /* Frameworks */,
 				68C4A2A42A928B6000A2E204 /* Resources */,
+				687982562A99251E00E021A7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,8 +202,6 @@
 			);
 			name = "Short Videos App";
 			packageProductDependencies = (
-				68C4A2E32A928F6A00A2E204 /* SnapKit */,
-				68C4A2E52A928F6A00A2E204 /* SnapKit-Dynamic */,
 				68C4A2E82A92908000A2E204 /* GlidingCollection */,
 			);
 			productName = "Short Videos App";
@@ -212,6 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				687982602A9CCDC200E021A7 /* SuggestedCoursesCellView.swift in Sources */,
+				687982522A9922ED00E021A7 /* Extensions.swift in Sources */,
+				6879824D2A99215D00E021A7 /* CustomTabBarView.swift in Sources */,
 				68C4A2D02A928CD400A2E204 /* Nunito-Black.ttf in Sources */,
 				68C4A2D12A928CD400A2E204 /* Nunito-BlackItalic.ttf in Sources */,
 				68C4A2D22A928CD400A2E204 /* Nunito-Bold.ttf in Sources */,
@@ -224,12 +278,18 @@
 				68C4A2D92A928CD400A2E204 /* Nunito-Light.ttf in Sources */,
 				68C4A2DA2A928CD400A2E204 /* Nunito-LightItalic.ttf in Sources */,
 				68C4A2DB2A928CD400A2E204 /* Nunito-Medium.ttf in Sources */,
+				6879825A2A9A5E1300E021A7 /* ProfileView.swift in Sources */,
 				68C4A2DC2A928CD400A2E204 /* Nunito-MediumItalic.ttf in Sources */,
 				68C4A2DD2A928CD400A2E204 /* Nunito-Regular.ttf in Sources */,
 				68C4A2DE2A928CD400A2E204 /* Nunito-SemiBold.ttf in Sources */,
+				6879825C2A9B45D100E021A7 /* VideosTabView.swift in Sources */,
+				6879824F2A9921F300E021A7 /* CustomTabBarController.swift in Sources */,
 				68C4A2E12A928CEE00A2E204 /* NunitoFonts.swift in Sources */,
+				687982582A9A56B100E021A7 /* AppTheme.swift in Sources */,
 				68C4A2DF2A928CD400A2E204 /* Nunito-SemiBoldItalic.ttf in Sources */,
+				6879825E2A9B4EB100E021A7 /* VideoSmallCell.swift in Sources */,
 				68C4A2AE2A928B6000A2E204 /* ViewController.swift in Sources */,
+				687982542A99233000E021A7 /* AppColors.swift in Sources */,
 				68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */,
 				68C4A2AC2A928B6000A2E204 /* SceneDelegate.swift in Sources */,
 			);
@@ -480,16 +540,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		68C4A2E32A928F6A00A2E204 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 68C4A2E22A928F6A00A2E204 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		68C4A2E52A928F6A00A2E204 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 68C4A2E22A928F6A00A2E204 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
 		68C4A2E82A92908000A2E204 /* GlidingCollection */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 68C4A2E72A92908000A2E204 /* XCRemoteSwiftPackageReference "gliding-collection" */;

@@ -1,0 +1,13 @@
+<svg id="Image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48.004" height="48.004" viewBox="0 0 48.004 48.004">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Mask" cx="24.002" cy="24.002" r="24.002" fill="#1d5e86"/>
+    </clipPath>
+  </defs>
+  <g id="Image-2" data-name="Image">
+    <g id="Mask-2" data-name="Mask" fill="#1d5e86" stroke="#0bd80b" stroke-width="3">
+      <circle cx="24.002" cy="24.002" r="24.002" stroke="none"/>
+      <circle cx="24.002" cy="24.002" r="22.502" fill="none"/>
+    </g>
+  </g>
+</svg>
