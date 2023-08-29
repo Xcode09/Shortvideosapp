@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct VideosTabView: View {
+    let columns : [GridItem] = [GridItem(.flexible()),GridItem(.flexible())]
     var body: some View {
         VStack{
             headerView
@@ -147,94 +148,114 @@ struct VideosTabView: View {
     
     var suggestCourses:some View {
         ZStack {
-            VStack(alignment:.leading){
-                Text("Suggested Courses")
-                    .boldFont()
-                    .foregroundColor(.init(hex: "#BB98DE"))
-                
-                HStack(spacing:10){
-                    Text("Mathematics")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#FFA5A5")))
-                        }
+            VStack(alignment:.leading,spacing:20){
+                VStack(alignment:.leading){
+                    Text("Suggested Courses")
+                        .boldFont()
+                        .foregroundColor(.init(hex: "#BB98DE"))
                     
-                    Text("Physics")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#8BBEFC")))
-                        }
-                    
-                    Text("Biology")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#8BFCC4")))
-                        }
-                }
-                
-                
-                
-                HStack(spacing:10){
-                    Text("Year 7")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
-                        }
-                    
-                    Text("Year 8")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
-                        }
-                    
-                    Text("Year 9")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
-                        }
-                    
-                    Spacer()
-                    
-                    Button {
-                        //
-                    } label: {
-                        ZStack{
-                            Image("Rectangle 1233")
-                            
-                            Image(systemName: "gearshape.fill")
-                                .foregroundColor(.black)
-                        }
+                    HStack(spacing:10){
+                        Text("Mathematics")
+                            .font(.custom("Nunito-ExtraBold", size: 13))
+                            .padding(.horizontal)
+                            .padding(.vertical,10)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.black, lineWidth: 4)
+                                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#FFA5A5")))
+                            }
                         
+                        Text("Physics")
+                            .font(.custom("Nunito-ExtraBold", size: 13))
+                            .padding(.horizontal)
+                            .padding(.vertical,10)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.black, lineWidth: 4)
+                                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#8BBEFC")))
+                            }
+                        
+                        Text("Biology")
+                            .font(.custom("Nunito-ExtraBold", size: 13))
+                            .padding(.horizontal)
+                            .padding(.vertical,10)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.black, lineWidth: 4)
+                                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#8BFCC4")))
+                            }
                     }
+                    
+                    
+                    
+                    HStack(spacing:10){
+                        Text("Year 7")
+                            .font(.custom("Nunito-ExtraBold", size: 13))
+                            .padding(.horizontal)
+                            .padding(.vertical,10)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.black, lineWidth: 4)
+                                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
+                            }
+                        
+                        Text("Year 8")
+                            .font(.custom("Nunito-ExtraBold", size: 13))
+                            .padding(.horizontal)
+                            .padding(.vertical,10)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.black, lineWidth: 4)
+                                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
+                            }
+                        
+                        Text("Year 9")
+                            .font(.custom("Nunito-ExtraBold", size: 13))
+                            .padding(.horizontal)
+                            .padding(.vertical,10)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.black, lineWidth: 4)
+                                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
+                            }
+                        
+                        Spacer()
+                        
+                        Button {
+                            //
+                        } label: {
+                            ZStack{
+                                Image("Rectangle 1233")
+                                
+                                Image(systemName: "gearshape.fill")
+                                    .foregroundColor(.black)
+                            }
+                            
+                        }
 
+                    }
+                    .foregroundColor(.white)
                 }
-                .foregroundColor(.white)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(LinearGradient(colors: [.init(hex: "#01024D"),.init(hex: "#030329")], startPoint: .top, endPoint: .bottom))
+                }
                 
-                SuggestedCoursesCellView()
+                
+                Spacer().frame(height:20)
+                
+                LazyVGrid(columns: columns,spacing:30) {
+                    ForEach(0..<4) { _ in
+                        SuggestedCoursesCellView()
+                            .frame(height:160)
+                    }
+                }
             }
             .padding()
-            .frame(height:200)
+            //.frame(height:400)
             .background {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(LinearGradient(colors: [.init(hex: "#01024D"),.init(hex: "#030329")], startPoint: .top, endPoint: .bottom))
+                    .fill(Color.init(hex: "#01024D"))
             }
         }
     }
