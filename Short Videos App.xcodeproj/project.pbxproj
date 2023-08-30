@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68661F162A9F8DBA00E91113 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68661F152A9F8DBA00E91113 /* ProfileCardView.swift */; };
 		6879824D2A99215D00E021A7 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879824C2A99215D00E021A7 /* CustomTabBarView.swift */; };
 		6879824F2A9921F300E021A7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879824E2A9921F300E021A7 /* CustomTabBarController.swift */; };
 		687982522A9922ED00E021A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687982512A9922ED00E021A7 /* Extensions.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		68661F152A9F8DBA00E91113 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		6879824C2A99215D00E021A7 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		6879824E2A9921F300E021A7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		687982512A9922ED00E021A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				6879825B2A9B45D100E021A7 /* VideosTabView.swift */,
 				6879825D2A9B4EB100E021A7 /* VideoSmallCell.swift */,
 				6879825F2A9CCDC200E021A7 /* SuggestedCoursesCellView.swift */,
+				68661F152A9F8DBA00E91113 /* ProfileCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				68C4A2DF2A928CD400A2E204 /* Nunito-SemiBoldItalic.ttf in Sources */,
 				6879825E2A9B4EB100E021A7 /* VideoSmallCell.swift in Sources */,
 				68C4A2AE2A928B6000A2E204 /* ViewController.swift in Sources */,
+				68661F162A9F8DBA00E91113 /* ProfileCardView.swift in Sources */,
 				687982542A99233000E021A7 /* AppColors.swift in Sources */,
 				68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */,
 				B5B45E502A9E433A0076C51F /* CustomAppColors.swift in Sources */,
@@ -466,7 +470,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WTYBMWQ95G;
+				DEVELOPMENT_TEAM = DJ25AAF2X9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Short Videos App/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -499,7 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WTYBMWQ95G;
+				DEVELOPMENT_TEAM = DJ25AAF2X9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Short Videos App/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";

@@ -9,66 +9,72 @@ import SwiftUI
 
 struct SuggestedCoursesCellView: View {
     var body: some View {
-        HStack(spacing:5){
+        HStack(spacing: 5) {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.ultraThinMaterial)
-                .padding(3)
+                .padding()
             
-            VStack(alignment:.leading, spacing:40){
-                Text("Course Name over 4 lines with overflow …..")
-                    .boldFont()
+            VStack(alignment: .leading, spacing: 14) {
+                Text("Course Name")
+                    .padding(.top,20)
+                    .font(.headline)
                     .lineLimit(3)
-                    .minimumScaleFactor(0.5)
-                
-                //Spacer()
-                
-                HStack(spacing:20){
-                    
-                    HStack(spacing:5){
-                        Image("library_add_check")
-                            .frame(width: 8,height: 8)
-                            .scaledToFit()
-                        
-                        Text("3/10")
-                            .lineLimit(0)
-                            .minimumScaleFactor(0.5)
-                    }
-                    
-                    
-                    HStack(spacing:5){
-                        Image("library_add_check")
-                            .frame(width: 8,height: 8)
-                            .scaledToFit()
-                        
-                        Text("3/10")
-                            .lineLimit(0)
-                            .minimumScaleFactor(0.5)
-                    }
+                    .minimumScaleFactor(0.7)
+                    .multilineTextAlignment(.center)
+
+                HStack(spacing: 10) {
+                    IconText(imageName: "library_add_check", text: "3/10")
+                    IconText(imageName: "visibility_fill", text: "6/10")
                 }
                 
-                //Spacer()
+                TagView(text: "Mathematics")
+                    
                 
                 Text("+3.4k Students")
-                    .font(.custom("Nunito-Bold", size: 8))
-                
-                
+                    .font(.custom("Nunito-Bold", size: 12))
+                    .minimumScaleFactor(0.7)
             }
-            .padding(.all,5)
-            .frame(maxHeight:.infinity)
+            .padding(.vertical, 10)
             .foregroundColor(.white)
+            
+            Spacer()
         }
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .overlay(alignment:.topTrailing){
-            Image("circle_with_green_border")
+        .frame(height:180)
+        .overlay(alignment:.topTrailing,content: {
+            Circle()
+                .strokeBorder(Color.green,lineWidth: 3)
                 .frame(width: 50,height: 50)
-                .offset(y:-30)
-        }
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.init(hex: "#110031"))
+                .background(Circle().fill(Color.gray))
+                .offset(y:-25)
+            
+        })
+        .background(RoundedRectangle(cornerRadius: 10)
+            .fill(Color(hex: "#110031")))
+    }
+}
+
+struct IconText: View {
+    let imageName: String
+    let text: String
+
+    var body: some View {
+        HStack(spacing: 3) {
+            Image(imageName)
+                .resizable()
+                .frame(width: 12, height: 12)
+                .scaledToFit()
+
+            Text(text)
+                .regularFont()
+                .lineLimit(0)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.center)
         }
     }
 }
+
+
+
 
 struct SuggestedCoursesCellView_Previews: PreviewProvider {
     static var previews: some View {

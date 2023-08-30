@@ -15,7 +15,7 @@ struct AppTheme {
     static let boldFont = Font.custom("Nunito-Bold", size: 20)
     static let extraBoldFont = Font.custom("Nunito-ExtraBold", size: 20)
     static let semiFont = Font.custom("Nunito-SemiBold", size: 19)
-    static let tabItemsFont = Font.custom("Nunito-Regular", size: 14)
+    static let tabItemsFont = Font.custom("Nunito-Regular", size: 11)
     
     // You can add more theme properties here
     

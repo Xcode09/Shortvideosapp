@@ -9,16 +9,36 @@ import SwiftUI
 
 struct VideosTabView: View {
     @State private var videoTapped = false
-
+    let column = [GridItem(.flexible(),spacing: 5),GridItem(.flexible(),spacing: 5)]
     var body: some View {
-        VStack{
+        VStack(spacing:20){
             headerView
-            ScrollView {
-                trendingSection
-                
-                newVideosSection
-                
-                suggestCourses
+            ScrollView(showsIndicators: false){
+                VStack(spacing:30){
+                    trendingSection
+    //                    .padding(.vertical,5)
+    //                    .padding(.horizontal,10)
+                    
+                    newVideosSection
+    //                    .padding(.vertical,5)
+    //                    .padding(.horizontal,2)
+                    
+                    suggestCourses
+    //                    .padding(.vertical,5)
+    //                    .padding(.horizontal,2)
+                    myCollectionView
+    //                    .padding(.vertical,5)
+    //                    .padding(.horizontal,2)
+                    
+                    onlineTutors
+    //                    .padding(.vertical,5)
+    //                    .padding(.horizontal,2)
+                    
+                    followingSection
+    //                    .padding(.vertical,10)
+    //                    .padding(.horizontal,2)
+                }
+                .padding(10)
             }
         }
         .fullScreenCover(isPresented: $videoTapped) {
@@ -36,7 +56,7 @@ struct VideosTabView: View {
                 .padding(10)
                 .boldFont()
                 .minimumScaleFactor(0.7)
-                .frame(width: 100)
+                .frame(width: 100,height: 56)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.init(hex: MyColors.pontsRectangleColor))
@@ -44,10 +64,11 @@ struct VideosTabView: View {
             
             Text("50\nDaily Bouns")
                 .foregroundColor(Color.init(hex: "#78F0B9"))
-                .padding(10)
+                .padding(5)
                 .boldFont()
                 .minimumScaleFactor(0.5)
-                //.frame(width: 30,height: 30)
+                .frame(width:56,height: 56)
+                .multilineTextAlignment(.center)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.init(hex: "#0099A0"))
@@ -55,10 +76,11 @@ struct VideosTabView: View {
             
             Text("50\nDaily Bouns")
                 .foregroundColor(Color.init(hex: "#78F0B9"))
-                .padding(10)
+                .padding(5)
                 .boldFont()
                 .minimumScaleFactor(0.5)
-                //.frame(width: 30,height: 30)
+                .frame(width:56,height: 56)
+                .multilineTextAlignment(.center)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.init(hex: "#6A6070"))
@@ -66,10 +88,12 @@ struct VideosTabView: View {
             
             Text("50\nDaily Bouns")
                 .foregroundColor(Color.init(hex: "#78F0B9"))
-                .padding(10)
+                .padding(5)
                 .boldFont()
+                .frame(width:56,height: 56)
                 .minimumScaleFactor(0.5)
-                //.frame(width: 30,height: 30)
+                .multilineTextAlignment(.center)
+                
                 .background {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color.init(hex: "#6A6070"))
@@ -84,7 +108,8 @@ struct VideosTabView: View {
 
             
         }
-        .frame(height: 56)
+        .padding(.horizontal,10)
+        .frame(height: 66)
     }
     
     var trendingSection:some View {
@@ -159,96 +184,188 @@ struct VideosTabView: View {
     
     var suggestCourses:some View {
         ZStack {
-            VStack(alignment:.leading){
-                Text("Suggested Courses")
-                    .boldFont()
-                    .foregroundColor(.init(hex: "#BB98DE"))
-                
-                HStack(spacing:10){
-                    Text("Mathematics")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#FFA5A5")))
-                        }
+            VStack(spacing: 20){
+                VStack(alignment:.leading){
+                    Text("Suggested Courses")
+                        .boldFont()
+                        .foregroundColor(.init(hex: "#BB98DE"))
                     
-                    Text("Physics")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#8BBEFC")))
-                        }
+                    HStack(spacing:10){
+                        TagView(text: "Mathematics")
+                        
+                        TagView(text: "Mathematics")
+                        
+                        TagView(text: "Mathematics")
+                    }
                     
-                    Text("Biology")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#8BFCC4")))
+                    
+                    
+                    HStack(spacing:10){
+                        
+                        TagView(text: "Year 7",backgroundColor: "#01024D")
+
+                        
+                        TagView(text: "Year 8",backgroundColor: "#01024D")
+                        
+                        TagView(text: "Year 9",backgroundColor: "#01024D")
+                        
+                        Spacer()
+                        
+                        Button {
+                            //
+                        } label: {
+                            ZStack{
+                                Image("Rectangle 1233")
+                                
+                                Image(systemName: "gearshape.fill")
+                                    .foregroundColor(.black)
+                            }
+                            
                         }
+
+                    }
+                    .foregroundColor(.white)
+                }
+                .padding(.horizontal,10)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(LinearGradient(colors: [.init(hex: "#01024D"),.init(hex: "#030329")], startPoint: .top, endPoint: .bottom))
                 }
                 
+                Spacer().frame(height: 20)
                 
+                LazyVGrid(columns: column,spacing:30) {
+                    ForEach(0..<4) { _ in
+                        SuggestedCoursesCellView()
+                    }
+                    
+                }
+                .padding(.horizontal,10)
                 
-                HStack(spacing:10){
-                    Text("Year 7")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
-                        }
-                    
-                    Text("Year 8")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
-                        }
-                    
-                    Text("Year 9")
-                        .font(.custom("Nunito-ExtraBold", size: 8))
-                        .padding(5)
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .strokeBorder(Color.black, lineWidth: 2)
-                                .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: "#01024D")))
-                        }
-                    
-                    Spacer()
-                    
-                    Button {
-                        //
-                    } label: {
+                CardOffSetButton(title: "More Courses", offSetY: 30)
+                
+            }
+            //.padding()
+            //.frame(maxHeight:300)
+            .background {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.init(hex: "#01024D"))
+            }
+//            .overlay(alignment:.bottom) {
+//
+//            }
+        }
+    }
+    
+    
+    var myCollectionView:some View{
+        VStack(alignment:.leading){
+            
+            HStack(spacing: 10){
+                Text("My Collections")
+                    .boldFont()
+                
+                Image("bookmark")
+            }
+            .padding()
+            .background {
+                Image("Rectangle 1232-1")
+                    .padding()
+                    .frame(maxWidth:.infinity)
+            }
+            
+            
+            ScrollView(.horizontal) {
+                HStack{
+                    ForEach(0..<8) { index in
                         ZStack{
-                            Image("Rectangle 1233")
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(LinearGradient(colors: [.init(hex: "#F38D70"),.init(hex: "#0F121C")], startPoint: .top, endPoint: .bottom))
+                                .frame(width: 160,height: 200)
                             
-                            Image(systemName: "gearshape.fill")
-                                .foregroundColor(.black)
+                            VStack{
+                                Text("Collection Name")
+                                    .boldFont()
+                                    .lineLimit(2)
+                                    .multilineTextAlignment(.center)
+                                Spacer()
+                                
+                                Text("12")
+                                    .boldFont()
+                                    .padding(.vertical,5)
+                                    .padding(.horizontal)
+                                    .background {
+                                        Color.init(hex: "#F38D70")
+                                    }
+                                    .cornerRadius(20)
+                            }
+                            .padding()
+                            
                         }
-                        
+                        .frame(width: 160,height: 200)
+                    }
+                }
+
+            }
+        }
+        .foregroundColor(.white)
+        .padding([.vertical,.horizontal])
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.init(hex: "#01024D"))
+        }
+    }
+    
+    var onlineTutors:some View
+    {
+        ZStack{
+            VStack{
+                Spacer()
+                LazyVGrid(columns: column,spacing: 24) {
+                    ForEach(0..<4) { _ in
+                        ProfileCardView()
+                            .frame(maxWidth: .infinity,maxHeight:235)
                     }
 
                 }
-                .foregroundColor(.white)
+                .padding(10)
                 
-                SuggestedCoursesCellView()
+                CardOffSetButton(title: "Online Tutors", offSetY: 20)
+                
             }
-            .padding()
-            .frame(height:200)
             .background {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(LinearGradient(colors: [.init(hex: "#01024D"),.init(hex: "#030329")], startPoint: .top, endPoint: .bottom))
+                    .fill(Color.init(hex: "#01024D"))
             }
+            
         }
+        
+    }
+    
+    var followingSection:some View
+    {
+        ZStack{
+            VStack{
+                Spacer()
+                LazyVGrid(columns: column,spacing: 24) {
+                    ForEach(0..<4) { _ in
+                        ProfileCardView()
+                            .frame(maxWidth: .infinity,maxHeight:235)
+                    }
+
+                }
+                .padding(10)
+                
+                CardOffSetButton(title: "Following 123", offSetY: 20)
+                
+            }
+            .background {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.init(hex: "#01024D"))
+            }
+            
+        }
+        
     }
     
 }
@@ -256,5 +373,27 @@ struct VideosTabView: View {
 struct VideosTabView_Previews: PreviewProvider {
     static var previews: some View {
         VideosTabView()
+    }
+}
+
+struct CardOffSetButton:View{
+    let title:String
+    var offSetY:CGFloat = 30
+    var body: some View {
+        VStack(alignment:.center){
+            Text(title)
+                .boldFont()
+                .foregroundColor(.white)
+                .padding(.vertical,10)
+                .padding(.horizontal,10)
+                .frame(width:300,alignment:.center)
+                .background {
+                    RoundedRectangle(cornerRadius: 40)
+                        .strokeBorder(Color.black,lineWidth: 4)
+                        .background(RoundedRectangle(cornerRadius: 40).fill(LinearGradient(colors: [.init(hex: "#4C00A5"),.init(hex: "#260053")], startPoint: .top, endPoint: .bottom)))
+
+                }
+        }
+        .offset(y:offSetY)
     }
 }
