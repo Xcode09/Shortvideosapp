@@ -62,7 +62,7 @@ struct CustomTabBar: View {
             selectedTab == 4 ? AnyView( // Apply to Tab 3 content
                 LinearGradient(colors: [.init(hex: MyColors.linearGradient1),.init(hex: MyColors.linearGradient2)], startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea(edges: .top)
-                                      ) : AnyView(LinearGradient(colors: [.init(hex: MyColors.linearGradient3),.init(hex: MyColors.linearGradient4)], startPoint: .top, endPoint: .bottom)
+                                      ) : AnyView(BackgroundView()
                                         .ignoresSafeArea(edges: .all)
                                                   
                                                   

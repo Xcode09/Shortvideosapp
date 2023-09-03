@@ -9,17 +9,17 @@ import SwiftUI
 
 struct SuggestedCoursesCellView: View {
     var body: some View {
-        HStack(spacing: 5) {
-            RoundedRectangle(cornerRadius: 20)
+        HStack(spacing: 10) {
+            RoundedRectangle(cornerRadius: 10)
                 .fill(.ultraThinMaterial)
-                .padding()
+                //.frame(width:70)
             
             VStack(alignment: .leading, spacing: 14) {
                 Text("Course Name")
                     .padding(.top,20)
-                    .font(.headline)
+                    .boldFont()
                     .lineLimit(3)
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
 
                 HStack(spacing: 10) {
@@ -32,14 +32,14 @@ struct SuggestedCoursesCellView: View {
                 
                 Text("+3.4k Students")
                     .font(.custom("Nunito-Bold", size: 12))
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.5)
             }
             .padding(.vertical, 10)
             .foregroundColor(.white)
             
-            Spacer()
         }
-        .frame(height:180)
+//       ` .padding()`
+        //.frame(height:180)
         .overlay(alignment:.topTrailing,content: {
             Circle()
                 .strokeBorder(Color.green,lineWidth: 3)
@@ -56,20 +56,41 @@ struct SuggestedCoursesCellView: View {
 struct IconText: View {
     let imageName: String
     let text: String
-
+    var iconWidth:CGFloat = 12
+    var iconHeight:CGFloat = 12
+    var contentMode:ContentMode = .fit
+    var isLeftHand : Bool = false
     var body: some View {
-        HStack(spacing: 3) {
-            Image(imageName)
-                .resizable()
-                .frame(width: 12, height: 12)
-                .scaledToFit()
+        if isLeftHand {
+            HStack(spacing: 3) {
+                Text(text)
+                    .regularFont()
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                
+                Image(imageName)
+                    .resizable()
+                    .frame(width: iconWidth, height: iconHeight)
+                    .aspectRatio(contentMode: contentMode)
 
-            Text(text)
-                .regularFont()
-                .lineLimit(0)
-                .minimumScaleFactor(0.5)
-                .multilineTextAlignment(.center)
+                
+            }
+        }else{
+            HStack(spacing: 3) {
+                Image(imageName)
+                    .resizable()
+                    .frame(width: iconWidth, height: iconHeight)
+                    .aspectRatio(contentMode: contentMode)
+
+                Text(text)
+                    .regularFont()
+                    .lineLimit(0)
+                    .minimumScaleFactor(0.3)
+                    .multilineTextAlignment(.center)
+            }
         }
+        
     }
 }
 

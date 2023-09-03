@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VideosTabView: View {
     @State private var videoTapped = false
+    @State private var videoSheetitems : VideoTabViewSheetItems?
     let column = [GridItem(.flexible(),spacing: 5),GridItem(.flexible(),spacing: 5)]
     var body: some View {
         VStack(spacing:20){
@@ -27,6 +28,9 @@ struct VideosTabView: View {
     //                    .padding(.vertical,5)
     //                    .padding(.horizontal,2)
                     myCollectionView
+                        .onTapGesture {
+                            videoSheetitems = .myCollectionsTapped
+                        }
     //                    .padding(.vertical,5)
     //                    .padding(.horizontal,2)
                     
@@ -39,18 +43,29 @@ struct VideosTabView: View {
     //                    .padding(.horizontal,2)
                 }
                 .padding(10)
+                .frame(width:UIScreen.main.bounds.width)
             }
         }
-        .fullScreenCover(isPresented: $videoTapped) {
-            
-                 VideoPlayView()
-                .navigationBarHidden(true)
-        }
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
+        .fullScreenCover(item: $videoSheetitems, content: { item in
+            switch item {
+            case .videoTapped:
+                VideoPlayView()
+               .navigationBarHidden(true)
+            case .settingTapped:
+                SearchVideosFilterView()
+            case .myCollectionsTapped:
+                MyCollectionsView()
+            case .courseDetailView:
+                CourseDetailView()
+            }
+        })
+
+        
     }
     
     var headerView:some View {
         HStack(spacing:10){
+            Spacer()
             Text("120 Pts")
                 .foregroundColor(Color.init(hex: MyColors.pointsColor))
                 .padding(10)
@@ -133,7 +148,7 @@ struct VideosTabView: View {
                         VideoSmallCell()
                             .frame(maxWidth: 200,maxHeight: 200)
                             .onTapGesture {
-                                videoTapped = true
+                                videoSheetitems = .videoTapped
                                 print("Did Tap Video")
                             }
 
@@ -189,6 +204,7 @@ struct VideosTabView: View {
                     Text("Suggested Courses")
                         .boldFont()
                         .foregroundColor(.init(hex: "#BB98DE"))
+                        .padding()
                     
                     HStack(spacing:10){
                         TagView(text: "Mathematics")
@@ -212,7 +228,7 @@ struct VideosTabView: View {
                         Spacer()
                         
                         Button {
-                            //
+                            videoSheetitems = .settingTapped
                         } label: {
                             ZStack{
                                 Image("Rectangle 1233")
@@ -237,12 +253,15 @@ struct VideosTabView: View {
                 LazyVGrid(columns: column,spacing:30) {
                     ForEach(0..<4) { _ in
                         SuggestedCoursesCellView()
+                            .frame(maxHeight:180)
                     }
                     
                 }
                 .padding(.horizontal,10)
                 
-                CardOffSetButton(title: "More Courses", offSetY: 30)
+                CardOffSetButton(title: "More Courses", offSetY: 30) {
+                    videoSheetitems = .courseDetailView
+                }
                 
             }
             //.padding()
@@ -269,9 +288,8 @@ struct VideosTabView: View {
             }
             .padding()
             .background {
-                Image("Rectangle 1232-1")
-                    .padding()
-                    .frame(maxWidth:.infinity)
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.init(hex: "#19266C"))
             }
             
             
@@ -376,24 +394,4 @@ struct VideosTabView_Previews: PreviewProvider {
     }
 }
 
-struct CardOffSetButton:View{
-    let title:String
-    var offSetY:CGFloat = 30
-    var body: some View {
-        VStack(alignment:.center){
-            Text(title)
-                .boldFont()
-                .foregroundColor(.white)
-                .padding(.vertical,10)
-                .padding(.horizontal,10)
-                .frame(width:300,alignment:.center)
-                .background {
-                    RoundedRectangle(cornerRadius: 40)
-                        .strokeBorder(Color.black,lineWidth: 4)
-                        .background(RoundedRectangle(cornerRadius: 40).fill(LinearGradient(colors: [.init(hex: "#4C00A5"),.init(hex: "#260053")], startPoint: .top, endPoint: .bottom)))
 
-                }
-        }
-        .offset(y:offSetY)
-    }
-}

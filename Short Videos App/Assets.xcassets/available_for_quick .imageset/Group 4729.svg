@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="246" height="56" viewBox="0 0 246 56">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#47f2a9"/>
+      <stop offset="1" stop-color="#0a965a"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1118" data-name="Rectangle 1118" width="21" height="37" transform="translate(-0.122 75.44)" fill="#0d9b38"/>
+    </clipPath>
+  </defs>
+  <g id="Group_4729" data-name="Group 4729" transform="translate(-102 -403)">
+    <g id="Rectangle_1117" data-name="Rectangle 1117" transform="translate(102 403)" stroke="#000" stroke-width="2" fill="url(#linear-gradient)">
+      <rect width="246" height="56" rx="20" stroke="none"/>
+      <rect x="1" y="1" width="244" height="54" rx="19" fill="none"/>
+    </g>
+    <g id="Group_4727" data-name="Group 4727">
+      <text id="_CyberpunkChallenge" data-name="#CyberpunkChallenge" transform="translate(159 428)" font-size="16" font-family="Nunito-Bold, Nunito" font-weight="700" letter-spacing="-0.01em"><tspan x="0" y="0">Available Now </tspan><tspan x="0" y="16">for Quick Help</tspan></text>
+      <g id="Mask_Group_2" data-name="Mask Group 2" transform="translate(270.122 337.561)" clip-path="url(#clip-path)">
+        <path id="bolt_FILL1_wght300_GRAD-25_opsz48" d="M159.026-629.608l1.512-10.5h-6.969L166-658.028h1.8l-1.5,11.935h8.3L160.84-629.608Z" transform="translate(-153.569 737.564)" fill="#0d9b38"/>
+      </g>
+    </g>
+  </g>
+</svg>

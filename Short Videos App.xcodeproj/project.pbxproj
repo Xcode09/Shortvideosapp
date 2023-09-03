@@ -41,6 +41,14 @@
 		68C4A2DF2A928CD400A2E204 /* Nunito-SemiBoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2CE2A928BDE00A2E204 /* Nunito-SemiBoldItalic.ttf */; };
 		68C4A2E12A928CEE00A2E204 /* NunitoFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */; };
 		68C4A2E92A92908000A2E204 /* GlidingCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E82A92908000A2E204 /* GlidingCollection */; };
+		68DAB2F32AA109C50033EF06 /* SearchVideosFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F22AA109C50033EF06 /* SearchVideosFilterView.swift */; };
+		68DAB2F62AA117460033EF06 /* ReusableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F52AA117460033EF06 /* ReusableViews.swift */; };
+		68DAB2F92AA117C40033EF06 /* CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F82AA117C40033EF06 /* CustomShapes.swift */; };
+		68DAB2FC2AA1192B0033EF06 /* VideoTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2FB2AA1192B0033EF06 /* VideoTabViewModel.swift */; };
+		68DAB2FE2AA123F60033EF06 /* HeaderTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2FD2AA123F60033EF06 /* HeaderTabView.swift */; };
+		68DAB3002AA1269A0033EF06 /* MyCollectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2FF2AA1269A0033EF06 /* MyCollectionsView.swift */; };
+		68DAB3022AA20B060033EF06 /* VideoWithDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB3012AA20B060033EF06 /* VideoWithDetailCellView.swift */; };
+		68DAB3042AA22BE30033EF06 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB3032AA22BE30033EF06 /* CourseDetailView.swift */; };
 		B5B45E4E2A9E433A0076C51F /* LikeFollowButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B45E492A9E43390076C51F /* LikeFollowButtonsView.swift */; };
 		B5B45E4F2A9E433A0076C51F /* VideoPlayFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B45E4A2A9E43390076C51F /* VideoPlayFooterView.swift */; };
 		B5B45E502A9E433A0076C51F /* CustomAppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B45E4B2A9E43390076C51F /* CustomAppColors.swift */; };
@@ -97,6 +105,14 @@
 		68C4A2CE2A928BDE00A2E204 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		68C4A2CF2A928BDE00A2E204 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NunitoFonts.swift; sourceTree = "<group>"; };
+		68DAB2F22AA109C50033EF06 /* SearchVideosFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVideosFilterView.swift; sourceTree = "<group>"; };
+		68DAB2F52AA117460033EF06 /* ReusableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViews.swift; sourceTree = "<group>"; };
+		68DAB2F82AA117C40033EF06 /* CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShapes.swift; sourceTree = "<group>"; };
+		68DAB2FB2AA1192B0033EF06 /* VideoTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTabViewModel.swift; sourceTree = "<group>"; };
+		68DAB2FD2AA123F60033EF06 /* HeaderTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTabView.swift; sourceTree = "<group>"; };
+		68DAB2FF2AA1269A0033EF06 /* MyCollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionsView.swift; sourceTree = "<group>"; };
+		68DAB3012AA20B060033EF06 /* VideoWithDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWithDetailCellView.swift; sourceTree = "<group>"; };
+		68DAB3032AA22BE30033EF06 /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
 		B5B45E492A9E43390076C51F /* LikeFollowButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeFollowButtonsView.swift; sourceTree = "<group>"; };
 		B5B45E4A2A9E43390076C51F /* VideoPlayFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayFooterView.swift; sourceTree = "<group>"; };
 		B5B45E4B2A9E43390076C51F /* CustomAppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAppColors.swift; sourceTree = "<group>"; };
@@ -119,6 +135,9 @@
 		6879824B2A99208D00E021A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				68DAB2FA2AA119100033EF06 /* ViewModels */,
+				68DAB2F72AA117AE0033EF06 /* CustomShapes */,
+				68DAB2F42AA117250033EF06 /* ReusableViews */,
 				B5B45E482A9E431A0076C51F /* VideoPlayerView */,
 				6879824C2A99215D00E021A7 /* CustomTabBarView.swift */,
 				6879824E2A9921F300E021A7 /* CustomTabBarController.swift */,
@@ -127,6 +146,11 @@
 				6879825D2A9B4EB100E021A7 /* VideoSmallCell.swift */,
 				6879825F2A9CCDC200E021A7 /* SuggestedCoursesCellView.swift */,
 				68661F152A9F8DBA00E91113 /* ProfileCardView.swift */,
+				68DAB2F22AA109C50033EF06 /* SearchVideosFilterView.swift */,
+				68DAB2FD2AA123F60033EF06 /* HeaderTabView.swift */,
+				68DAB2FF2AA1269A0033EF06 /* MyCollectionsView.swift */,
+				68DAB3012AA20B060033EF06 /* VideoWithDetailCellView.swift */,
+				68DAB3032AA22BE30033EF06 /* CourseDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +220,30 @@
 				68C4A2E02A928CEE00A2E204 /* NunitoFonts.swift */,
 			);
 			path = NunitoFonts;
+			sourceTree = "<group>";
+		};
+		68DAB2F42AA117250033EF06 /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				68DAB2F52AA117460033EF06 /* ReusableViews.swift */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		68DAB2F72AA117AE0033EF06 /* CustomShapes */ = {
+			isa = PBXGroup;
+			children = (
+				68DAB2F82AA117C40033EF06 /* CustomShapes.swift */,
+			);
+			path = CustomShapes;
+			sourceTree = "<group>";
+		};
+		68DAB2FA2AA119100033EF06 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				68DAB2FB2AA1192B0033EF06 /* VideoTabViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B5B45E482A9E431A0076C51F /* VideoPlayerView */ = {
@@ -291,6 +339,7 @@
 			files = (
 				B5B45E4E2A9E433A0076C51F /* LikeFollowButtonsView.swift in Sources */,
 				687982602A9CCDC200E021A7 /* SuggestedCoursesCellView.swift in Sources */,
+				68DAB3042AA22BE30033EF06 /* CourseDetailView.swift in Sources */,
 				687982522A9922ED00E021A7 /* Extensions.swift in Sources */,
 				B5B45E512A9E433A0076C51F /* VideoPlayHeaderView.swift in Sources */,
 				6879824D2A99215D00E021A7 /* CustomTabBarView.swift in Sources */,
@@ -306,15 +355,21 @@
 				B5B45E522A9E433A0076C51F /* VideoPlayView.swift in Sources */,
 				68C4A2D82A928CD400A2E204 /* Nunito-Italic.ttf in Sources */,
 				68C4A2D92A928CD400A2E204 /* Nunito-Light.ttf in Sources */,
+				68DAB2FE2AA123F60033EF06 /* HeaderTabView.swift in Sources */,
 				68C4A2DA2A928CD400A2E204 /* Nunito-LightItalic.ttf in Sources */,
+				68DAB2F62AA117460033EF06 /* ReusableViews.swift in Sources */,
 				68C4A2DB2A928CD400A2E204 /* Nunito-Medium.ttf in Sources */,
 				6879825A2A9A5E1300E021A7 /* ProfileView.swift in Sources */,
+				68DAB3002AA1269A0033EF06 /* MyCollectionsView.swift in Sources */,
+				68DAB2F32AA109C50033EF06 /* SearchVideosFilterView.swift in Sources */,
 				68C4A2DC2A928CD400A2E204 /* Nunito-MediumItalic.ttf in Sources */,
 				68C4A2DD2A928CD400A2E204 /* Nunito-Regular.ttf in Sources */,
 				68C4A2DE2A928CD400A2E204 /* Nunito-SemiBold.ttf in Sources */,
 				6879825C2A9B45D100E021A7 /* VideosTabView.swift in Sources */,
+				68DAB2F92AA117C40033EF06 /* CustomShapes.swift in Sources */,
 				6879824F2A9921F300E021A7 /* CustomTabBarController.swift in Sources */,
 				68C4A2E12A928CEE00A2E204 /* NunitoFonts.swift in Sources */,
+				68DAB3022AA20B060033EF06 /* VideoWithDetailCellView.swift in Sources */,
 				687982582A9A56B100E021A7 /* AppTheme.swift in Sources */,
 				68C4A2DF2A928CD400A2E204 /* Nunito-SemiBoldItalic.ttf in Sources */,
 				6879825E2A9B4EB100E021A7 /* VideoSmallCell.swift in Sources */,
@@ -324,6 +379,7 @@
 				68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */,
 				B5B45E502A9E433A0076C51F /* CustomAppColors.swift in Sources */,
 				68C4A2AC2A928B6000A2E204 /* SceneDelegate.swift in Sources */,
+				68DAB2FC2AA1192B0033EF06 /* VideoTabViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
