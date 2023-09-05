@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681EB0862AA7A5430053E7C5 /* ShowMyCollectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681EB0852AA7A5430053E7C5 /* ShowMyCollectionsView.swift */; };
 		68661F162A9F8DBA00E91113 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68661F152A9F8DBA00E91113 /* ProfileCardView.swift */; };
 		6879824D2A99215D00E021A7 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879824C2A99215D00E021A7 /* CustomTabBarView.swift */; };
 		6879824F2A9921F300E021A7 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879824E2A9921F300E021A7 /* CustomTabBarController.swift */; };
@@ -17,6 +18,8 @@
 		6879825C2A9B45D100E021A7 /* VideosTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879825B2A9B45D100E021A7 /* VideosTabView.swift */; };
 		6879825E2A9B4EB100E021A7 /* VideoSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879825D2A9B4EB100E021A7 /* VideoSmallCell.swift */; };
 		687982602A9CCDC200E021A7 /* SuggestedCoursesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879825F2A9CCDC200E021A7 /* SuggestedCoursesCellView.swift */; };
+		6879B58E2AA637AF005C2252 /* TrendingVideosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879B58D2AA637AF005C2252 /* TrendingVideosCollectionView.swift */; };
+		6879B5912AA653FE005C2252 /* FollowingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6879B5902AA653FE005C2252 /* FollowingView.swift */; };
 		68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2A92A928B6000A2E204 /* AppDelegate.swift */; };
 		68C4A2AC2A928B6000A2E204 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2AB2A928B6000A2E204 /* SceneDelegate.swift */; };
 		68C4A2AE2A928B6000A2E204 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A2AD2A928B6000A2E204 /* ViewController.swift */; };
@@ -70,6 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		681EB0852AA7A5430053E7C5 /* ShowMyCollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMyCollectionsView.swift; sourceTree = "<group>"; };
 		68661F152A9F8DBA00E91113 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		6879824C2A99215D00E021A7 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		6879824E2A9921F300E021A7 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 		6879825B2A9B45D100E021A7 /* VideosTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosTabView.swift; sourceTree = "<group>"; };
 		6879825D2A9B4EB100E021A7 /* VideoSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSmallCell.swift; sourceTree = "<group>"; };
 		6879825F2A9CCDC200E021A7 /* SuggestedCoursesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedCoursesCellView.swift; sourceTree = "<group>"; };
+		6879B58D2AA637AF005C2252 /* TrendingVideosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingVideosCollectionView.swift; sourceTree = "<group>"; };
+		6879B5902AA653FE005C2252 /* FollowingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingView.swift; sourceTree = "<group>"; };
 		68C4A2A62A928B6000A2E204 /* Short Videos App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Short Videos App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C4A2A92A928B6000A2E204 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C4A2AB2A928B6000A2E204 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,9 +138,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		681EB0842AA7A4F80053E7C5 /* PrivateCollectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				681EB0852AA7A5430053E7C5 /* ShowMyCollectionsView.swift */,
+			);
+			name = PrivateCollectionViews;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		6879824B2A99208D00E021A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				681EB0842AA7A4F80053E7C5 /* PrivateCollectionViews */,
+				6879B58F2AA653DD005C2252 /* FollowingViews */,
+				6879B58C2AA63783005C2252 /* TrendingVideos */,
 				68DAB2FA2AA119100033EF06 /* ViewModels */,
 				68DAB2F72AA117AE0033EF06 /* CustomShapes */,
 				68DAB2F42AA117250033EF06 /* ReusableViews */,
@@ -163,6 +181,22 @@
 				687982572A9A56B100E021A7 /* AppTheme.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6879B58C2AA63783005C2252 /* TrendingVideos */ = {
+			isa = PBXGroup;
+			children = (
+				6879B58D2AA637AF005C2252 /* TrendingVideosCollectionView.swift */,
+			);
+			path = TrendingVideos;
+			sourceTree = "<group>";
+		};
+		6879B58F2AA653DD005C2252 /* FollowingViews */ = {
+			isa = PBXGroup;
+			children = (
+				6879B5902AA653FE005C2252 /* FollowingView.swift */,
+			);
+			path = FollowingViews;
 			sourceTree = "<group>";
 		};
 		68C4A29D2A928B6000A2E204 = {
@@ -342,6 +376,7 @@
 				68DAB3042AA22BE30033EF06 /* CourseDetailView.swift in Sources */,
 				687982522A9922ED00E021A7 /* Extensions.swift in Sources */,
 				B5B45E512A9E433A0076C51F /* VideoPlayHeaderView.swift in Sources */,
+				6879B58E2AA637AF005C2252 /* TrendingVideosCollectionView.swift in Sources */,
 				6879824D2A99215D00E021A7 /* CustomTabBarView.swift in Sources */,
 				68C4A2D02A928CD400A2E204 /* Nunito-Black.ttf in Sources */,
 				68C4A2D12A928CD400A2E204 /* Nunito-BlackItalic.ttf in Sources */,
@@ -363,6 +398,7 @@
 				68DAB3002AA1269A0033EF06 /* MyCollectionsView.swift in Sources */,
 				68DAB2F32AA109C50033EF06 /* SearchVideosFilterView.swift in Sources */,
 				68C4A2DC2A928CD400A2E204 /* Nunito-MediumItalic.ttf in Sources */,
+				6879B5912AA653FE005C2252 /* FollowingView.swift in Sources */,
 				68C4A2DD2A928CD400A2E204 /* Nunito-Regular.ttf in Sources */,
 				68C4A2DE2A928CD400A2E204 /* Nunito-SemiBold.ttf in Sources */,
 				6879825C2A9B45D100E021A7 /* VideosTabView.swift in Sources */,
@@ -376,6 +412,7 @@
 				68C4A2AE2A928B6000A2E204 /* ViewController.swift in Sources */,
 				68661F162A9F8DBA00E91113 /* ProfileCardView.swift in Sources */,
 				687982542A99233000E021A7 /* AppColors.swift in Sources */,
+				681EB0862AA7A5430053E7C5 /* ShowMyCollectionsView.swift in Sources */,
 				68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */,
 				B5B45E502A9E433A0076C51F /* CustomAppColors.swift in Sources */,
 				68C4A2AC2A928B6000A2E204 /* SceneDelegate.swift in Sources */,
@@ -535,7 +572,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,7 +605,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

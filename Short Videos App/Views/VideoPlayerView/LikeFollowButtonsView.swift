@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LikeFollowButtonsView: View {
     @State private var isGridViewVisible = false // This variable controls visibility
-
+    @State private var showSave = false
     var body: some View {
         ZStack {
             Color.black
@@ -60,6 +60,7 @@ struct LikeFollowButtonsView: View {
                             .padding(8)                        .background(AppColors.customLightGrayColor.opacity(0.5))
                             .foregroundColor(.white)
                             .cornerRadius(10)
+                            
 
                         CustomButton(imageName: "groupEmoji", buttonText: "", action: didTapSelectEmoji)
                             .frame(height: 40) // Adjust the height for the first button
@@ -73,6 +74,10 @@ struct LikeFollowButtonsView: View {
                     
                 }
             }
+            .sheet(isPresented: $showSave) {
+                ShowMyCollectionsView()
+                    .presentationDetents([.medium])
+            }
         }
     }
     
@@ -83,6 +88,7 @@ struct LikeFollowButtonsView: View {
     
     func didTapButton() {
         print("didTapSelectEmoji")
+        showSave.toggle()
     }
 }
 

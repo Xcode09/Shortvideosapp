@@ -129,18 +129,15 @@ struct CourseDetailView: View {
                     Button(action: {
                         // Action to perform when button is tapped
                         print("Button tapped")
-                        //presentationMode.wrappedValue.dismiss()
+                        presentationMode.wrappedValue.dismiss()
 
                     }) {
                         Image("back")
-                            .renderingMode(.template)
                             .resizable()
-                            .foregroundColor(.white)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 20, height: 20) // Adjust the size as needed
                             .padding()
-                            .background(Color.init(hex: "#A890FF"))
-                            
+                            .background(AppColors.customLightGrayColor.opacity(0.5))
                             .clipShape(Circle()) // Clip the button and its background to a circle
                     }
                 }
@@ -160,15 +157,13 @@ struct CourseDetailView: View {
                     Button(action: {
                         // Action to perform when button is tapped
                         print("Button tapped")
-                        presentationMode.wrappedValue.dismiss()
-                        
                     }) {
-                        Image("back")
+                        Image("search")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 20, height: 20) // Adjust the size as needed
                             .padding()
-                            .background(Color.init(hex: "#A890FF"))
+                            .background(AppColors.customLightGrayColor.opacity(0.5))
                             .clipShape(Circle()) // Clip the button and its background to a circle
                     }
                     

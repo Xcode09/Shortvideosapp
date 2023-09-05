@@ -12,7 +12,7 @@ struct VideoSmallCell: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(LinearGradient(colors: [.init(hex: "#1C1C1C"),.init(hex: "#272727")], startPoint: .top, endPoint: .bottom))
-                .frame(width: 160,height: 200)
+                //.frame(width: 160,height: 200)
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .overlay(alignment:.topTrailing) {
@@ -27,6 +27,7 @@ struct VideoSmallCell: View {
                     .rotationEffect(.degrees(180))
                 
                 Text("2345")
+                    .foregroundColor(.white)
                     .regularFont()
                     .minimumScaleFactor(0.5)
             }

@@ -57,6 +57,8 @@ struct VideosTabView: View {
                 MyCollectionsView()
             case .courseDetailView:
                 CourseDetailView()
+            case .trendingTapped:
+                TrendingVideosCollectionView()
             }
         })
 
@@ -141,12 +143,15 @@ struct VideosTabView: View {
             }
             
             .padding()
+            .onTapGesture {
+                videoSheetitems = .trendingTapped
+            }
             
             ScrollView(.horizontal) {
                 HStack{
                     ForEach(0..<8) { index in
                         VideoSmallCell()
-                            .frame(maxWidth: 200,maxHeight: 200)
+                            .frame(width:150,height: 200)
                             .onTapGesture {
                                 videoSheetitems = .videoTapped
                                 print("Did Tap Video")
@@ -183,7 +188,7 @@ struct VideosTabView: View {
                 HStack{
                     ForEach(0..<8) { index in
                         VideoSmallCell()
-                            .frame(maxWidth: 200,maxHeight: 200)
+                            .frame(width:150,height: 200)
                     }
                 }
 
