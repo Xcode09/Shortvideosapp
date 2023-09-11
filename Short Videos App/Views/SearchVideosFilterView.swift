@@ -141,7 +141,7 @@ struct FilterTextFieldView:View
                     .background(content: {
                         Color.init(hex: "#F3E0FD")
                     })
-                    .offset(x:10,y:-28)
+                    .offset(x:10,y:-26)
             }
         }
     }

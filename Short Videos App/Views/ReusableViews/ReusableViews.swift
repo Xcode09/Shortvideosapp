@@ -20,7 +20,7 @@ struct CardOffSetButton:View{
     var offSetY:CGFloat = 30
     var colors : [Color] = [.init(hex: "#4C00A5"),.init(hex: "#260053")]
     var actionCall:(()->Void)?
-    var width : CGFloat = 300
+    var width : CGFloat = 200
     var body: some View {
         Button {
             actionCall?()
@@ -31,7 +31,7 @@ struct CardOffSetButton:View{
                     //.foregroundColor(.white)
                     .padding(.vertical)
                     .padding(.horizontal)
-                    .frame(width:width,alignment:.center)
+                    .frame(maxWidth:width,maxHeight:46,alignment:.center)
                     .background {
                         RoundedRectangle(cornerRadius: 40)
                             .strokeBorder(Color.black,lineWidth: 4)
@@ -55,19 +55,19 @@ struct StatView: View {
         VStack(spacing:5){
             Text(value)
                 .foregroundColor(.white)
-                .font(.custom("Nunito-Regular", size: 12))
+                .font(.custom("Nunito-SemiBold", size: 10))
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.center)
             
             Text(title)
                 .foregroundColor(.white)
-                .font(.custom("Nunito-Bold", size: 14))
+                .font(.custom("Nunito-Bold", size: 12))
                 .lineLimit(4)
                 .multilineTextAlignment(.center)
-                .minimumScaleFactor(0.3)
+                .minimumScaleFactor(0.5)
         }
         .padding(5)
-        .frame(maxWidth: 80,maxHeight: 80)
+        .frame(maxWidth:50,maxHeight: 50)
         .background(content: {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.init(hex: color))
@@ -104,11 +104,11 @@ struct TagView: View {
     var backgroundColor : String = "#FFA5A5"
     var body: some View {
         Text(text)
-            .font(.custom("Nunito-ExtraBold", size: 14))
+            .font(.custom("Nunito-ExtraBold", size: 12))
             .lineLimit(0)
             .minimumScaleFactor(0.5)
             .padding(.vertical, 10)
-            .padding(.horizontal)
+            .padding(.horizontal,10)
             .background(
                 RoundedRectangle(cornerRadius: 20)
                     .strokeBorder(Color.black, lineWidth: 4)

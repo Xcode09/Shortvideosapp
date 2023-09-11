@@ -11,34 +11,39 @@ struct VideoWithDetailCellView: View {
     var body: some View {
         VStack{
             HStack{
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(LinearGradient(colors: [.init(hex: "#1C1C1C"),.init(hex: "#272727")], startPoint: .top, endPoint: .bottom))
                 
-                    .frame(width: 140)
+                RoundedRectangle(cornerRadius: 10)
+                    .fill((LinearGradient(colors: [.init(hex: "#585353"),.init(hex: "#0B0B0B")], startPoint: .top, endPoint: .bottom)))
+                    .frame(width: 75,height: 110)
+                
+//                    .frame(width: 75, height: 110)
+//                        .fill((LinearGradient(colors: [.init(hex: "#585353"),.init(hex: "#0B0B0B")], startPoint: .top, endPoint: .bottom)))// Set the width and height
+                            
                 
                 VStack(alignment:.leading){
-                    Text("Video Title")
+                    Text("1. Lesson title over 2 lines 2nd line")
                         .foregroundColor(.white)
                         .boldFont()
                     
-                    HStack{
+                    HStack(spacing:24){
                         VStack(spacing:8){
                             Text("1:23")
                                 .foregroundColor(.white)
-                                .font(.custom("Nunito-Regular", size: 12))
+                                .font(.custom("Nunito-Bold", size: 12))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                             
                             Text("min")
                                 
                                 .foregroundColor(.white)
-                                .font(.custom("Nunito-Regular", size: 12))
+                                .font(.custom("Nunito-Bold", size: 6))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
+                            
                                 
                         }
-                        .padding(10)
-                        .frame(width:66,height:46)
+                        .padding(5)
+                        .frame(width:52,height:34)
                         .background {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.init(hex: "#2A2C67"))
@@ -47,18 +52,18 @@ struct VideoWithDetailCellView: View {
                         
                         VStack(spacing:8){
                             Image("visibility_fill")
-                                //.resizable()
-                                //.frame(width:12,height:12)
+                                .resizable()
+                                .frame(width:14,height:12)
                             
                             Text("Viewed")
                                 //.frame(width:12)
                                 .foregroundColor(.white)
-                                .font(.custom("Nunito-Regular", size: 12))
+                                .font(.custom("Nunito-Bold", size: 6))
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.5)
                         }
-                        .padding(10)
-                        .frame(width:66,height:46)
+                        .padding(5)
+                        .frame(width:52,height:34)
                         .background {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.init(hex: "#2A675B"))
@@ -68,12 +73,12 @@ struct VideoWithDetailCellView: View {
                             HStack{
                                 Image("library_add_check")
                                     .resizable()
-                                    .frame(width:14)
+                                    .frame(width:12)
                                 
                                 Text("2/3")
                                     .foregroundColor(.white)
-                                    .font(.custom("Nunito-Regular", size: 12))
-                                    .lineLimit(1)
+                                    .font(.custom("Nunito-Bold", size: 9))
+                                    .lineLimit(2)
                                     .minimumScaleFactor(0.3)
                             }
                             
@@ -84,8 +89,8 @@ struct VideoWithDetailCellView: View {
                                 .minimumScaleFactor(0.3)
                             
                         }
-                        .padding(10)
-                        .frame(width:66,height:46)
+                        .padding(5)
+                        .frame(width:52,height:34)
                         .background {
                             RoundedRectangle(cornerRadius: 8)
                                 .fill(Color.init(hex: "#2A675B"))
@@ -94,17 +99,20 @@ struct VideoWithDetailCellView: View {
                     
                     
                     
+                    
                     Text("120 Points")
                         .foregroundColor(.white)
                         .boldFont()
                 }
+//                .frame(maxWidth:.infinity)
                 
+                Spacer()
                 
             }
         }
         .padding()
         .background {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 8)
                 .fill(Color.init(hex: "#040638"))
         }
     }

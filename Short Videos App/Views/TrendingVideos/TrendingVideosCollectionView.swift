@@ -17,11 +17,11 @@ struct TrendingVideosCollectionView: View {
                 BackgroundView()
                     .ignoresSafeArea()
                 ScrollView {
-                    VStack{
-                        LazyVGrid(columns: [.init(.flexible()),.init(.flexible())]) {
+                    VStack(spacing:0){
+                        LazyVGrid(columns: [.init(.flexible()),.init(.flexible())],spacing:0) {
                             ForEach(0..<100) { _ in
                                 VideoSmallCell()
-                                    .frame(height: 200)
+                                    .frame(height: 240)
                             }
                            
                         }

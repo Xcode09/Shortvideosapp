@@ -9,37 +9,43 @@ import SwiftUI
 
 struct SuggestedCoursesCellView: View {
     var body: some View {
-        HStack(spacing: 10) {
+        HStack{
             RoundedRectangle(cornerRadius: 10)
                 .fill(.ultraThinMaterial)
-                //.frame(width:70)
+                .aspectRatio(9/16, contentMode: .fit)
+                .padding(10)
+
             
-            VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing:10) {
                 Text("Course Name")
-                    .padding(.top,20)
-                    .boldFont()
+                    .padding(.top,30)
+                    .foregroundColor(.white)
+                    .font(.custom("Nunito-Bold", size: 18))
                     .lineLimit(3)
                     .minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
 
+                TagView(text: "Mathematics")
+                    .foregroundColor(.black)
+                
                 HStack(spacing: 10) {
                     IconText(imageName: "library_add_check", text: "3/10")
+                        .foregroundColor(.white)
                     IconText(imageName: "visibility_fill", text: "6/10")
+                        .foregroundColor(.white)
                 }
-                
-                TagView(text: "Mathematics")
-                    
                 
                 Text("+3.4k Students")
                     .font(.custom("Nunito-Bold", size: 12))
+                    .foregroundColor(.white)
                     .minimumScaleFactor(0.5)
             }
-            .padding(.vertical, 10)
-            .foregroundColor(.white)
+            //.padding(10)
+            .aspectRatio(9/16, contentMode: .fit)
+            
             
         }
-//       ` .padding()`
-        //.frame(height:180)
+        //.aspectRatio(9/16, contentMode: .fit)
         .overlay(alignment:.topTrailing,content: {
             Circle()
                 .strokeBorder(Color.green,lineWidth: 3)

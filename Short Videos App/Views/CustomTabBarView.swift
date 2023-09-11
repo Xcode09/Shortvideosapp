@@ -37,7 +37,7 @@ struct CustomTabBar: View {
                         VStack {
                             Image(tabItems[index].title)
                                 .foregroundColor(selectedTab == index ? Color.blue : Color.gray)
-                                .frame(width: 24, height: 24)
+                                .frame(width: 18, height: 18)
                             Text(tabItems[index].title)
                                 .tabItemsFont()
                                 .foregroundColor(.white)

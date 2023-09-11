@@ -34,7 +34,7 @@ struct CourseDetailView: View {
                             
                             TagView(text: "Biology")
                             
-                            Text("Courses Name")
+                            Text("Course title over 2 lines")
                                 .foregroundColor(.white)
                             .boldFont()
                             
@@ -45,10 +45,14 @@ struct CourseDetailView: View {
                             
                             HStack {
                                 StatView(value: "2.2k", title: "Students",color: "#531886")
+                                    .frame(width:65,height:55)
                                 StatView(value: "4k", title: "Reactions",color: "#531886")
+                                    .frame(width:65,height:55)
                                 StatView(value: "124k", title: "Views",color: "#531886")
+                                    .frame(width:65,height:55)
                                 
                                 StatView(value: "55", title: "Points",color: "#531886")
+                                    .frame(width:65,height:55)
                             }
                             
                             
@@ -82,6 +86,7 @@ struct CourseDetailView: View {
                         
                         ForEach(0..<5) { _ in
                             VideoWithDetailCellView()
+                                //.frame(maxWidth:.infinity)
                         }
                         HStack{
                             Button {
@@ -117,7 +122,7 @@ struct CourseDetailView: View {
                             courseDetailCell
                         }
                     }
-                    .padding()
+                    //.padding()
                     
                 }
                 .frame(width:UIScreen.main.bounds.width)
@@ -258,10 +263,17 @@ struct CourseDetailView: View {
     
     var courseDetailCell:some View{
         HStack{
-            Color.black.cornerRadius(20)
+            RoundedRectangle(cornerRadius: 10)
+                .fill((LinearGradient(colors: [.init(hex: "#585353"),.init(hex: "#0B0B0B")], startPoint: .top, endPoint: .bottom)))
+//            Rectangle()
+//                    //.frame(height: 160) // Set the width and height
+//                        .background(
+//                            (Color.gray)
+//                            .padding(5) // Add padding to simulate border-radius
+//                        )
             
             VStack{
-                Text("Course Name")
+                Text("Course Name over 4 lines with overflow …..")
                     .foregroundColor(.white)
                     .boldFont()
                     .lineLimit(4)
@@ -270,13 +282,18 @@ struct CourseDetailView: View {
                 
                 HStack{
                     StatView(value: "2.2k", title: "Students",color: "#531886")
+                        //.frame(width:46,height:40)
                     
                     StatView(value: "4k", title: "Reactions",color: "#531886")
+                        //.frame(width:46,height:40)
+                    
                 }
                 HStack{
                     StatView(value: "124k", title: "Views",color: "#531886")
+                        //.frame(width:46,height:40)
                     
                     StatView(value: "55", title: "Points",color: "#531886")
+                        //.frame(width:46,height:40)
                 }
                 
             }
@@ -284,11 +301,11 @@ struct CourseDetailView: View {
         .padding(10)
         .frame(maxHeight:184)
         .background {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 0)
                 .strokeBorder(Color.init(hex: "#A879DE"),lineWidth: 2)
                 .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.init(hex: "#110031"))
+                    RoundedRectangle(cornerRadius: 0)
+                        .fill(Color.init(hex: "#11003"))
                 }
         }
     }

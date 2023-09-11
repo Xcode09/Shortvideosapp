@@ -10,6 +10,8 @@ import SwiftUI
 struct LikeFollowButtonsView: View {
     @State private var isGridViewVisible = false // This variable controls visibility
     @State private var showSave = false
+    @State private var showReportVideo = false
+    @State private var reportContent = false
     var body: some View {
         ZStack {
             Color.black
@@ -37,7 +39,9 @@ struct LikeFollowButtonsView: View {
                             .cornerRadius(10)
 
 
-                        CustomButton(imageName: "quizfill", buttonText: "3/3", action: didTapButton)
+                        CustomButton(imageName: "quizfill", buttonText: "3/3", action: {
+                            showReportVideo.toggle()
+                        })
                             .frame(height: 40) // Adjust the height for the first button
                             .padding(8)                        .background(AppColors.customLightGrayColor.opacity(0.5))
                             .foregroundColor(.white)
@@ -78,6 +82,10 @@ struct LikeFollowButtonsView: View {
                 ShowMyCollectionsView()
                     .presentationDetents([.medium])
             }
+            .sheet(isPresented: $showReportVideo) {
+                ReportVideoContentView(reportContent: $reportContent)
+                    .presentationDetents([.fraction(reportContent ? 1 : 0.3)])
+            }
         }
     }
     
@@ -92,9 +100,119 @@ struct LikeFollowButtonsView: View {
     }
 }
 
+struct ReportVideoContentView:View {
+    @Binding var reportContent:Bool
+    @State private var reportDetail = ""
+    var body: some View{
+        VStack{
+            Text("Video Title")
+                .boldFont()
+                .foregroundColor(.white)
+                .padding()
+            if reportContent {
+                reasonsSignalingView
+            }
+            Button {
+                //isCreateNewTapped.toggle()
+                reportContent.toggle()
+            } label: {
+                Text("Report inappropriate content.")
+                    .foregroundColor(.black)
+                    .boldFont()
+                    .padding()
+            }
+            .frame(width:UIScreen.main.bounds.width - 40)
+            .background {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.init(hex: "#E74755"))
+            }
+            if !reportContent {
+                Button {
+                    //isCreateNewTapped.toggle()
+                } label: {
+                    Text("Block user")
+                        .foregroundColor(.black)
+                        .boldFont()
+                        .padding()
+                }
+                .frame(width:UIScreen.main.bounds.width - 40)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.init(hex: "#D68628"))
+                }
+            }
+           
+            
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.init(hex: "#1F083E"))
+                .ignoresSafeArea()
+        }
+    }
+    
+    var reasonsSignalingView:some View {
+        VStack(alignment:.leading,spacing: 5){
+            Text("Reasons for signaling")
+                .boldFont()
+                .foregroundColor(.white)
+                .padding()
+            
+            SignalingRowView(title: "Off-topic content")
+            
+            SignalingRowView(title: "Spam or misleading")
+            
+            SignalingRowView(title: "Sexual content")
+            
+            SignalingRowView(title: "Violence")
+            SignalingRowView(title: "Insulting or hateful content")
+            
+            Text("Details")
+                .boldFont()
+                .foregroundColor(.white)
+            
+            TextField("", text: $reportDetail)
+                .frame(width:UIScreen.main.bounds.width,height: 147)
+                .background {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.white)
+                }
+        }
+    }
+    
+}
+
+struct SignalingRowView:View {
+    var title:String
+    var body: some View {
+        HStack(spacing:0){
+            Button {
+                //
+            } label: {
+                Rectangle()
+                    .frame(width:30,height: 30)
+                    .foregroundColor(.white)
+            }
+            .frame(width:30,height: 30)
+
+            Text(title)
+                .boldFont()
+                .foregroundColor(.white)
+                .padding()
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+}
+
 struct LikeFollowButtonsView_Previews: PreviewProvider {
     static var previews: some View {
+        //FlightInfoView()
         LikeFollowButtonsView()
+        //ReportVideoContentView()
     }
 }
 

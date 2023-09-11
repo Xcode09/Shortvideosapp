@@ -10,11 +10,14 @@ import SwiftUI
 
 struct AppTheme {
     static let accentColor = Color.blue
-    static let primaryFont = Font.custom("Nunito-Regular", size: 17)
-    static let secondaryFont = Font.custom("Nunito-Medium", size: 18)
-    static let boldFont = Font.custom("Nunito-Bold", size: 20)
-    static let extraBoldFont = Font.custom("Nunito-ExtraBold", size: 20)
-    static let semiFont = Font.custom("Nunito-SemiBold", size: 19)
+    static let primaryFont = Font.custom("Nunito-Regular", size: 14)
+    static let secondaryFont = Font.custom("Nunito-Medium", size: 15)
+    static let boldFont = Font.custom("Nunito-Bold", size: 16)
+    //Font(UIFont(name: "Nunito-Bold", size:16)!)
+    
+    //
+    static let extraBoldFont = Font.custom("Nunito-ExtraBold", size: 16)
+    static let semiFont = Font.custom("Nunito-SemiBold", size: 16)
     static let tabItemsFont = Font.custom("Nunito-Regular", size: 11)
     
     // You can add more theme properties here

@@ -12,18 +12,17 @@ struct VideosTabView: View {
     @State private var videoSheetitems : VideoTabViewSheetItems?
     let column = [GridItem(.flexible(),spacing: 5),GridItem(.flexible(),spacing: 5)]
     var body: some View {
-        VStack(spacing:20){
-            headerView
+        NavigationStack {
             ScrollView(showsIndicators: false){
                 VStack(spacing:30){
                     trendingSection
     //                    .padding(.vertical,5)
     //                    .padding(.horizontal,10)
-                    
+
                     newVideosSection
     //                    .padding(.vertical,5)
     //                    .padding(.horizontal,2)
-                    
+
                     suggestCourses
     //                    .padding(.vertical,5)
     //                    .padding(.horizontal,2)
@@ -33,34 +32,45 @@ struct VideosTabView: View {
                         }
     //                    .padding(.vertical,5)
     //                    .padding(.horizontal,2)
-                    
+
                     onlineTutors
     //                    .padding(.vertical,5)
     //                    .padding(.horizontal,2)
-                    
+
                     followingSection
     //                    .padding(.vertical,10)
     //                    .padding(.horizontal,2)
                 }
                 .padding(10)
-                .frame(width:UIScreen.main.bounds.width)
+                .offset(y:46)
             }
+            .background {
+                BackgroundView()
+            }
+            
+            .toolbar(content: {
+                ToolbarItem(placement: .principal) {
+                    headerView
+                    
+                }
+            })
+            .fullScreenCover(item: $videoSheetitems, content: { item in
+                switch item {
+                case .videoTapped:
+                    VideoPlayView()
+                   .navigationBarHidden(true)
+                case .settingTapped:
+                    SearchVideosFilterView()
+                case .myCollectionsTapped:
+                    MyCollectionsView()
+                case .courseDetailView:
+                    CourseDetailView()
+                case .trendingTapped:
+                    TrendingVideosCollectionView()
+                }
+            })
         }
-        .fullScreenCover(item: $videoSheetitems, content: { item in
-            switch item {
-            case .videoTapped:
-                VideoPlayView()
-               .navigationBarHidden(true)
-            case .settingTapped:
-                SearchVideosFilterView()
-            case .myCollectionsTapped:
-                MyCollectionsView()
-            case .courseDetailView:
-                CourseDetailView()
-            case .trendingTapped:
-                TrendingVideosCollectionView()
-            }
-        })
+        
 
         
     }
@@ -71,87 +81,101 @@ struct VideosTabView: View {
             Text("120 Pts")
                 .foregroundColor(Color.init(hex: MyColors.pointsColor))
                 .padding(10)
-                .boldFont()
-                .minimumScaleFactor(0.7)
-                .frame(width: 100,height: 56)
+                .font(.custom("Nunito-Bold", size: 12))
+                //.minimumScaleFactor(0.7)
+                .frame(width: 100,height: 40)
                 .background {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 8)
                         .fill(Color.init(hex: MyColors.pontsRectangleColor))
                 }
             
             Text("50\nDaily Bouns")
                 .foregroundColor(Color.init(hex: "#78F0B9"))
                 .padding(5)
-                .boldFont()
+                .font(.custom("Nunito-Bold", size: 12))
                 .minimumScaleFactor(0.5)
-                .frame(width:56,height: 56)
+                .frame(width:46,height: 40)
                 .multilineTextAlignment(.center)
                 .background {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 8)
                         .fill(Color.init(hex: "#0099A0"))
                 }
             
             Text("50\nDaily Bouns")
                 .foregroundColor(Color.init(hex: "#78F0B9"))
                 .padding(5)
-                .boldFont()
+                .font(.custom("Nunito-Bold", size: 12))
                 .minimumScaleFactor(0.5)
-                .frame(width:56,height: 56)
+                .frame(width:46,height: 40)
                 .multilineTextAlignment(.center)
                 .background {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 8)
                         .fill(Color.init(hex: "#6A6070"))
                 }
             
             Text("50\nDaily Bouns")
                 .foregroundColor(Color.init(hex: "#78F0B9"))
                 .padding(5)
-                .boldFont()
-                .frame(width:56,height: 56)
+                .font(.custom("Nunito-Bold", size: 12))
+                .frame(width:46,height: 40)
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.center)
                 
                 .background {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius:8)
                         .fill(Color.init(hex: "#6A6070"))
                 }
+            
+            Spacer()
             
             Button {
                 //
             } label: {
-                Image("search_icon")
+                Image("search")
+                    .resizable()
+                    .frame(width:26,height:26)
+                    .scaledToFit()
+                    .background {
+                        Circle()
+                            .fill(.ultraThinMaterial)
+                            .frame(width:40,height:40)
+                            
+                    }
+                
             }
             .padding(10)
 
             
         }
-        .padding(.horizontal,10)
-        .frame(height: 66)
+        .padding(.horizontal,5)
+        .frame(height: 46)
     }
     
     var trendingSection:some View {
         VStack(alignment:.leading){
             
-            HStack(spacing: 10){
+            HStack(spacing: 5){
                 Text("Trending")
+                    .padding(10)
                     .boldFont()
                 
                 Image("trending_up_fill")
+                    .padding(10)
             }
             .background {
-                Image("Rectangle 1232")
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.init(hex: "#46196C"))
             }
             
-            .padding()
             .onTapGesture {
                 videoSheetitems = .trendingTapped
             }
             
             ScrollView(.horizontal) {
-                HStack{
+                HStack(spacing:10){
                     ForEach(0..<8) { index in
                         VideoSmallCell()
-                            .frame(width:150,height: 200)
+                            .frame(width:104,height: 136)
                             .onTapGesture {
                                 videoSheetitems = .videoTapped
                                 print("Did Tap Video")
@@ -173,22 +197,24 @@ struct VideosTabView: View {
     var newVideosSection:some View {
         VStack(alignment:.leading){
             
-            HStack(spacing: 10){
+            HStack(spacing: 5){
                 Text("New Videos")
+                    .padding(10)
                     .boldFont()
                 
                 Image("hot")
+                    .padding(10)
             }
             .background {
-                Image("Rectangle 1232-1")
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.init(hex: "#19266C"))
             }
-            .padding()
             
             ScrollView(.horizontal) {
-                HStack{
+                HStack(spacing:10){
                     ForEach(0..<8) { index in
                         VideoSmallCell()
-                            .frame(width:150,height: 200)
+                            .frame(width:104,height: 136)
                     }
                 }
 
@@ -213,10 +239,13 @@ struct VideosTabView: View {
                     
                     HStack(spacing:10){
                         TagView(text: "Mathematics")
+                            .foregroundColor(.black)
                         
-                        TagView(text: "Mathematics")
+                        TagView(text: "Biology")
+                            .foregroundColor(.black)
                         
-                        TagView(text: "Mathematics")
+                        TagView(text: "Physics")
+                            .foregroundColor(.black)
                     }
                     
                     
@@ -253,31 +282,26 @@ struct VideosTabView: View {
                         .fill(LinearGradient(colors: [.init(hex: "#01024D"),.init(hex: "#030329")], startPoint: .top, endPoint: .bottom))
                 }
                 
-                Spacer().frame(height: 20)
+                Spacer().frame(height: 10)
                 
-                LazyVGrid(columns: column,spacing:30) {
+                LazyVGrid(columns: column,spacing:40) {
                     ForEach(0..<4) { _ in
                         SuggestedCoursesCellView()
-                            .frame(maxHeight:180)
+//                            /.frame(width:140,height:180)
                     }
                     
                 }
                 .padding(.horizontal,10)
                 
-                CardOffSetButton(title: "More Courses", offSetY: 30) {
+                CardOffSetButton(title: "More Courses", offSetY: 20) {
                     videoSheetitems = .courseDetailView
                 }
-                
             }
-            //.padding()
-            //.frame(maxHeight:300)
+
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.init(hex: "#01024D"))
             }
-//            .overlay(alignment:.bottom) {
-//
-//            }
         }
     }
     
@@ -287,6 +311,7 @@ struct VideosTabView: View {
             
             HStack(spacing: 10){
                 Text("My Collections")
+                    
                     .boldFont()
                 
                 Image("bookmark")
@@ -299,15 +324,16 @@ struct VideosTabView: View {
             
             
             ScrollView(.horizontal) {
-                HStack{
+                HStack(spacing:10){
                     ForEach(0..<8) { index in
                         ZStack{
-                            RoundedRectangle(cornerRadius: 10)
+                            RoundedRectangle(cornerRadius: 8)
                                 .fill(LinearGradient(colors: [.init(hex: "#F38D70"),.init(hex: "#0F121C")], startPoint: .top, endPoint: .bottom))
-                                .frame(width: 160,height: 200)
+                                //.frame(width: 140,height: 200)
                             
                             VStack{
                                 Text("Collection Name")
+                                    .foregroundColor(.black)
                                     .boldFont()
                                     .lineLimit(2)
                                     .multilineTextAlignment(.center)
@@ -325,7 +351,7 @@ struct VideosTabView: View {
                             .padding()
                             
                         }
-                        .frame(width: 160,height: 200)
+                        .frame(width: 120,height: 160)
                     }
                 }
 
@@ -344,10 +370,9 @@ struct VideosTabView: View {
         ZStack{
             VStack{
                 Spacer()
-                LazyVGrid(columns: column,spacing: 24) {
+                LazyVGrid(columns: column,spacing: 30) {
                     ForEach(0..<4) { _ in
                         ProfileCardView()
-                            .frame(maxWidth: .infinity,maxHeight:235)
                     }
 
                 }
@@ -370,10 +395,10 @@ struct VideosTabView: View {
         ZStack{
             VStack{
                 Spacer()
-                LazyVGrid(columns: column,spacing: 24) {
+                LazyVGrid(columns: column,spacing: 30) {
                     ForEach(0..<4) { _ in
                         ProfileCardView()
-                            .frame(maxWidth: .infinity,maxHeight:235)
+    
                     }
 
                 }

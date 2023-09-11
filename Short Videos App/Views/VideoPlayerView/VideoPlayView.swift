@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VideoPlayView: View {
-    
+    @State private var isPlaylistTapped:Bool = false
 
         var body: some View {
             ZStack {
@@ -30,10 +30,19 @@ struct VideoPlayView: View {
                     VStack (spacing: 0){
                                         VideoDetailView(videoTitle: "Video title in less than 30char", videoDescription: "Short description that summarize the video in less than 90 characters over two lines")
                         
-                        VideoPlayFooterView()
+                        VideoPlayFooterView(isPlaylistTapped: $isPlaylistTapped)
 
                     }
+                    .overlay(alignment:.top){
+                        if isPlaylistTapped{
+                            VideoPlaylistView(isPlaylistTapped: $isPlaylistTapped)
+                                .frame(width:UIScreen.main.bounds.width - 20,height: UIScreen.main.bounds.height * 0.6)
+                                .offset(y:-UIScreen.main.bounds.height * 0.5)
+                        }
+                    }
                 }
+                
+                
             }
         }
 }
