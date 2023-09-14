@@ -8,43 +8,75 @@
 import SwiftUI
 
 struct HeaderTabView: View {
+    
+    let items = (1...20).map { "Item \($0)" }
+    @State private var selectedItem: String? = nil
+    @State private var scrollOffset: CGFloat = 0
+
     var body: some View {
-        ScrollView(.horizontal,showsIndicators: false) {
-            HStack(spacing:5) {
-                ForEach(1..<10) { index in
-                    Text("Collection Name")
-                        .padding()
-                        .regularFont()
-                        .frame(width:100,height: 60)
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(2)
-                        .background {
-                            Rectangle()
-                                .fill(LinearGradient(colors: [Color.init(hex: "3C0A62").opacity(0.5),Color.init(hex: "3C0A62")], startPoint: .leading, endPoint: .trailing))
-                        }
+        ScrollView(.horizontal) {
+            ScrollViewReader { scrollView in
+                LazyHGrid(rows: [GridItem()],spacing: 0) {
+                    ForEach(items, id: \.self) { item in
+                        Text("Collection Name")
+                            .padding()
+                            .regularFont()
+                            .foregroundColor(Color.init(hex: "#FFA5A5"))
+                            .frame(width:110,height: 60)
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(2)
+                            .background {
+                                if selectedItem == item {
+                                    Rectangle()
+                                        .fill(Color.init(hex: "#01024D"))
+                                    
+                                }else{
+                                    Rectangle()
+                                        .fill(LinearGradient(colors: [Color.init(hex: "3C0A62").opacity(0.5),Color.init(hex: "3C0A62")], startPoint: .leading, endPoint: .trailing))
+                                }
+                                
+                            }
+                            .onTapGesture {
+                                selectedItem = item
+                                scrollToItem(scrollView, item)
+                            }
+                    }
                 }
+                //.padding()
             }
-            //.padding()
         }
-//        .overlay(
-//            LinearGradient(gradient: Gradient(colors: [Color.white, Color.black.opacity(0.5), Color.black.opacity(0.5),Color.white]), startPoint: .leading, endPoint: .trailing)
-//                .frame(width: 20)
-//                .mask(
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .frame(width: 30)
-//                )
-//            , alignment: .leading
-//        )
-//        .overlay(
-//            LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white, Color.white, Color.clear]), startPoint: .trailing, endPoint: .leading)
-//                .frame(width: 30)
-//                .mask(
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .frame(width: 30)
-//                )
-//            , alignment: .trailing
-//        )
+        .onAppear {
+            //scrollToItem(nil)
+        }
     }
+
+    private func scrollToItem(_ scrollView: ScrollViewProxy, _ item: String?) {
+        if let item = item {
+            withAnimation {
+                selectedItem = item
+                scrollView.scrollTo(item, anchor: .center)
+            }
+        }
+    }
+//    var body: some View {
+//        ScrollView(.horizontal,showsIndicators: false) {
+//            HStack(spacing:5) {
+//                ForEach(1..<10) { index in
+//                    Text("Collection Name")
+//                        .padding()
+//                        .regularFont()
+//                        .frame(width:100,height: 60)
+//                        .minimumScaleFactor(0.5)
+//                        .lineLimit(2)
+//                        .background {
+//                            Rectangle()
+//                                .fill(LinearGradient(colors: [Color.init(hex: "3C0A62").opacity(0.5),Color.init(hex: "3C0A62")], startPoint: .leading, endPoint: .trailing))
+//                        }
+//                }
+//            }
+//            //.padding()
+//        }
+//    }
 }
 
 struct HeaderTabView_Previews: PreviewProvider {

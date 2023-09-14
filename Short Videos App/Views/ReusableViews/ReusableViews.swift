@@ -19,6 +19,7 @@ struct CardOffSetButton:View{
     let title:String
     var offSetY:CGFloat = 30
     var colors : [Color] = [.init(hex: "#4C00A5"),.init(hex: "#260053")]
+    var forColor: String = "#65C0E8"
     var actionCall:(()->Void)?
     var width : CGFloat = 200
     var body: some View {
@@ -28,13 +29,13 @@ struct CardOffSetButton:View{
             VStack(alignment:.center){
                 Text(title)
                     .boldFont()
-                    //.foregroundColor(.white)
+                    .foregroundColor(Color.init(hex: forColor))
                     .padding(.vertical)
                     .padding(.horizontal)
-                    .frame(maxWidth:width,maxHeight:46,alignment:.center)
+                    .frame(maxWidth:width,maxHeight:41,alignment:.center)
                     .background {
                         RoundedRectangle(cornerRadius: 40)
-                            .strokeBorder(Color.black,lineWidth: 4)
+                            .strokeBorder(Color.black,lineWidth: borderWidth)
                             .background(RoundedRectangle(cornerRadius: 40).fill(LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)))
 
                     }
@@ -104,15 +105,15 @@ struct TagView: View {
     var backgroundColor : String = "#FFA5A5"
     var body: some View {
         Text(text)
-            .font(.custom("Nunito-ExtraBold", size: 12))
+            .font(.custom("Nunito-ExtraBold", size: 8))
             .lineLimit(0)
             .minimumScaleFactor(0.5)
-            .padding(.vertical, 10)
+            .padding(.vertical, 5)
             .padding(.horizontal,10)
             .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color.black, lineWidth: 4)
-                    .background(RoundedRectangle(cornerRadius: 20).fill(Color.init(hex: backgroundColor)))
+                RoundedRectangle(cornerRadius: capsuleCornerRadiusValue)
+                    .strokeBorder(Color.black, lineWidth: borderWidth)
+                    .background(RoundedRectangle(cornerRadius: capsuleCornerRadiusValue).fill(Color.init(hex: backgroundColor)))
             )
     }
 }

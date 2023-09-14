@@ -9,7 +9,7 @@ import Foundation
 
 struct MyColors{
     static let purpleColor = "#7459D5"
-    static let tabBarSecondaryColor = "#A890FF"
+    static let tabBarSecondaryColor = "#5539BC"
     static let darkPurpleColor = "#06085C"
     static let lightIndigoColor = "#B6A7F4"
     static let lightSkyColor = "#DDF2FF"

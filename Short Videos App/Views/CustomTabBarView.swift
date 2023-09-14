@@ -63,7 +63,7 @@ struct CustomTabBar: View {
                 LinearGradient(colors: [.init(hex: MyColors.linearGradient1),.init(hex: MyColors.linearGradient2)], startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea(edges: .top)
                                       ) : AnyView(BackgroundView()
-                                        .ignoresSafeArea(edges: .all)
+//                                        .ignoresSafeArea(edges: .all)
                                                   
                                                   
                                       )

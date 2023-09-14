@@ -8,6 +8,15 @@
 import Foundation
 import SwiftUI
 
+// App paddings
+
+let viewPadding : CGFloat = 10
+let stackPadding : CGFloat = 20
+let cornerRadiusValue : CGFloat = 10
+let borderWidth : CGFloat = 1
+
+let capsuleCornerRadiusValue : CGFloat = 20
+
 struct AppTheme {
     static let accentColor = Color.blue
     static let primaryFont = Font.custom("Nunito-Regular", size: 14)

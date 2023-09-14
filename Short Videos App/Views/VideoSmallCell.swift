@@ -28,8 +28,8 @@ struct VideoSmallCell: View {
                     .rotationEffect(.degrees(180))
                 
                 Text("2345")
-                    .foregroundColor(.white)
-                    .regularFont()
+                    .foregroundColor(.init(hex: "#8592C1"))
+                    .font(.custom("Nunito-Bold", size: 12))
                     .minimumScaleFactor(0.5)
             }
             .padding(5)

@@ -12,48 +12,40 @@ struct VideosTabView: View {
     @State private var videoSheetitems : VideoTabViewSheetItems?
     let column = [GridItem(.flexible(),spacing: 5),GridItem(.flexible(),spacing: 5)]
     var body: some View {
-        NavigationStack {
+        NavigationStack{
             ScrollView(showsIndicators: false){
                 VStack(spacing:30){
                     trendingSection
-    //                    .padding(.vertical,5)
-    //                    .padding(.horizontal,10)
 
                     newVideosSection
-    //                    .padding(.vertical,5)
-    //                    .padding(.horizontal,2)
-
+   
                     suggestCourses
-    //                    .padding(.vertical,5)
-    //                    .padding(.horizontal,2)
+
                     myCollectionView
                         .onTapGesture {
                             videoSheetitems = .myCollectionsTapped
                         }
-    //                    .padding(.vertical,5)
-    //                    .padding(.horizontal,2)
-
+ 
                     onlineTutors
-    //                    .padding(.vertical,5)
-    //                    .padding(.horizontal,2)
-
+   
                     followingSection
-    //                    .padding(.vertical,10)
-    //                    .padding(.horizontal,2)
+
                 }
-                .padding(10)
+                .padding(viewPadding)
                 .offset(y:46)
             }
-            .background {
-                BackgroundView()
-            }
-            
+            .ignoresSafeArea()
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     headerView
                     
                 }
             })
+            .background(content: {
+                BackgroundView().ignoresSafeArea()
+            })
+            
             .fullScreenCover(item: $videoSheetitems, content: { item in
                 switch item {
                 case .videoTapped:
@@ -76,55 +68,83 @@ struct VideosTabView: View {
     }
     
     var headerView:some View {
-        HStack(spacing:10){
-            Spacer()
+        HStack(spacing:15){
+            
+            Spacer().frame(width:viewPadding)
+            
             Text("120 Pts")
                 .foregroundColor(Color.init(hex: MyColors.pointsColor))
-                .padding(10)
-                .font(.custom("Nunito-Bold", size: 12))
+                .padding(viewPadding)
+                .frame(width: 134,height: 38)
+                .font(.custom("Nunito-Bold", size: 22))
                 //.minimumScaleFactor(0.7)
-                .frame(width: 100,height: 40)
                 .background {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color.init(hex: MyColors.pontsRectangleColor))
                 }
             
-            Text("50\nDaily Bouns")
-                .foregroundColor(Color.init(hex: "#78F0B9"))
-                .padding(5)
-                .font(.custom("Nunito-Bold", size: 12))
-                .minimumScaleFactor(0.5)
-                .frame(width:46,height: 40)
-                .multilineTextAlignment(.center)
-                .background {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.init(hex: "#0099A0"))
-                }
-            
-            Text("50\nDaily Bouns")
-                .foregroundColor(Color.init(hex: "#78F0B9"))
-                .padding(5)
-                .font(.custom("Nunito-Bold", size: 12))
-                .minimumScaleFactor(0.5)
-                .frame(width:46,height: 40)
-                .multilineTextAlignment(.center)
-                .background {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color.init(hex: "#6A6070"))
-                }
-            
-            Text("50\nDaily Bouns")
-                .foregroundColor(Color.init(hex: "#78F0B9"))
-                .padding(5)
-                .font(.custom("Nunito-Bold", size: 12))
-                .frame(width:46,height: 40)
-                .minimumScaleFactor(0.5)
-                .multilineTextAlignment(.center)
+            VStack(spacing:0){
+                Text("50")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 10))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
                 
-                .background {
-                    RoundedRectangle(cornerRadius:8)
-                        .fill(Color.init(hex: "#6A6070"))
-                }
+                Text("Daily Bouns")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 7))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+            }
+            .frame(width:38,height: 38)
+            .background {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.init(hex: "#0099A0"))
+            }
+            
+            VStack(spacing:0){
+                Text("50")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 10))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                
+                Text("Daily Bouns")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 7))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+            }
+            .frame(width:38,height: 38)
+            .background {
+                RoundedRectangle(cornerRadius:8)
+                    .fill(Color.init(hex: "#6A6070"))
+            }
+            
+            VStack(spacing:0){
+                Text("50")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 10))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                
+                Text("Daily Bouns")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 7))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+            }
+            .frame(width:38,height: 38)
+            .background {
+                RoundedRectangle(cornerRadius:8)
+                    .fill(Color.init(hex: "#6A6070"))
+            }
             
             Spacer()
             
@@ -133,35 +153,37 @@ struct VideosTabView: View {
             } label: {
                 Image("search")
                     .resizable()
-                    .frame(width:26,height:26)
+                    .frame(width:20,height:20)
                     .scaledToFit()
                     .background {
                         Circle()
                             .fill(.ultraThinMaterial)
-                            .frame(width:40,height:40)
+                            .frame(width:36,height:36)
                             
                     }
                 
             }
-            .padding(10)
-
+            //.padding(viewPadding)
+            Spacer()
             
         }
+        .ignoresSafeArea()
         .padding(.horizontal,5)
-        .frame(height: 46)
+        //.frame(height: 46)
     }
     
     var trendingSection:some View {
         VStack(alignment:.leading){
             
-            HStack(spacing: 5){
+            HStack(spacing: stackPadding){
                 Text("Trending")
-                    .padding(10)
+                    
                     .boldFont()
                 
                 Image("trending_up_fill")
-                    .padding(10)
+                    
             }
+            .padding(viewPadding)
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.init(hex: "#46196C"))
@@ -172,10 +194,10 @@ struct VideosTabView: View {
             }
             
             ScrollView(.horizontal) {
-                HStack(spacing:10){
+                HStack(spacing:viewPadding){
                     ForEach(0..<8) { index in
                         VideoSmallCell()
-                            .frame(width:104,height: 136)
+                            .frame(width:95,height: 130)
                             .onTapGesture {
                                 videoSheetitems = .videoTapped
                                 print("Did Tap Video")
@@ -187,100 +209,110 @@ struct VideosTabView: View {
             }
         }
         .foregroundColor(.white)
-        .padding(10)
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.init(hex: "#452F57"))
-        }
+        .padding(viewPadding)
+        .customRoundedRectangle(backgroundColor: Color.init(hex:"#452F57"))
+//        .background {
+//            RoundedRectangle(cornerRadius: cornerRadiusValue)
+//                .stroke(Color.black,lineWidth: borderWidth)
+//                .background(content: {
+//                    RoundedRectangle(cornerRadius: cornerRadiusValue)
+//                        .fill(Color.init(hex:"#452F57"))
+//                })
+//
+//        }
     }
     
     var newVideosSection:some View {
         VStack(alignment:.leading){
             
-            HStack(spacing: 5){
+            HStack(spacing: stackPadding){
                 Text("New Videos")
-                    .padding(10)
+                    
                     .boldFont()
                 
                 Image("hot")
-                    .padding(10)
+                    
             }
+            .padding(viewPadding)
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.init(hex: "#19266C"))
             }
             
             ScrollView(.horizontal) {
-                HStack(spacing:10){
+                HStack(spacing:viewPadding){
                     ForEach(0..<8) { index in
                         VideoSmallCell()
-                            .frame(width:104,height: 136)
+                            .frame(width:95,height: 130)
                     }
                 }
 
             }
         }
         .foregroundColor(.white)
-        .padding(10)
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.init(hex: "#202B5C"))
-        }
+        .padding(viewPadding)
+        .customRoundedRectangle(backgroundColor: Color.init(hex:"#202B5C"))
     }
     
     var suggestCourses:some View {
         ZStack {
-            VStack(spacing: 20){
-                VStack(alignment:.leading){
-                    Text("Suggested Courses")
-                        .boldFont()
-                        .foregroundColor(.init(hex: "#BB98DE"))
-                        .padding()
-                    
-                    HStack(spacing:10){
-                        TagView(text: "Mathematics")
-                            .foregroundColor(.black)
-                        
-                        TagView(text: "Biology")
-                            .foregroundColor(.black)
-                        
-                        TagView(text: "Physics")
-                            .foregroundColor(.black)
-                    }
-                    
-                    
-                    
-                    HStack(spacing:10){
-                        
-                        TagView(text: "Year 7",backgroundColor: "#01024D")
+            VStack(spacing: stackPadding){
+                VStack{
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Suggested Courses")
+                            .boldFont()
+                            .foregroundColor(.init(hex: "#BB98DE"))
 
-                        
-                        TagView(text: "Year 8",backgroundColor: "#01024D")
-                        
-                        TagView(text: "Year 9",backgroundColor: "#01024D")
-                        
-                        Spacer()
-                        
-                        Button {
-                            videoSheetitems = .settingTapped
-                        } label: {
-                            ZStack{
-                                Image("Rectangle 1233")
-                                
-                                Image(systemName: "gearshape.fill")
-                                    .foregroundColor(.black)
-                            }
-                            
+                        HStack {
+                            TagView(text: "Mathematics")
+                                .foregroundColor(.black)
+
+                            TagView(text: "Biology",backgroundColor: "#8BFCC4")
+                                .foregroundColor(.black)
+
+                            TagView(text: "Physics",backgroundColor: "#8BBEFC")
+                                .foregroundColor(.black)
                         }
+                        
+                        HStack {
+                            TagView(text: "Year 7", backgroundColor: "#01024D")
+                            TagView(text: "Year 8", backgroundColor: "#01024D")
+                            TagView(text: "Year 9", backgroundColor: "#01024D")
+                            
+                            Spacer() // Add spacer to push the button to the right
 
+                            Button(action: {
+                                videoSheetitems = .settingTapped
+                            }) {
+                                ZStack {
+                                    Image("Rectangle 1233")
+                                        .resizable()
+                                        .frame(width: 50, height: 50) // Adjust the size as needed
+
+                                    Image(systemName: "gearshape.fill")
+                                        .resizable()
+                                        .frame(width: 22, height: 22)
+                                        .foregroundColor(.black)
+                                }
+                            }
+                            .frame(width: 50, height: 50) // Match the button's size
+
+                        }
+                        .foregroundColor(.white)
                     }
-                    .foregroundColor(.white)
+                    .padding(viewPadding)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black,lineWidth:2)
+                            .background(content: {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(LinearGradient(colors: [.init(hex: "#01024D"), .init(hex: "#030329")], startPoint: .top, endPoint: .bottom))
+                            })
+                    )
                 }
-                .padding(.horizontal,10)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(LinearGradient(colors: [.init(hex: "#01024D"),.init(hex: "#030329")], startPoint: .top, endPoint: .bottom))
-                }
+                .padding(viewPadding) // Add padding to the VStack
+                .frame(maxWidth: .infinity, alignment: .leading) // Ensure the VStack takes full width
+
                 
                 Spacer().frame(height: 10)
                 
@@ -291,40 +323,34 @@ struct VideosTabView: View {
                     }
                     
                 }
-                .padding(.horizontal,10)
                 
                 CardOffSetButton(title: "More Courses", offSetY: 20) {
                     videoSheetitems = .courseDetailView
                 }
             }
-
-            .background {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.init(hex: "#01024D"))
-            }
+            .customRoundedRectangle(backgroundColor: Color.init(hex: "#01024D"))
         }
     }
     
     
     var myCollectionView:some View{
-        VStack(alignment:.leading){
+        VStack(alignment:.leading,spacing: viewPadding){
             
-            HStack(spacing: 10){
+            HStack(spacing: stackPadding){
                 Text("My Collections")
                     
                     .boldFont()
                 
                 Image("bookmark")
             }
-            .padding()
+            .padding(viewPadding)
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.init(hex: "#19266C"))
             }
             
-            
             ScrollView(.horizontal) {
-                HStack(spacing:10){
+                HStack(spacing:viewPadding){
                     ForEach(0..<8) { index in
                         ZStack{
                             RoundedRectangle(cornerRadius: 8)
@@ -332,26 +358,27 @@ struct VideosTabView: View {
                                 //.frame(width: 140,height: 200)
                             
                             VStack{
-                                Text("Collection Name")
+                                Text("Collection name")
                                     .foregroundColor(.black)
-                                    .boldFont()
+                                    .font(.custom("Nunito-Bold", size: 12))
                                     .lineLimit(2)
                                     .multilineTextAlignment(.center)
                                 Spacer()
                                 
                                 Text("12")
-                                    .boldFont()
-                                    .padding(.vertical,5)
+                                    .foregroundColor(.black)
+                                    .font(.custom("Nunito-Bold", size: 15))
+                                    .padding(.vertical,2)
                                     .padding(.horizontal)
                                     .background {
                                         Color.init(hex: "#F38D70")
                                     }
-                                    .cornerRadius(20)
+                                    .cornerRadius(capsuleCornerRadiusValue)
                             }
-                            .padding()
+                            .padding(viewPadding)
                             
                         }
-                        .frame(width: 120,height: 160)
+                        .frame(width:95,height: 130)
                     }
                 }
 
@@ -360,8 +387,12 @@ struct VideosTabView: View {
         .foregroundColor(.white)
         .padding([.vertical,.horizontal])
         .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.init(hex: "#01024D"))
+            RoundedRectangle(cornerRadius: cornerRadiusValue)
+                .stroke(Color.black,lineWidth: borderWidth)
+                .background(content: {
+                    RoundedRectangle(cornerRadius: cornerRadiusValue)
+                        .fill(Color.init(hex: "#01024D"))
+                })
         }
     }
     
@@ -376,14 +407,19 @@ struct VideosTabView: View {
                     }
 
                 }
-                .padding(10)
+                .padding(viewPadding)
                 
                 CardOffSetButton(title: "Online Tutors", offSetY: 20)
                 
             }
             .background {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.init(hex: "#01024D"))
+                RoundedRectangle(cornerRadius: cornerRadiusValue)
+                    .stroke(Color.black,lineWidth: borderWidth)
+                    .background(content: {
+                        RoundedRectangle(cornerRadius: cornerRadiusValue)
+                            .fill(Color.init(hex: "#01024D"))
+                    })
+                
             }
             
         }
@@ -402,14 +438,18 @@ struct VideosTabView: View {
                     }
 
                 }
-                .padding(10)
+                .padding(viewPadding)
                 
                 CardOffSetButton(title: "Following 123", offSetY: 20)
                 
             }
             .background {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.init(hex: "#01024D"))
+                RoundedRectangle(cornerRadius: cornerRadiusValue)
+                    .stroke(Color.black,lineWidth: borderWidth)
+                    .background(content: {
+                        RoundedRectangle(cornerRadius: cornerRadiusValue)
+                            .fill(Color.init(hex: "#01024D"))
+                    })
             }
             
         }

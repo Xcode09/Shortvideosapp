@@ -34,7 +34,7 @@ struct LikeFollowButtonsView: View {
                     VStack(spacing: 5) {
                         CustomButton(imageName: "ProfileImage", buttonText: "1250", action: didTapButton)
                             .frame(height: 80) // Adjust the height for the first button
-                            .padding(8)                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                            .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
 
@@ -43,25 +43,25 @@ struct LikeFollowButtonsView: View {
                             showReportVideo.toggle()
                         })
                             .frame(height: 40) // Adjust the height for the first button
-                            .padding(8)                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                            .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
 
                         CustomButton(imageName: "likeHeart", buttonText: "24.6K", action: didTapButton)
                             .frame(height: 40) // Adjust the height for the first button
-                            .padding(8)                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                            .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
 
                         CustomButton(imageName: "share", buttonText: "7.9K", action: didTapButton)
                             .frame(height: 40) // Adjust the height for the first button
-                            .padding(8)                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                            .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
 
                         CustomButton(imageName: "saved", buttonText: "5.2K", action: didTapButton)
                             .frame(height: 40) // Adjust the height for the first button
-                            .padding(8)                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                            .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                             
@@ -69,7 +69,7 @@ struct LikeFollowButtonsView: View {
                         CustomButton(imageName: "groupEmoji", buttonText: "", action: didTapSelectEmoji)
                             .frame(height: 40) // Adjust the height for the first button
                             .padding(8)
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
+                            .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                                 
@@ -208,11 +208,16 @@ struct SignalingRowView:View {
     }
 }
 
+
+
+
 struct LikeFollowButtonsView_Previews: PreviewProvider {
     static var previews: some View {
         //FlightInfoView()
         LikeFollowButtonsView()
         //ReportVideoContentView()
+        
+        
     }
 }
 

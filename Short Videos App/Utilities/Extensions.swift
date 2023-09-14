@@ -84,4 +84,20 @@ extension View {
     func boldFont(isExtra:Bool = false) -> some View {
         isExtra ? self.font(AppTheme.extraBoldFont) : self.font(AppTheme.boldFont)
     }
+    
+    func customRoundedRectangle(
+            cornerRadiusValue: CGFloat = cornerRadiusValue,
+            borderWidth: CGFloat = borderWidth,
+            backgroundColor: Color,
+            borderColor: Color = Color.black
+        ) -> some View {
+            modifier(
+                CustomRoundedRectangleModifier(
+                    cornerRadiusValue: cornerRadiusValue,
+                    borderWidth: borderWidth,
+                    backgroundColor: backgroundColor,
+                    borderColor: borderColor
+                )
+            )
+        }
 }

@@ -98,16 +98,15 @@ struct ShowMyCollectionsView: View {
             
             
             
-            
+            HStack{
+                Text("Select a collection color")
+                    .foregroundColor(.white)
+                    .boldFont()
+                    .padding()
+                Spacer()
+            }
             ScrollView(.horizontal,showsIndicators: false){
                 HStack(alignment:.center, spacing:10){
-                    HStack{
-                        Text("Select a collection color")
-                            .foregroundColor(.white)
-                            .boldFont()
-                            .padding()
-                        Spacer()
-                    }
                     ForEach(colorsPlate,id:\.self) {
                         color in
                         Spacer()

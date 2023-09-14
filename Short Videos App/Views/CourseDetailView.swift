@@ -14,19 +14,42 @@ struct CourseDetailView: View {
             ScrollView{
                 VStack{
                     VStack{
-                        VStack(spacing:16){
+                        VStack(spacing:viewPadding){
                             HStack{
-                                IconText(imageName: "location_on_fill", text: "Multan pakistan",iconWidth:12,iconHeight: 15,contentMode: .fill)
-                                    .foregroundColor(Color.init(hex: "#FF7EC3"))
-                                    .frame(width: 100)
+                                HStack {
+                                    Image("location_on_fill")
+                                        .resizable()
+                                        .frame(width:12,height:15)
+                                    VStack(alignment:.leading){
+                                        Text("Multan")
+                                            .font(Font.custom("Nunito-Black", size: 8))
+                                            .foregroundColor(Color.init(hex: "#FF7EC3"))
+                                        
+                                        Text("Pakistan")
+                                            .font(Font.custom("Nunito-Black", size: 8))
+                                            .foregroundColor(Color.init(hex: "#FF7EC3"))
+                                    }
+                                }
+                                
+                                
                                 Spacer()
                                 
-                                IconText(imageName: "language_fill", text: "English",iconWidth:12,iconHeight: 15,contentMode: .fill,isLeftHand: true)
-                                    .foregroundColor(Color.init(hex: "#FF7EC3"))
-                                    .frame(width: 100)
+//                                IconText(imageName: "language_fill", text: "English",iconWidth:12,iconHeight: 15,contentMode: .fill,isLeftHand: true)
+//                                    .foregroundColor(Color.init(hex: "#FF7EC3"))
+                                    //.frame(width: 100)
+                                
+                                HStack {
+                                    Text("English")
+                                        .font(Font.custom("Nunito-Black", size: 8))
+                                        .foregroundColor(Color.init(hex: "#FF7EC3"))
+                                    Image("language_fill")
+                                        .resizable()
+                                        .frame(width:12,height:15)
+                                }
                             }
+                            .frame(height:46)
                             
-                            Spacer().frame(height:20)
+                            //Spacer().frame(height:20)
                             
                             Text("First name and Lastname")
                                 .foregroundColor(.white)
@@ -36,7 +59,7 @@ struct CourseDetailView: View {
                             
                             Text("Course title over 2 lines")
                                 .foregroundColor(.white)
-                            .boldFont()
+                                .font(Font.custom("Nunito-Bold", size: 23))
                             
                             Text("Course description over two lines maximum 80 characters")
                                 .foregroundColor(.white)
@@ -60,8 +83,13 @@ struct CourseDetailView: View {
                         }
                         .padding()
                         .background {
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.init(hex: "#2E0A6A"))
+                            RoundedRectangle(cornerRadius: cornerRadiusValue)
+                                .stroke(Color.black,lineWidth: borderWidth)
+                                .background(content: {
+                                    RoundedRectangle(cornerRadius: cornerRadiusValue)
+                                        .fill(Color.init(hex:"#2E0A6A"))
+                                })
+                            
                         }
                         .overlay(alignment:.top){
                             Circle()
@@ -72,11 +100,11 @@ struct CourseDetailView: View {
                                 .overlay {
                                     ZStack{
                                         Circle().fill(Color.init(hex: "#531886"))
-                                            .frame(width:30,height:30)
+                                            .frame(width:26,height:26)
                                         
                                         Image(systemName: "checkmark")
-                                            .padding()
-                                            .frame(width:20,height:20)
+                                            .resizable()
+                                            .frame(width:10,height:10)
                                             .scaledToFit()
                                             .foregroundColor(.white)
                                     }
@@ -92,14 +120,23 @@ struct CourseDetailView: View {
                             Button {
                                 //
                             } label: {
-                                IconText(imageName: "bookmark_remove_fill", text: "Remove from collection",iconWidth:20,iconHeight:24)
-                                    .foregroundColor(Color.init(hex: "#CB78F0"))
-                                    .padding()
+                                HStack {
+                                    Image("bookmark_remove_fill")
+                                        .resizable()
+                                        .frame(width:20,height:23)
                                     
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(Color.init(hex: "#33244E"))
-                                    }
+                                    Text("Remove from collection")
+                                        .font(Font.custom("Nunito-Black", size: 10))
+                                        .foregroundColor(Color.init(hex: "#CB78F0"))
+                                    
+                                        .multilineTextAlignment(.leading)
+                                    
+                                }
+                                .frame(width:133,height:38)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.init(hex: "#33244E"))
+                                }
                             }
                             
                             Spacer()
@@ -117,7 +154,7 @@ struct CourseDetailView: View {
                     segmentView
                         .padding()
                     
-                    LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible())],spacing:0) {
+                    LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible())],spacing:10) {
                         ForEach(0..<5) { _ in
                             courseDetailCell
                         }
@@ -204,7 +241,7 @@ struct CourseDetailView: View {
                                     .fill(Color.init(hex: "#C9B4CE"))
                             }
                     }
-                    .padding(.vertical,10)
+                    .padding(.vertical,5)
                     .padding(.horizontal)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
@@ -238,7 +275,7 @@ struct CourseDetailView: View {
                         
                         
                     }
-                    .padding(.vertical,10)
+                    .padding(.vertical,5)
                     .padding(.horizontal)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
@@ -265,40 +302,35 @@ struct CourseDetailView: View {
         HStack{
             RoundedRectangle(cornerRadius: 10)
                 .fill((LinearGradient(colors: [.init(hex: "#585353"),.init(hex: "#0B0B0B")], startPoint: .top, endPoint: .bottom)))
-//            Rectangle()
-//                    //.frame(height: 160) // Set the width and height
-//                        .background(
-//                            (Color.gray)
-//                            .padding(5) // Add padding to simulate border-radius
-//                        )
+
             
             VStack{
                 Text("Course Name over 4 lines with overflow …..")
                     .foregroundColor(.white)
-                    .boldFont()
+                    .font(Font.custom("Nunito-Bold", size: 13))
                     .lineLimit(4)
-                    .minimumScaleFactor(0.5)
+                    //.minimumScaleFactor(0.5)
                     .multilineTextAlignment(.leading)
                 
                 HStack{
                     StatView(value: "2.2k", title: "Students",color: "#531886")
-                        //.frame(width:46,height:40)
+                        .frame(width:40,height:40)
                     
                     StatView(value: "4k", title: "Reactions",color: "#531886")
-                        //.frame(width:46,height:40)
+                        .frame(width:40,height:40)
                     
                 }
                 HStack{
                     StatView(value: "124k", title: "Views",color: "#531886")
-                        //.frame(width:46,height:40)
+                        .frame(width:40,height:40)
                     
                     StatView(value: "55", title: "Points",color: "#531886")
-                        //.frame(width:46,height:40)
+                        .frame(width:40,height:40)
                 }
                 
             }
         }
-        .padding(10)
+        .padding(viewPadding)
         .frame(maxHeight:184)
         .background {
             RoundedRectangle(cornerRadius: 0)

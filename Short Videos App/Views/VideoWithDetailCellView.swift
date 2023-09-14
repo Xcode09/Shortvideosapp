@@ -23,34 +23,34 @@ struct VideoWithDetailCellView: View {
                 VStack(alignment:.leading){
                     Text("1. Lesson title over 2 lines 2nd line")
                         .foregroundColor(.white)
-                        .boldFont()
+                        .font(.custom("Nunito-Bold", size: 14))
                     
                     HStack(spacing:24){
-                        VStack(spacing:8){
+                        VStack(spacing:0){
                             Text("1:23")
                                 .foregroundColor(.white)
                                 .font(.custom("Nunito-Bold", size: 12))
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                //.minimumScaleFactor(0.5)
                             
                             Text("min")
                                 
                                 .foregroundColor(.white)
-                                .font(.custom("Nunito-Bold", size: 6))
+                                .font(.custom("Nunito-Bold", size: 8))
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                //.minimumScaleFactor(0.5)
                             
                                 
                         }
                         .padding(5)
                         .frame(width:52,height:34)
                         .background {
-                            RoundedRectangle(cornerRadius: 8)
+                            RoundedRectangle(cornerRadius: 6)
                                 .fill(Color.init(hex: "#2A2C67"))
                         }
                         
                         
-                        VStack(spacing:8){
+                        VStack(spacing:0){
                             Image("visibility_fill")
                                 .resizable()
                                 .frame(width:14,height:12)
@@ -58,18 +58,18 @@ struct VideoWithDetailCellView: View {
                             Text("Viewed")
                                 //.frame(width:12)
                                 .foregroundColor(.white)
-                                .font(.custom("Nunito-Bold", size: 6))
+                                .font(.custom("Nunito-Bold", size: 8))
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                //.minimumScaleFactor(0.5)
                         }
                         .padding(5)
                         .frame(width:52,height:34)
                         .background {
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.init(hex: "#2A675B"))
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(Color.init(hex: "#17846F"))
                         }
                         
-                        VStack(spacing:8){
+                        VStack(spacing:0){
                             HStack{
                                 Image("library_add_check")
                                     .resizable()
@@ -79,21 +79,21 @@ struct VideoWithDetailCellView: View {
                                     .foregroundColor(.white)
                                     .font(.custom("Nunito-Bold", size: 9))
                                     .lineLimit(2)
-                                    .minimumScaleFactor(0.3)
+                                    //.minimumScaleFactor(0.3)
                             }
                             
                             Text("Quizes")
                                 .foregroundColor(.white)
-                                .font(.custom("Nunito-Regular", size: 12))
+                                .font(.custom("Nunito-Bold", size: 8))
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.3)
+                                //.minimumScaleFactor(0.3)
                             
                         }
                         .padding(5)
                         .frame(width:52,height:34)
                         .background {
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(Color.init(hex: "#2A675B"))
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(Color.init(hex: "#17846F"))
                         }
                     }
                     
@@ -101,8 +101,8 @@ struct VideoWithDetailCellView: View {
                     
                     
                     Text("120 Points")
-                        .foregroundColor(.white)
-                        .boldFont()
+                        .foregroundColor(Color.init(hex: "#00FC9B"))
+                        .font(.custom("Nunito-Bold", size: 15))
                 }
 //                .frame(maxWidth:.infinity)
                 
@@ -112,7 +112,7 @@ struct VideoWithDetailCellView: View {
         }
         .padding()
         .background {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 6)
                 .fill(Color.init(hex: "#040638"))
         }
     }

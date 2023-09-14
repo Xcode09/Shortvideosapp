@@ -18,20 +18,20 @@ struct VideoPlayFooterView: View {
                             .font(.system(size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .background(AppColors.customLightGrayColor)
+                            .background(.ultraThinMaterial)
                             .cornerRadius(5, corners: .allCorners)
                         Text("Algebra")
                             .font(.system(size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .background(AppColors.customLightGrayColor)
+                            .background(.ultraThinMaterial)
                             .cornerRadius(5, corners: .allCorners)
 
                         Text("Probability")
                             .font(.system(size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .background(AppColors.customLightGrayColor)
+                            .background(.ultraThinMaterial)
                             .cornerRadius(5, corners: .allCorners)
 
                     }
@@ -81,6 +81,7 @@ struct VideoPlaylistView:View
                     
                 } label: {
                     Image(systemName: "chevron.down")
+                    
                 }
 
             }

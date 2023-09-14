@@ -20,7 +20,6 @@ struct MyCollectionsView: View {
                             Text("Courses")
                                 .foregroundColor(Color.init(hex: "#65C0E8"))
                                 .boldFont()
-                                .padding()
                             
                             LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible())],spacing:30) {
                                 ForEach(0..<4) { _ in
@@ -29,24 +28,23 @@ struct MyCollectionsView: View {
                                 
                             }.padding()
                         }
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.init(hex: "#01024D"))
-                        }
+                        .customRoundedRectangle(backgroundColor: Color.init(hex: "#01024D"))
+                        
                     }
                     .padding(.horizontal,5)
                     
                     VStack{
                         VStack{
+                            Text("Videos")
+                                .foregroundColor(Color.init(hex: "#CA65E8"))
+                                .boldFont()
                             
                             ForEach(0..<8) { _ in
                                 VideoWithDetailCellView()
                             }
                         }
-                        .background {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.init(hex: "#2C0A62"))
-                        }
+                        .padding()
+                        .customRoundedRectangle(backgroundColor: Color.init(hex: "#2C0A62"))
                     }
                     .padding(.horizontal,5)
                     
@@ -58,6 +56,7 @@ struct MyCollectionsView: View {
                 .frame(maxWidth: .infinity,maxHeight: .infinity)
                 
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement:.navigationBarLeading){
                     Button(action: {

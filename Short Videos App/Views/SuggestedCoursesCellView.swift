@@ -9,53 +9,57 @@ import SwiftUI
 
 struct SuggestedCoursesCellView: View {
     var body: some View {
-        HStack{
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.ultraThinMaterial)
+        HStack(spacing:5){
+            RoundedRectangle(cornerRadius: cornerRadiusValue)
+                .fill(LinearGradient(colors: [.init(hex: "#585353"), .init(hex: "#0B0B0B")], startPoint: .top, endPoint: .bottom))
                 .aspectRatio(9/16, contentMode: .fit)
-                .padding(10)
+                .padding(3)
 
-            
-            VStack(alignment: .leading, spacing:10) {
-                Text("Course Name")
-                    .padding(.top,30)
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Course Name over 4 lines with overflow …..")
                     .foregroundColor(.white)
-                    .font(.custom("Nunito-Bold", size: 18))
-                    .lineLimit(3)
+                    .font(.custom("Nunito-Bold", size: 12))
+                    .lineLimit(4)
                     .minimumScaleFactor(0.5)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity)
+                    .offset(y:28)
+       
 
-                TagView(text: "Mathematics")
-                    .foregroundColor(.black)
-                
+                HStack{
+                    TagView(text: "Mathematics")
+                        .foregroundColor(.black)
+                    Spacer()
+                }
+
                 HStack(spacing: 10) {
-                    IconText(imageName: "library_add_check", text: "3/10")
+                    IconText(imageName: "library_add_check", text: "3/10", iconWidth: 13, iconHeight: 13)
                         .foregroundColor(.white)
-                    IconText(imageName: "visibility_fill", text: "6/10")
+                    IconText(imageName: "visibility_fill", text: "6/10", iconWidth: 16, iconHeight: 11)
                         .foregroundColor(.white)
                 }
-                
+
                 Text("+3.4k Students")
-                    .font(.custom("Nunito-Bold", size: 12))
+                    .font(.custom("Nunito-Bold", size: 8))
                     .foregroundColor(.white)
                     .minimumScaleFactor(0.5)
             }
-            //.padding(10)
+//            .padding(10)
+            .frame(maxWidth: .infinity, alignment: .leading) // Expand the inner VStack to fill width
             .aspectRatio(9/16, contentMode: .fit)
-            
+            .overlay(alignment: .topTrailing) {
+                Circle()
+                    .strokeBorder(Color.green, lineWidth: 3)
+                    .frame(width: 50, height: 50)
+                    .background(Circle().fill(Color.gray))
+                    .offset(y: -28)
+            }
             
         }
-        //.aspectRatio(9/16, contentMode: .fit)
-        .overlay(alignment:.topTrailing,content: {
-            Circle()
-                .strokeBorder(Color.green,lineWidth: 3)
-                .frame(width: 50,height: 50)
-                .background(Circle().fill(Color.gray))
-                .offset(y:-25)
-            
-        })
-        .background(RoundedRectangle(cornerRadius: 10)
-            .fill(Color(hex: "#110031")))
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(hex: "#110031"))
+        )
     }
 }
 

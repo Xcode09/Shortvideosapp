@@ -145,8 +145,60 @@ struct RowView:View{
 }
 
 
+import SwiftUI
+
+struct Scrool: View {
+    let items = (1...20).map { "Item \($0)" }
+    @State private var selectedItem: String? = nil
+    @State private var scrollOffset: CGFloat = 0
+
+    var body: some View {
+        ScrollView(.horizontal) {
+            ScrollViewReader { scrollView in
+                LazyHGrid(rows: [GridItem()]) {
+                    ForEach(items, id: \.self) { item in
+                        Text(item)
+                            .font(.title)
+                            .frame(width: 200, height: 100)
+                            .background(selectedItem == item ? Color.green : Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .onTapGesture {
+                                selectedItem = item
+                                scrollToItem(scrollView, item)
+                            }
+                    }
+                }
+                .padding()
+            }
+        }
+        .onAppear {
+            //scrollToItem(nil)
+        }
+    }
+
+    private func scrollToItem(_ scrollView: ScrollViewProxy, _ item: String?) {
+        if let item = item {
+            withAnimation {
+                selectedItem = item
+                scrollView.scrollTo(item, anchor: .center)
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        //ProfileView()
+        //UploadDocumentView()
+        
+        Scrool()
     }
 }

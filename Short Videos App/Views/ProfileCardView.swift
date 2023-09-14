@@ -21,17 +21,17 @@ struct ProfileCardView: View {
             Text("@username")
                 .foregroundColor(.white)
                 .font(.custom("Nunito-SemiBold", size: 9))
-                .minimumScaleFactor(0.5)
+                //.minimumScaleFactor(0.5)
 
             Text("Firstname Lastname")
                 .foregroundColor(.white)
                 .font(.custom("Nunito-SemiBold", size: 9))
-                .minimumScaleFactor(0.5)
+                //.minimumScaleFactor(0.5)
 
             HStack{
                 TagView(text: "Mathematics")
                     .foregroundColor(.black)
-                TagView(text: "Mathematics")
+                TagView(text: "Physics",backgroundColor: "#8BBEFC")
                     .foregroundColor(.black)
             }
 
@@ -49,56 +49,37 @@ struct ProfileCardView: View {
             
             Spacer().frame(height:36)
             
-//            Text("Quick Help")
-//                .font(.custom("Nunito-Bold", size: 16))
-//                .padding(10)
-//                .foregroundColor(Color.init(hex: "#00FF4D"))
-//                .background {
-//                    RoundedRectangle(cornerRadius: 30)
-//                        .strokeBorder(Color.black,lineWidth: 4)
-//                        .frame(maxWidth: .infinity,maxHeight:.infinity)
-//                        .background(content: {
-//                            RoundedRectangle(cornerRadius: 30)
-//                                .fill(LinearGradient(colors: [Color.init(hex: "#54C998"),Color.init(hex: "#1D6446")], startPoint: .top, endPoint: .bottom))
-//                        })
-//                }
-//                .offset(y:20)
-
         }
-        .padding(10)
-        //.frame(width:176,height:300)
+        .padding(viewPadding)
         .background {
-            RoundedRectangle(cornerRadius: 14)
-                .strokeBorder(Color.black,lineWidth: 4)
+            RoundedRectangle(cornerRadius: cornerRadiusValue)
+                .strokeBorder(Color.black,lineWidth: borderWidth)
                 .frame(maxWidth: .infinity,maxHeight:.infinity)
                 .background(content: {
-                    RoundedRectangle(cornerRadius: 14)
+                    RoundedRectangle(cornerRadius: cornerRadiusValue)
                         .fill(Color.init(hex: "#321C5C"))
                 })
         }
         .overlay(alignment:.bottom){
             HStack{
-                Spacer()
-                    .frame(width:10)
-                
+                //Spacer()
+                    
                 Text("Quick Help")
                     .font(.custom("Nunito-Bold", size: 16))
-                    .padding(10)
                     .frame(alignment:.center)
                     .lineLimit(0)
-                    .minimumScaleFactor(0.5)
+                    //.minimumScaleFactor(0.5)
                     .foregroundColor(Color.init(hex: "#00FF4D"))
                 
                 Image("spark_green")
                     .resizable()
                     .frame(width:14,height:14)
-                    .padding(10)
                     
             }
-            .frame(width:136,height:37)
+            .frame(width:140,height:37)
             .background {
                 RoundedRectangle(cornerRadius: 30)
-                    .strokeBorder(Color.black,lineWidth: 4)
+                    .strokeBorder(Color.black,lineWidth: borderWidth)
                     .frame(maxWidth: .infinity,maxHeight:.infinity)
                     .background(content: {
                         RoundedRectangle(cornerRadius: 30)

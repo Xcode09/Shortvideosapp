@@ -36,8 +36,8 @@ struct VideoPlayView: View {
                     .overlay(alignment:.top){
                         if isPlaylistTapped{
                             VideoPlaylistView(isPlaylistTapped: $isPlaylistTapped)
-                                .frame(width:UIScreen.main.bounds.width - 20,height: UIScreen.main.bounds.height * 0.6)
-                                .offset(y:-UIScreen.main.bounds.height * 0.5)
+                                .frame(width:UIScreen.main.bounds.width - 20,height: UIScreen.main.bounds.height * 0.4)
+                                .offset(y:-UIScreen.main.bounds.height * 0.3)
                         }
                     }
                 }
