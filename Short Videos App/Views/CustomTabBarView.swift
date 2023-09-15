@@ -12,23 +12,34 @@ struct CustomTabBar: View {
     @State private var selectedTab = 0
     @State private var tabItems = AppTheme.AppTabTitle.allCases
     var body: some View {
-        VStack(spacing: 0) {
-            TabView(selection: $selectedTab) {
-                Text("Tab 1 Content")
-                    .tag(0)
-                Text("Tab 2 Content")
-                    .tag(1)
+        ZStack{
+            
+            if selectedTab == 2 {
                 VideosTabView()
-                    .tag(2)
-                Text("Tab 4 Content")
-                    .tag(3)
-                ProfileView()
-                    .frame(maxWidth:.infinity,maxHeight:.infinity)
-                    .tag(4)
+            }else{
+                BackgroundView().ignoresSafeArea()
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
+//            TabView(selection: $selectedTab) {
+//                Text("Tab 1 Content")
+//                    .tag(0)
+//                Text("Tab 2 Content")
+//                    .tag(1)
+//                VideosTabView()
+//
+//                    .tag(2)
+//                Text("Tab 4 Content")
+//                    .tag(3)
+//                ProfileView()
+//                    .frame(maxWidth:.infinity,maxHeight:.infinity)
+//                    .tag(4)
+//            }
+//            .frame(maxWidth:.infinity,maxHeight:.infinity)
+//
+//            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
+        }
+        .overlay(alignment:.bottom,content: {
             HStack(spacing: 0) {
                 ForEach(tabItems.indices,id:\.self) { index in
                     Button(action: {
@@ -57,17 +68,19 @@ struct CustomTabBar: View {
             .background(Color.init(hex: MyColors.darkPurpleColor))
             .cornerRadius(radius: 10, corners: [.topLeft, .topRight])
             .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: -2)
-        }
-        .background(
-            selectedTab == 4 ? AnyView( // Apply to Tab 3 content
-                LinearGradient(colors: [.init(hex: MyColors.linearGradient1),.init(hex: MyColors.linearGradient2)], startPoint: .top, endPoint: .bottom)
-                    .ignoresSafeArea(edges: .top)
-                                      ) : AnyView(BackgroundView()
-//                                        .ignoresSafeArea(edges: .all)
-                                                  
-                                                  
-                                      )
-        )
+        })
+        
+        
+//        .background(
+//            selectedTab == 4 ? AnyView( // Apply to Tab 3 content
+//                LinearGradient(colors: [.init(hex: MyColors.linearGradient1),.init(hex: MyColors.linearGradient2)], startPoint: .top, endPoint: .bottom)
+//                    .ignoresSafeArea(edges: .top)
+//                                      ) : AnyView(BackgroundView()
+////                                        .ignoresSafeArea(edges: .all)
+//
+//
+//                                      )
+//        )
         .edgesIgnoringSafeArea(.bottom)
     }
 }

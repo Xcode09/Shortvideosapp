@@ -25,7 +25,7 @@ struct VideoPlayHeaderView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20) // Adjust the size as needed
                         .padding()
-                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                        .background(.ultraThinMaterial)
                         .clipShape(Circle()) // Clip the button and its background to a circle
                 }
                 HeaderEmojiView()
@@ -38,7 +38,7 @@ struct VideoPlayHeaderView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20) // Adjust the size as needed
                         .padding()
-                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                        .background(.ultraThinMaterial)
                         .clipShape(Circle()) // Clip the button and its background to a circle
                 }
             }

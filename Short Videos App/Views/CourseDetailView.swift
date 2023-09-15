@@ -12,8 +12,8 @@ struct CourseDetailView: View {
     var body: some View {
         NavigationView {
             ScrollView{
-                VStack{
-                    VStack{
+                VStack(spacing: viewPadding){
+                    VStack(spacing: 20){
                         VStack(spacing:viewPadding){
                             HStack{
                                 HStack {
@@ -33,11 +33,7 @@ struct CourseDetailView: View {
                                 
                                 
                                 Spacer()
-                                
-//                                IconText(imageName: "language_fill", text: "English",iconWidth:12,iconHeight: 15,contentMode: .fill,isLeftHand: true)
-//                                    .foregroundColor(Color.init(hex: "#FF7EC3"))
-                                    //.frame(width: 100)
-                                
+
                                 HStack {
                                     Text("English")
                                         .font(Font.custom("Nunito-Black", size: 8))
@@ -78,6 +74,8 @@ struct CourseDetailView: View {
                                     .frame(width:65,height:55)
                             }
                             
+                            Spacer().frame(height:20)
+                            
                             
                             
                         }
@@ -110,6 +108,37 @@ struct CourseDetailView: View {
                                     }
                                     
                                 }
+                        }
+                        .overlay(alignment:.bottom) {
+                            HStack{
+                                //Spacer()
+                                    
+                                Text("Available Now for Quick Help")
+                                    .font(.custom("Nunito-Bold", size: 16))
+                                    .frame(alignment:.center)
+                                    .lineLimit(2)
+                                    //.minimumScaleFactor(0.5)
+                                    .foregroundColor(Color.black)
+                                    .multilineTextAlignment(.center)
+                                
+                                Image("spark_green")
+                                    .resizable()
+                                    .renderingMode(.template)
+                                    .frame(width:21,height:37)
+                                    .foregroundColor(Color.init(hex: "#0A965A"))
+                                    
+                            }
+                            .frame(width:240,height:50)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(Color.black,lineWidth: borderWidth)
+                                    .frame(maxWidth: .infinity,maxHeight:.infinity)
+                                    .background(content: {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(LinearGradient(colors: [Color.init(hex: "#47F2A9"),Color.init(hex: "#0A965A")], startPoint: .top, endPoint: .bottom))
+                                    })
+                            }
+                            .offset(y:20)
                         }
                         
                         ForEach(0..<5) { _ in

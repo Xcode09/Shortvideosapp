@@ -7,54 +7,76 @@
 
 import Foundation
 import SwiftUI
+
+
 struct ExampleBlurView: View {
-    @State private var scrollOffset: CGFloat = 0.0
-    
+    @State private var isScrollingUp = true
+
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                VStack{
-                    
-                    Color.red
-                        .frame(height:UIScreen.main.bounds.height)
+        ScrollView {
+            ZStack{
+                Color.red
+                    .background(alignment:.top,content: {
+                        if !isScrollingUp {
+                            Rectangle()
+                                .fill(.ultraThinMaterial)
+                                .frame(height: 100)
+                                .ignoresSafeArea()
+                        }
+                    })
+                VStack(spacing: 20) {
+                    ForEach(0..<20) { index in
+                        Text("Item \(index)")
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                    }
                 }
-                
+                .frame(maxWidth: .infinity)
+                .background(
+                    GeometryReader { geometry in
+                        Color.clear.onAppear {
+                            // Add logic to handle the scroll direction
+                            onScrollContent(geometry)
+                        }
+                        .onChange(of: geometry.frame(in: .global).minY) { _ in
+                            // Add logic to handle the scroll direction
+                            onScrollContent(geometry)
+                        }
+                    }
+                )
             }
-            .background(
-                Color.clear // This is to make sure GeometryReader covers the entire view
-            )
-            .onPreferenceChange(OffsetPreferenceKey.self) { offset in
-                self.scrollOffset = offset
-            }
-            .blur(radius: blurRadiusForOffset(scrollOffset, maxOffset: geometry.size.height * 0.2))
-            .edgesIgnoringSafeArea(.all)
+           
         }
-        
-    }
-    
-    func blurRadiusForOffset(_ offset: CGFloat, maxOffset: CGFloat) -> CGFloat {
-        let maxBlurRadius: CGFloat = 20.0
-        let maxScroll: CGFloat = maxOffset * 0.2 // Adjust as needed
-        
-        let normalizedOffset = min(max(offset, 0), maxScroll)
-        let progress = normalizedOffset / maxScroll
-        
-        return progress * maxBlurRadius
     }
 
-}
-
-struct OffsetPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = 0.0
-
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
+    private func onScrollContent(_ geometry: GeometryProxy) {
+        if geometry.frame(in: .global).minY > 0 {
+            // Scrolling up
+            debugPrint("Scroll Up")
+            isScrollingUp = true
+        } else {
+            // Scrolling down or at the top
+            debugPrint("Scroll Down")
+            isScrollingUp = false
+        }
     }
 }
-
 
 struct ExampleBlurView_Previews: PreviewProvider {
     static var previews: some View {
         ExampleBlurView()
     }
+}
+
+struct Blur: UIViewRepresentable {
+    var style: UIBlurEffect.Style
+
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        let blurEffect = UIBlurEffect(style: style)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        return blurView
+    }
+
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }

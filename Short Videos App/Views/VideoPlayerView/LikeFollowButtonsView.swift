@@ -14,8 +14,8 @@ struct LikeFollowButtonsView: View {
     @State private var reportContent = false
     var body: some View {
         ZStack {
-            Color.black
-                .edgesIgnoringSafeArea(.all)
+//            Color.black
+//                .edgesIgnoringSafeArea(.all)
             
             HStack {
                 Spacer()

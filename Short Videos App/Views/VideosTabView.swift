@@ -12,11 +12,11 @@ struct VideosTabView: View {
     @State private var videoSheetitems : VideoTabViewSheetItems?
     let column = [GridItem(.flexible(),spacing: 5),GridItem(.flexible(),spacing: 5)]
     var body: some View {
-        NavigationStack{
+        NavigationView{
             ScrollView(showsIndicators: false){
                 VStack(spacing:30){
                     trendingSection
-
+                    
                     newVideosSection
    
                     suggestCourses
@@ -29,12 +29,11 @@ struct VideosTabView: View {
                     onlineTutors
    
                     followingSection
-
+                    
+                    Spacer()
                 }
                 .padding(viewPadding)
-                .offset(y:46)
             }
-            .ignoresSafeArea()
             .navigationBarTitleDisplayMode(.inline)
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
@@ -43,9 +42,8 @@ struct VideosTabView: View {
                 }
             })
             .background(content: {
-                BackgroundView().ignoresSafeArea()
+                BackgroundView()
             })
-            
             .fullScreenCover(item: $videoSheetitems, content: { item in
                 switch item {
                 case .videoTapped:
@@ -167,9 +165,8 @@ struct VideosTabView: View {
             Spacer()
             
         }
-        .ignoresSafeArea()
         .padding(.horizontal,5)
-        //.frame(height: 46)
+       
     }
     
     var trendingSection:some View {
@@ -211,15 +208,6 @@ struct VideosTabView: View {
         .foregroundColor(.white)
         .padding(viewPadding)
         .customRoundedRectangle(backgroundColor: Color.init(hex:"#452F57"))
-//        .background {
-//            RoundedRectangle(cornerRadius: cornerRadiusValue)
-//                .stroke(Color.black,lineWidth: borderWidth)
-//                .background(content: {
-//                    RoundedRectangle(cornerRadius: cornerRadiusValue)
-//                        .fill(Color.init(hex:"#452F57"))
-//                })
-//
-//        }
     }
     
     var newVideosSection:some View {

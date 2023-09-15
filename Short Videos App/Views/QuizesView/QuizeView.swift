@@ -14,150 +14,277 @@ struct QuizeView: View {
     @State private var isButtonTapped = false
     @State private var selectedAnswer: Int?
     let quizData = [
-        ("Quiz 1", "correct", Color(red: 227/255, green: 157/255, blue: 248/255)),
-        ("Quiz 2", "correct", Color(red: 195/255, green: 245/255, blue: 254/255)),
-        ("Quiz 3", "correct", Color(red: 158/255, green: 243/255, blue: 190/255))
+        ("Quiz 1", "correct", Color(hex: 0xE39DF8)),
+        ("Quiz 2", "correct", Color(hex: 0xC3F5FE)),
+        ("Quiz 3", "correct", Color(hex: 0x9EF3BE))
     ]
     var body: some View {
-        ZStack {
-            // Top View with Purple Color
-            
-            Color(red: 59/255, green: 29/255, blue: 104/255)
-                .clipShape(TopRoundedRectangle(cornerRadius: 40, style: .continuous)) // Add top corner radius
-                .frame(height: 900) // Set the height of the top view
-                .offset(y: 80)
-            //                .ignoresSafeArea()
-                .overlay(
-                    // VStack with Text and HStack of Three Buttons
-                    VStack {
-                        Text("Video Title")
-                            .font(.system(size: 22, weight: .bold))
-                            .frame( height: 25)
-                            .foregroundColor(.white)
-                            .padding(.bottom, 10)
-                        
-                        
-                        HStack(spacing: 5) {
-                            ForEach(quizData.indices, id: \.self) { index in
-                                let (quiz, imageName, colors) = quizData[index]
-                                Button(action: {
-                                    // Handle the button action for each quiz
-                                }) {
-                                    HStack(spacing: -13) {
-                                        Text(quiz)
-                                            .offset(x: -15)
-                                            .font(.system(size: 13, weight: .bold))
-                                            .frame(width: 100, height: 50)
-                                            .background(colors)
-                                            .foregroundColor(.black)
-                                            .cornerRadius(10)
-                                        
-                                        //                                            .overlay(
-                                                                                        if index == 0{
-                                        Image(imageName)
-                                            .resizable()
-                                            .offset(x: -12)
-                                            .frame(width: 20, height: 20)
-                                                                                        }
-                                        
-                                        //                                        )
+        NavigationView{
+            ScrollView {
+                ZStack {
+                    
+                    Color.black.ignoresSafeArea()
+                    
+                    Color(hex: 0x3B1D68)
+                        .clipShape(TopRoundedRectangle(cornerRadius: 40, style: .continuous)) // Add top corner radius
+                        .frame(height: 900) // Set the height of the top view
+                        .offset(y: 60)
+                    //                .ignoresSafeArea()
+                        .overlay(
+                            // VStack with Text and HStack of Three Buttons
+                            VStack {
+                                Text("Video Title")
+                                    .font(.system(size: 22, weight: .bold))
+                                    .frame( height: 25)
+                                    .foregroundColor(.white)
+                                    .padding(.bottom, 10)
+                                
+                                
+                                HStack(spacing: 5) {
+                                    ForEach(quizData.indices, id: \.self) { index in
+                                        let (quiz, imageName, colors) = quizData[index]
+                                        Button(action: {
+                                            // Handle the button action for each quiz
+                                        }) {
+                                            HStack(spacing: -13) {
+                                                Text(quiz)
+                                                    .offset(x: -15)
+                                                    .font(.custom("Nunito-Bold", size: 12))
+                                                    .frame(width: 110, height: 50)
+                                                    .background(colors)
+                                                    .foregroundColor(.black)
+                                                    .cornerRadius(18, corners: [.topRight,.topLeft])
+                                                
+                                                //                                            .overlay(
+                                                                                                if index == 0{
+                                                Image(imageName)
+                                                    .resizable()
+                                                    .offset(x: -16)
+                                                    .frame(width: 20, height: 20)
+                                                                                                }
+                                                
+                                                //                                        )
+                                            }
+                                        }
                                     }
                                 }
+                                //                        .offset(y: )
                             }
-                        }
-                        //                        .offset(y: )
-                    }
-                        .offset(y: -287) // Adjust the offset as needed
-                )
-            
-            // Subview with Blue Color
-            Color(red: 158/255, green: 243/255, blue: 190/255)
-                .frame(height: 612) // Set the height of the subview
-                .cornerRadius(20)
-            //                .border(.black, width: 2)
-                .cornerRadius(20)
-                .offset(y: 55) // Move it down by 30 points
-            //                .padding(.bottom, 80)
-                .padding(.horizontal, 10)
-            
-            
-            // Pink View inside Subview
-            Color(red: 94/255, green: 27/255, blue: 178/255)
-                .frame(height: 240) // Set the height of the pink view
-                .cornerRadius(20)
-                .border(.black, width: 2)
-                .cornerRadius(20)
-                .offset(y: -110)
-                .padding(.horizontal, 20)
-                .overlay(//addee
-                    // VStack with Text and Image
-                    VStack(spacing: 20) {
-                        Text("Question related to the quizz text here, upto 300 characters")
-                            .font(.system(size: 17, weight: .regular))
-                            .foregroundColor(.white)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding(.horizontal, 30)
-                        
-                        
-                        Image(systemName: "photo")
-                            .resizable()
-                            .frame(width: 150, height: 150)
-                            .foregroundColor(.white)
-                    }
-                        .frame(height: 100) // Set the stack's height
-                        .offset(y: -110) // Adjust the offset as needed
+                                .offset(y: -297) // Adjust the offset as needed
+                        )
                     
-                )//addded
-            
-            // Horizontal Views with Two Text Elements
-            VStack(spacing: 10) {
-                ForEach(0..<4) { index in
-                    ZStack {
-                        //                        Color(red: 94/255, green: 27/255, blue: 178/255)
-                        
-                        Color(red: selectedAnswer == index ? 158/255 : 94/255,
-                              green: selectedAnswer == index ? 160/255 : 27/255,
-                              blue: selectedAnswer == index ? 250/255 : 178/255)
-                        .cornerRadius(10)
-                        .frame(height: 60)
-                        //                                       .border(.black, width: 2)
-                        .padding(.horizontal, 25)
-                        .onTapGesture {
-                            selectedAnswer = index // Set the selected answer
-                        }
-                        
-                        .overlay(
+                    // Subview with Blue Color
+                    Color(hex: 0x9EF3BE)
+                        .frame(height: 630) // Set the height of the subview
+                        .cornerRadius(20)
+                        .border(.black, width: 2)
+                        .cornerRadius(20)
+                        .offset(y: 55) // Move it down by 30 points
+                    //                .padding(.bottom, 80)
+                        .padding(10)
+                    
+                    
+                    // Pink View inside Subview
+                    Color(hex: 0x5E1BB2)
+                        .frame(height: 260) // Set the height of the pink view
+                        .cornerRadius(20)
+                        .border(.black, width: 2)
+                        .cornerRadius(20)
+                        .offset(y: -110)
+                        .padding(.horizontal, 20)
+                        .overlay(//addee
+                            // VStack with Text and Image
+                            VStack(spacing: 20) {
+                                Text("Question related to the quizz text here, upto 300 characters")
+                                    .font(.custom("Nunito-Bold", size: 18))
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal)
+                                    .lineLimit(5)
+                                    .multilineTextAlignment(.leading)
+                                
+                                
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .frame(width: 130, height: 130)
+                                    .foregroundColor(.white)
+                                
+                            }// Set the stack's height
+                            .offset(y: -110) // Adjust the offset as needed
+                            
+                        )
+                    //addded
+                    
+                    
+                    
+                    // Horizontal Views with Two Text Elements
+                    VStack(spacing: 10) {
+                        ForEach(0..<4) { index in
+
+                            
                             HStack(spacing: 10) { // Add an HStack for two text elements
-                                CircleWithText(text: String(index + 1), yOffset: 0, changeColor: selectedAnswer == index ? Color(red: 137/255, green: 201/255, blue: 253/255) : Color(red: 217/255, green: 138/255, blue: 252/255))
+                                CircleWithText(text: String(index + 1), yOffset: 0, changeColor: selectedAnswer == index ? Color(hex: 0x89C9FD) : Color(hex: 0xD98AFC))
+                                    
+                                
                                 Text("Answer \(index+1) text here upto 200 char")
                                     .foregroundColor(selectedAnswer == index ? Color.black : Color.white)
                                     .font(.custom("Nunito-Bold", size: 12))
+                                    .lineLimit(3)
+                                    .frame(maxWidth:.infinity,alignment:.leading)
+                                    .multilineTextAlignment(.leading)
+                                    
+                                
+                                
                                 
                             }
-                            //Color(red: 217/255, green: 138/255, blue: 252/255)
+                            .padding(.horizontal)
+                            .frame(maxWidth:335,maxHeight: 60)
+                            .customRoundedRectangle(backgroundColor: Color.init(hex: selectedAnswer == index ?  "#9E9EFD" : "#5F08B5"))
+                            .onTapGesture {
+                                selectedAnswer = index
+                            }
                             
-                            
-                        )
+                        }
+                        
+                        // Button with padding, offset, and centered text
+                        Button(action: {
+                            // Handle button tap action here
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
+                                    .frame(width: 300, height: 60)
+                                    .foregroundColor(Color(hex: 0x2BE2B3))
+                                    .overlay(
+                                        Text("Check Answer")
+                                            .font(.system(size: 27, weight: .medium))
+                                            .foregroundColor(.black)
+                                    )
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
+                                            .stroke(Color.black, lineWidth: 2) // Border color and width
+                                    )
+                            }
+                            .padding(.top, 10)
+                        }
+                        //                                  .padding(.bottom, -75) // Offset from the bottom
                     }
+                    .offset(y: 210)
                 }
-                
-                // Button with padding, offset, and centered text
-                Button(action: {
-                    // Handle button tap action here
-                }) {
-                    Text("Check Answer")
-                        .font(.custom("Nunito-Bold", size: 20))
-                        .frame(width: 300, height: 60)
-                        .background(Color(red: 43/255, green: 226/255, blue: 179/255))
-                        .foregroundColor(.black)
-                    //                                          .border(.black, width: 2)
-                        .cornerRadius(30)
-                        .padding(.top, 10)
-                }
-                //                                  .padding(.bottom, -75) // Offset from the bottom
             }
-            .offset(y: 210)
+            .background(content: {
+                Color.black.ignoresSafeArea()
+            })
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(content: {
+                ToolbarItem(placement: .principal) {
+                    headerView
+                    
+                }
+            })
         }
+    }
+    
+    var headerView:some View {
+        HStack(spacing:15){
+            
+            Spacer().frame(width:viewPadding)
+            
+            Text("120 Pts")
+                .foregroundColor(Color.init(hex: MyColors.pointsColor))
+                .padding(viewPadding)
+                .frame(width: 134,height: 38)
+                .font(.custom("Nunito-Bold", size: 22))
+                //.minimumScaleFactor(0.7)
+                .background {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.init(hex: MyColors.pontsRectangleColor))
+                }
+            
+            VStack(spacing:0){
+                Text("50")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 10))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                
+                Text("Daily Bouns")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 7))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+            }
+            .frame(width:38,height: 38)
+            .background {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.init(hex: "#0099A0"))
+            }
+            
+            VStack(spacing:0){
+                Text("50")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 10))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                
+                Text("Daily Bouns")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 7))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+            }
+            .frame(width:38,height: 38)
+            .background {
+                RoundedRectangle(cornerRadius:8)
+                    .fill(Color.init(hex: "#6A6070"))
+            }
+            
+            VStack(spacing:0){
+                Text("50")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 10))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                
+                Text("Daily Bouns")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 7))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+            }
+            .frame(width:38,height: 38)
+            .background {
+                RoundedRectangle(cornerRadius:8)
+                    .fill(Color.init(hex: "#6A6070"))
+            }
+            
+            Spacer()
+            
+            Button {
+                //
+            } label: {
+                Image("search")
+                    .resizable()
+                    .frame(width:20,height:20)
+                    .scaledToFit()
+                    .background {
+                        Circle()
+                            .fill(.ultraThinMaterial)
+                            .frame(width:36,height:36)
+                            
+                    }
+                
+            }
+            //.padding(viewPadding)
+            Spacer()
+            
+        }
+        .padding(.horizontal,5)
+       
     }
 }
 
@@ -169,17 +296,13 @@ struct CircleWithText: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(Color.black,lineWidth:borderWidth)
-                .background(content: {
-                    Circle()
-                        .fill(changeColor)
-                })
+                .fill(changeColor)
                 .frame(width: 40, height: 40)
                 .offset(x: 0, y: yOffset)
             
             Text(text)
                 .foregroundColor(.black)
-                .font(.custom("Nunito-SemiBold", size: 24))
+                .font(.system(size: 22, weight: .medium))
                 .offset(x: 0, y: yOffset)
                 .font(.headline)
         }
