@@ -33,7 +33,7 @@ struct LikeFollowButtonsView: View {
 
                     VStack(spacing: 5) {
                         CustomButton(imageName: "ProfileImage", buttonText: "1250", action: didTapButton)
-                            .frame(height: 80) // Adjust the height for the first button
+                            .frame(height: 60) // Adjust the height for the first button
                             .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
@@ -42,32 +42,32 @@ struct LikeFollowButtonsView: View {
                         CustomButton(imageName: "quizfill", buttonText: "3/3", action: {
                             showReportVideo.toggle()
                         })
-                            .frame(height: 40) // Adjust the height for the first button
+                        //.frame(width:40,height: 40) // Adjust the height for the first button
                             .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
 
                         CustomButton(imageName: "likeHeart", buttonText: "24.6K", action: didTapButton)
-                            .frame(height: 40) // Adjust the height for the first button
+                            //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
 
                         CustomButton(imageName: "share", buttonText: "7.9K", action: didTapButton)
-                            .frame(height: 40) // Adjust the height for the first button
+                            //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
 
                         CustomButton(imageName: "saved", buttonText: "5.2K", action: didTapButton)
-                            .frame(height: 40) // Adjust the height for the first button
+                            //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                             
 
                         CustomButton(imageName: "groupEmoji", buttonText: "", action: didTapSelectEmoji)
-                            .frame(height: 40) // Adjust the height for the first button
+                            //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)
                             .background(.ultraThinMaterial)
                             .foregroundColor(.white)
@@ -234,6 +234,8 @@ struct CustomButton: View {
         }) {
             VStack {
                 Image(imageName)
+                    .resizable()
+                    .frame(width:30 * 0.7,height: 30 * 0.7)
                     .foregroundColor(.blue)
                 Text(buttonText)
                     .font(.system(size: 8))

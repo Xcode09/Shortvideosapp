@@ -25,6 +25,9 @@ struct VideoPlayView: View {
                         HStack {
                             Spacer()
                             LikeFollowButtonsView()
+                                .offset(y:50)
+                            
+                        
                         }
                     }
                     VStack (spacing: 0){
@@ -45,11 +48,11 @@ struct VideoPlayView: View {
                 
             }
             .background {
-                Player(shouldPlay: true,player: .init(url: .init(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4")!))
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        showQuiz.toggle()
-                    }
+//                Player(shouldPlay: true,player: .init(url: .init(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4")!))
+//                    .ignoresSafeArea()
+//                    .onTapGesture {
+//                        showQuiz.toggle()
+//                    }
             }
             .sheet(isPresented: $showQuiz) {
                 QuizeView()

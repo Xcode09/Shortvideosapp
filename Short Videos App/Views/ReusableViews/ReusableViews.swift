@@ -63,7 +63,7 @@ struct StatView: View {
             Text(title)
                 .foregroundColor(.white)
                 .font(.custom("Nunito-Bold", size: 12))
-                .lineLimit(4)
+                .lineLimit(1)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.5)
         }

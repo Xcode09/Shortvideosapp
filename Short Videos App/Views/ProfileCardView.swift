@@ -86,7 +86,7 @@ struct ProfileCardView: View {
                             .fill(LinearGradient(colors: [Color.init(hex: "#54C998"),Color.init(hex: "#1D6446")], startPoint: .top, endPoint: .bottom))
                     })
             }
-            .offset(y:10)
+            .offset(y:14)
 
         }
     }

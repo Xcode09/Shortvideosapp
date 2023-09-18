@@ -123,10 +123,7 @@ struct VideoPlaylistView:View
             }
             
         }
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.ultraThinMaterial)
-        }
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 10,style: .continuous))
     }
 }
 

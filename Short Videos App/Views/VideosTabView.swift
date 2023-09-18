@@ -10,25 +10,41 @@ import SwiftUI
 struct VideosTabView: View {
     @State private var videoTapped = false
     @State private var videoSheetitems : VideoTabViewSheetItems?
+    @State private var scrollPosition: CGPoint = .zero
     let column = [GridItem(.flexible(),spacing: 5),GridItem(.flexible(),spacing: 5)]
+    
+    init() {
+        let appearance = UINavigationBarAppearance()
+
+        //appearance.backgroundEffect = // error right here
+        
+        appearance.backgroundEffect = UIBlurEffect(style: .dark)
+
+        UINavigationBar.appearance().standardAppearance = appearance
+        UITableView.appearance().backgroundColor = .clear
+    }
     var body: some View {
         NavigationView{
             ScrollView(showsIndicators: false){
                 VStack(spacing:30){
                     trendingSection
+                        .padding(.horizontal,scrollPosition.x <= -30 ? -25 : 0)
                     
                     newVideosSection
    
                     suggestCourses
 
                     myCollectionView
+                        .padding(.top,viewPadding)
                         .onTapGesture {
                             videoSheetitems = .myCollectionsTapped
                         }
  
                     onlineTutors
+                        
    
                     followingSection
+                        .padding(.top,viewPadding)
                     
                     Spacer()
                 }
@@ -70,7 +86,7 @@ struct VideosTabView: View {
             
             Spacer().frame(width:viewPadding)
             
-            Text("120 Pts")
+            Text("1250 Pts")
                 .foregroundColor(Color.init(hex: MyColors.pointsColor))
                 .padding(viewPadding)
                 .frame(width: 134,height: 38)
@@ -84,7 +100,7 @@ struct VideosTabView: View {
             VStack(spacing:0){
                 Text("50")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 10))
+                    .font(.custom("Nunito-Bold", size: 12))
                     //.minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     
@@ -105,7 +121,7 @@ struct VideosTabView: View {
             VStack(spacing:0){
                 Text("50")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 10))
+                    .font(.custom("Nunito-Bold", size: 12))
                     //.minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     
@@ -126,7 +142,7 @@ struct VideosTabView: View {
             VStack(spacing:0){
                 Text("50")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 10))
+                    .font(.custom("Nunito-Bold", size: 12))
                     //.minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     
@@ -151,6 +167,9 @@ struct VideosTabView: View {
             } label: {
                 Image("search")
                     .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
+                    
                     .frame(width:20,height:20)
                     .scaledToFit()
                     .background {
@@ -181,10 +200,12 @@ struct VideosTabView: View {
                     
             }
             .padding(viewPadding)
+            
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.init(hex: "#46196C"))
             }
+            .offset(x:scrollPosition.x <= -30 ? 25 : 0)
             
             .onTapGesture {
                 videoSheetitems = .trendingTapped
@@ -192,22 +213,43 @@ struct VideosTabView: View {
             
             ScrollView(.horizontal) {
                 HStack(spacing:viewPadding){
-                    ForEach(0..<8) { index in
+                    ForEach(0..<16,id:\.self) { index in
                         VideoSmallCell()
                             .frame(width:95,height: 130)
                             .onTapGesture {
                                 videoSheetitems = .videoTapped
                                 print("Did Tap Video")
                             }
+                            .background {
+                                GeometryReader {
+                                    geometry in
+                                    Color.clear.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+                                }
+                                
+                            }
+                            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                                debugPrint("Scroll",value.x)
+                                
+                                withAnimation {
+                                    self.scrollPosition = value
+                                }
+                                
+                            }
 
                     }
                 }
+//                .onChange(of: proxy.frame(in: .global).midY) { newValue in
+//                    debugPrint("Scroll View",newValue)
+//                }
+               
 
             }
+            .coordinateSpace(name: "scroll")
         }
         .foregroundColor(.white)
         .padding(viewPadding)
-        .customRoundedRectangle(backgroundColor: Color.init(hex:"#452F57"))
+        .customRoundedRectangle(borderWidth:2,backgroundColor: Color.init(hex:"#452F57"))
+        
     }
     
     var newVideosSection:some View {
@@ -239,7 +281,7 @@ struct VideosTabView: View {
         }
         .foregroundColor(.white)
         .padding(viewPadding)
-        .customRoundedRectangle(backgroundColor: Color.init(hex:"#202B5C"))
+        .customRoundedRectangle(borderWidth:2,backgroundColor: Color.init(hex:"#202B5C"))
     }
     
     var suggestCourses:some View {
@@ -311,12 +353,19 @@ struct VideosTabView: View {
                     }
                     
                 }
+                .padding(.horizontal,viewPadding)
                 
+//                CardOffSetButton(title: "More Courses", offSetY: 20) {
+//                    videoSheetitems = .courseDetailView
+//                }
+                Spacer().frame(height:viewPadding+viewPadding)
+            }
+            .overlay(alignment:.bottom,content: {
                 CardOffSetButton(title: "More Courses", offSetY: 20) {
                     videoSheetitems = .courseDetailView
                 }
-            }
-            .customRoundedRectangle(backgroundColor: Color.init(hex: "#01024D"))
+            })
+            .customRoundedRectangle(borderWidth:2,backgroundColor: Color.init(hex: "#01024D"))
         }
     }
     
@@ -374,14 +423,7 @@ struct VideosTabView: View {
         }
         .foregroundColor(.white)
         .padding([.vertical,.horizontal])
-        .background {
-            RoundedRectangle(cornerRadius: cornerRadiusValue)
-                .stroke(Color.black,lineWidth: borderWidth)
-                .background(content: {
-                    RoundedRectangle(cornerRadius: cornerRadiusValue)
-                        .fill(Color.init(hex: "#01024D"))
-                })
-        }
+        .customRoundedRectangle(borderWidth: 2,backgroundColor: Color.init(hex: "#01024D"))
     }
     
     var onlineTutors:some View
@@ -400,15 +442,7 @@ struct VideosTabView: View {
                 CardOffSetButton(title: "Online Tutors", offSetY: 20)
                 
             }
-            .background {
-                RoundedRectangle(cornerRadius: cornerRadiusValue)
-                    .stroke(Color.black,lineWidth: borderWidth)
-                    .background(content: {
-                        RoundedRectangle(cornerRadius: cornerRadiusValue)
-                            .fill(Color.init(hex: "#01024D"))
-                    })
-                
-            }
+            .customRoundedRectangle(borderWidth:2,backgroundColor: Color.init(hex: "#01024D"))
             
         }
         
@@ -431,14 +465,7 @@ struct VideosTabView: View {
                 CardOffSetButton(title: "Following 123", offSetY: 20)
                 
             }
-            .background {
-                RoundedRectangle(cornerRadius: cornerRadiusValue)
-                    .stroke(Color.black,lineWidth: borderWidth)
-                    .background(content: {
-                        RoundedRectangle(cornerRadius: cornerRadiusValue)
-                            .fill(Color.init(hex: "#01024D"))
-                    })
-            }
+            .customRoundedRectangle(borderWidth:2,backgroundColor: Color.init(hex: "#01024D"))
             
         }
         
@@ -453,3 +480,10 @@ struct VideosTabView_Previews: PreviewProvider {
 }
 
 
+
+struct ScrollOffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGPoint = .zero
+
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
+    }
+}

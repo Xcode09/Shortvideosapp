@@ -15,14 +15,14 @@ struct SuggestedCoursesCellView: View {
                 .aspectRatio(9/16, contentMode: .fit)
                 .padding(3)
 
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading) {
                 Text("Course Name over 4 lines with overflow …..")
                     .foregroundColor(.white)
                     .font(.custom("Nunito-Bold", size: 12))
                     .lineLimit(4)
-                    .minimumScaleFactor(0.5)
+                    //.minimumScaleFactor(0.5)
                     .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity,maxHeight:.infinity)
                     .offset(y:28)
        
 
@@ -43,6 +43,7 @@ struct SuggestedCoursesCellView: View {
                     .font(.custom("Nunito-Bold", size: 8))
                     .foregroundColor(.white)
                     .minimumScaleFactor(0.5)
+                    .padding(.bottom,5)
             }
 //            .padding(10)
             .frame(maxWidth: .infinity, alignment: .leading) // Expand the inner VStack to fill width
@@ -52,7 +53,7 @@ struct SuggestedCoursesCellView: View {
                     .strokeBorder(Color.green, lineWidth: 3)
                     .frame(width: 50, height: 50)
                     .background(Circle().fill(Color.gray))
-                    .offset(y: -28)
+                    .offset(y: -23)
             }
             
         }
