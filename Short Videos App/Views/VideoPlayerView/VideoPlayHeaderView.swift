@@ -29,6 +29,7 @@ struct VideoPlayHeaderView: View {
                         .clipShape(Circle()) // Clip the button and its background to a circle
                 }
                 HeaderEmojiView()
+                
                 Button(action: {
                     // Action to perform when button is tapped
                     print("Button tapped")
@@ -43,6 +44,8 @@ struct VideoPlayHeaderView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity)
+        .background(.ultraThinMaterial)
     }}
 
 struct VideoPlayHeaderView_Previews: PreviewProvider {

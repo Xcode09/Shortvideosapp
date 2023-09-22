@@ -53,7 +53,7 @@ struct ProfileCardView: View {
         .padding(viewPadding)
         .background {
             RoundedRectangle(cornerRadius: cornerRadiusValue)
-                .strokeBorder(Color.black,lineWidth: borderWidth)
+                .strokeBorder(Color.black,lineWidth: borderWidth+1)
                 .frame(maxWidth: .infinity,maxHeight:.infinity)
                 .background(content: {
                     RoundedRectangle(cornerRadius: cornerRadiusValue)

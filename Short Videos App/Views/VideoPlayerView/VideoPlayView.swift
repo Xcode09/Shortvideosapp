@@ -12,50 +12,71 @@ struct VideoPlayView: View {
     @State private var showQuiz = false
         var body: some View {
             ZStack {
-//                Color.black
-//                    .edgesIgnoringSafeArea(.all)
+                Color.black.ignoresSafeArea()
+                
+                Player(shouldPlay: true,player: .init(url: .init(string: dummyURL)!))
+                    //.ignoresSafeArea()
+                    .frame(height:UIScreen.main.bounds.height * 0.75)
+//                    .overlay(alignment:.bottom){
+//                        Color.clear.background(.ultraThinMaterial)
+//                            .frame(height:20)
+//                    }
+                    .onTapGesture {
+                        showQuiz.toggle()
+                    }
+//                Color.red
+//                    .frame(height:UIScreen.main.bounds.height * 0.85)
+//                    .overlay(alignment:.bottom){
+//                        Color.clear.background(.ultraThinMaterial)
+//                            .frame(height:20)
+//                    }
+                
+                
                 VStack {
                     VideoPlayHeaderView()
-                            .frame(height: 90)
+                        .frame(height: 90)
+                        .offset(y:-10)
+                        
                             
                             
                     Spacer()
+                    
                     VStack {
                         Spacer()
                         HStack {
                             Spacer()
                             LikeFollowButtonsView()
-                                .offset(y:50)
+                                .offset(x:10,y:10)
                             
                         
                         }
                     }
+                
+                    
                     VStack (spacing: 0){
-                                        VideoDetailView(videoTitle: "Video title in less than 30char", videoDescription: "Short description that summarize the video in less than 90 characters over two lines")
+                        VideoPlayFooterView()
+                        VideoDetailView(videoTitle: "Video title in less than 30char", videoDescription: "Short description that summarize the video in less than 90 characters over two lines",isPlaylistTapped: $isPlaylistTapped)
                         
-                        VideoPlayFooterView(isPlaylistTapped: $isPlaylistTapped)
-
                     }
-                    .overlay(alignment:.top){
+                    .overlay(alignment:.topLeading){
                         if isPlaylistTapped{
                             VideoPlaylistView(isPlaylistTapped: $isPlaylistTapped)
-                                .frame(width:UIScreen.main.bounds.width - 20,height: UIScreen.main.bounds.height * 0.4)
-                                .offset(y:-UIScreen.main.bounds.height * 0.3)
+                                .frame(width:UIScreen.main.bounds.width * 0.8,height: UIScreen.main.bounds.height * 0.4)
+                                .offset(y:-UIScreen.main.bounds.height * 0.45)
                         }
                     }
+                    .offset(y:15)
+                    .background(.ultraThinMaterial)
+                    
                 }
                 
                 
+                
             }
-            .background {
-//                Player(shouldPlay: true,player: .init(url: .init(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4")!))
-//                    .ignoresSafeArea()
-//                    .onTapGesture {
-//                        showQuiz.toggle()
-//                    }
-            }
+            
             .sheet(isPresented: $showQuiz) {
                 QuizeView()
+                    .presentationDetents([.fraction(0.9)])
             }
         }
         

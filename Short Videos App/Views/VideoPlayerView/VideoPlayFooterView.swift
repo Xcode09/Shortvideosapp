@@ -8,27 +8,27 @@
 import SwiftUI
 
 struct VideoPlayFooterView: View {
-    @Binding var isPlaylistTapped:Bool
+
     var body: some View {
         ZStack{
             HStack {
                 VStack(alignment: .leading) {
-                    HStack(spacing: 10) {
+                    HStack(spacing: 5) {
                         Text("Geometry")
-                            .font(.system(size: 10))
+                            .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
                             .background(.ultraThinMaterial)
                             .cornerRadius(5, corners: .allCorners)
                         Text("Algebra")
-                            .font(.system(size: 10))
+                            .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
                             .background(.ultraThinMaterial)
                             .cornerRadius(5, corners: .allCorners)
 
                         Text("Probability")
-                            .font(.system(size: 10))
+                            .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
                             .background(.ultraThinMaterial)
@@ -38,21 +38,11 @@ struct VideoPlayFooterView: View {
                        }
                        
                        Spacer()
-                       
-                       Button(action: {
-                           withAnimation {
-                               isPlaylistTapped.toggle()
-                           }
-                       }) {
-                           Image("more")
-                               .resizable()
-                               .scaledToFit()
-                               .frame(width: 20,height: 20)
-                       }
                    }
-                   .padding()
+            .padding(.horizontal)
             
         }
+        //.background(.ultraThinMaterial)
         
     }
 }
@@ -81,6 +71,7 @@ struct VideoPlaylistView:View
                     
                 } label: {
                     Image(systemName: "chevron.down")
+                        .foregroundColor(.white)
                     
                 }
 
@@ -129,7 +120,7 @@ struct VideoPlaylistView:View
 
 struct VideoPlayFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        VideoPlayFooterView(isPlaylistTapped: .constant(false))
+        VideoPlayFooterView()
     }
 }
 
@@ -138,19 +129,36 @@ struct VideoPlayFooterView_Previews: PreviewProvider {
 struct VideoDetailView: View {
     var videoTitle: String
     var videoDescription: String
-    
+    @Binding var isPlaylistTapped:Bool
     var body: some View {
-        VStack(alignment: .leading,spacing: 10) {
+        VStack(alignment: .leading,spacing: -5) {
             Text(videoTitle)
-                .font(.system(size: 15))
+                .font(.custom("Nunito-Bold", size: 16))
                 .fontWeight(.bold)
-                .foregroundColor(AppColors.customLightGrayColor)
-
+                .foregroundColor(Color.white)
+                .frame(maxWidth:.infinity,alignment:.leading)
+                .padding(.horizontal)
             
-            Text(videoDescription)
-                .font(.system(size: 10))
-                .foregroundColor(AppColors.customLightGrayColor)
+            HStack {
+                Text(videoDescription)
+                    .font(.custom("Nunito-regular", size: 14))
+                    .foregroundColor(Color.gray)
+                
+                Spacer()
+                
+                Button(action: {
+                    withAnimation {
+                        isPlaylistTapped.toggle()
+                    }
+                }) {
+                    Image("more")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20,height: 20)
+                }
+            }
+            .padding(.horizontal)
+            
         }
-        .padding()
     }
 }

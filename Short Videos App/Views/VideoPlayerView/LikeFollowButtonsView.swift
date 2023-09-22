@@ -23,7 +23,7 @@ struct LikeFollowButtonsView: View {
                     Spacer()
                     if isGridViewVisible {
                         SquareButtonsGridView()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
+                            .background(.ultraThinMaterial)
                             .cornerRadius(10, corners: .allCorners)
                     }
                 }
@@ -33,7 +33,7 @@ struct LikeFollowButtonsView: View {
 
                     VStack(spacing: 5) {
                         CustomButton(imageName: "ProfileImage", buttonText: "1250", action: didTapButton)
-                            .frame(height: 60) // Adjust the height for the first button
+                            .frame(height: 40) // Adjust the height for the first button
                             .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
                             .cornerRadius(10)
@@ -235,13 +235,13 @@ struct CustomButton: View {
             VStack {
                 Image(imageName)
                     .resizable()
-                    .frame(width:30 * 0.7,height: 30 * 0.7)
+                    .frame(width:24 * 0.7,height: 24 * 0.7)
                     .foregroundColor(.blue)
                 Text(buttonText)
                     .font(.system(size: 8))
             }
         }
-        .frame(width: 40,height: 40)
+        .frame(width: 30,height: 30)
     }
     
 }

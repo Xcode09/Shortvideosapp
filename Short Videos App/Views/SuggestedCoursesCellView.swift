@@ -13,7 +13,7 @@ struct SuggestedCoursesCellView: View {
             RoundedRectangle(cornerRadius: cornerRadiusValue)
                 .fill(LinearGradient(colors: [.init(hex: "#585353"), .init(hex: "#0B0B0B")], startPoint: .top, endPoint: .bottom))
                 .aspectRatio(9/16, contentMode: .fit)
-                .padding(3)
+                .padding([.leading,.top,.bottom],3)
 
             VStack(alignment: .leading) {
                 Text("Course Name over 4 lines with overflow …..")
@@ -32,17 +32,19 @@ struct SuggestedCoursesCellView: View {
                     Spacer()
                 }
 
-                HStack(spacing: 10) {
+                HStack(spacing: 3) {
                     IconText(imageName: "library_add_check", text: "3/10", iconWidth: 13, iconHeight: 13)
                         .foregroundColor(.white)
-                    IconText(imageName: "visibility_fill", text: "6/10", iconWidth: 16, iconHeight: 11)
+                    IconText(imageName: "visibility_fill", text: "6/10", iconWidth: 13, iconHeight: 13)
                         .foregroundColor(.white)
+                    
+                    Spacer()
                 }
 
                 Text("+3.4k Students")
                     .font(.custom("Nunito-Bold", size: 8))
                     .foregroundColor(.white)
-                    .minimumScaleFactor(0.5)
+                    //.minimumScaleFactor(0.5)
                     .padding(.bottom,5)
             }
 //            .padding(10)
@@ -73,7 +75,7 @@ struct IconText: View {
     var isLeftHand : Bool = false
     var body: some View {
         if isLeftHand {
-            HStack(spacing: 3) {
+            HStack(spacing: 2) {
                 Text(text)
                     .regularFont()
                     .lineLimit(2)
@@ -88,7 +90,7 @@ struct IconText: View {
                 
             }
         }else{
-            HStack(spacing: 3) {
+            HStack(spacing: 2) {
                 Image(imageName)
                     .resizable()
                     .frame(width: iconWidth, height: iconHeight)

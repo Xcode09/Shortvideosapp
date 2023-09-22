@@ -13,6 +13,9 @@ import SwiftUI
 struct QuizeView: View {
     @State private var isButtonTapped = false
     @State private var selectedAnswer: Int?
+    
+    @State private var selectedColor: Color = .clear
+    
     let quizData = [
         ("Quiz 1", "correct", Color(hex: 0xE39DF8)),
         ("Quiz 2", "correct", Color(hex: 0xC3F5FE)),
@@ -44,7 +47,7 @@ struct QuizeView: View {
                                     ForEach(quizData.indices, id: \.self) { index in
                                         let (quiz, imageName, colors) = quizData[index]
                                         Button(action: {
-                                            // Handle the button action for each quiz
+                                            selectedColor = colors
                                         }) {
                                             HStack(spacing: -13) {
                                                 Text(quiz)
@@ -56,7 +59,7 @@ struct QuizeView: View {
                                                     .cornerRadius(18, corners: [.topRight,.topLeft])
                                                 
                                                 //                                            .overlay(
-                                                                                                if index == 0{
+                                                                                                if selectedColor == colors{
                                                 Image(imageName)
                                                     .resizable()
                                                     .offset(x: -16)
@@ -70,28 +73,26 @@ struct QuizeView: View {
                                 }
                                 //                        .offset(y: )
                             }
-                                .offset(y: -297) // Adjust the offset as needed
+                                .offset(y: -300) // Adjust the offset as needed
                         )
                     
                     // Subview with Blue Color
-                    Color(hex: 0x9EF3BE)
-                        .frame(height: 630) // Set the height of the subview
-                        .cornerRadius(20)
-                        .border(.black, width: 2)
-                        .cornerRadius(20)
-                        .offset(y: 55) // Move it down by 30 points
-                    //                .padding(.bottom, 80)
-                        .padding(10)
+                    Color.clear
+                        .padding()
+                        .frame(width:UIScreen.main.bounds.width * 0.95,height: 630)
+                        .customRoundedRectangle(cornerRadiusValue: 20,borderWidth:2,backgroundColor: selectedColor == .clear ? Color(hex: 0x9EF3BE) : selectedColor,borderColor: selectedColor == .clear ? Color.black : selectedColor)
+                        
+                        .offset(y: 55)
+                        
+                        
                     
                     
                     // Pink View inside Subview
                     Color(hex: 0x5E1BB2)
-                        .frame(height: 260) // Set the height of the pink view
-                        .cornerRadius(20)
-                        .border(.black, width: 2)
-                        .cornerRadius(20)
+                        .padding()
+                        .frame(width:UIScreen.main.bounds.width * 0.85,height: 260)
+                        .customRoundedRectangle(cornerRadiusValue: 20,borderWidth:2,backgroundColor: Color(hex: 0x5E1BB2))
                         .offset(y: -110)
-                        .padding(.horizontal, 20)
                         .overlay(//addee
                             // VStack with Text and Image
                             VStack(spacing: 20) {
@@ -109,7 +110,7 @@ struct QuizeView: View {
                                     .foregroundColor(.white)
                                 
                             }// Set the stack's height
-                            .offset(y: -110) // Adjust the offset as needed
+                            .offset(y: -120) // Adjust the offset as needed
                             
                         )
                     //addded
@@ -165,7 +166,7 @@ struct QuizeView: View {
                             }
                             .padding(.top, 10)
                         }
-                        //                                  .padding(.bottom, -75) // Offset from the bottom
+                        .padding(.bottom, -25) // Offset from the bottom
                     }
                     .offset(y: 210)
                 }
@@ -184,14 +185,14 @@ struct QuizeView: View {
     }
     
     var headerView:some View {
-        HStack(spacing:15){
+        HStack(spacing:10){
             
             Spacer().frame(width:viewPadding)
             
-            Text("120 Pts")
+            Text("1250 Pts")
                 .foregroundColor(Color.init(hex: MyColors.pointsColor))
                 .padding(viewPadding)
-                .frame(width: 134,height: 38)
+                .frame(width: 134,height: 36)
                 .font(.custom("Nunito-Bold", size: 22))
                 //.minimumScaleFactor(0.7)
                 .background {
@@ -199,64 +200,90 @@ struct QuizeView: View {
                         .fill(Color.init(hex: MyColors.pontsRectangleColor))
                 }
             
-            VStack(spacing:0){
+            VStack(spacing:-5){
                 Text("50")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 10))
+                    .font(.custom("Nunito-Bold", size: 13))
                     //.minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     
+                VStack(spacing:-3){
+                    Text("Daily")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+    //                    .lineLimit(2)
+    //                    .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("Bouns")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+    //                    .lineLimit(2)
+    //                    .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
                 
-                Text("Daily Bouns")
-                    .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 7))
-                    //.minimumScaleFactor(0.5)
-                    .multilineTextAlignment(.center)
                     
             }
-            .frame(width:38,height: 38)
+            .frame(width:45,height: 36)
             .background {
                 RoundedRectangle(cornerRadius: 8)
                     .fill(Color.init(hex: "#0099A0"))
             }
             
-            VStack(spacing:0){
-                Text("50")
+            
+            VStack(spacing:-5){
+                Text("100")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 10))
+                    .font(.custom("Nunito-Bold", size: 13))
                     //.minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     
                 
-                Text("Daily Bouns")
-                    .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 7))
-                    //.minimumScaleFactor(0.5)
-                    .multilineTextAlignment(.center)
+                VStack(spacing:-3){
+                    Text("Watch")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("3 videos")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
                     
             }
-            .frame(width:38,height: 38)
+            .frame(width:45,height: 36)
             .background {
                 RoundedRectangle(cornerRadius:8)
                     .fill(Color.init(hex: "#6A6070"))
             }
             
-            VStack(spacing:0){
-                Text("50")
+            VStack(spacing:-5){
+                Text("150")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 10))
+                    .font(.custom("Nunito-Bold", size: 13))
                     //.minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     
-                
-                Text("Daily Bouns")
-                    .foregroundColor(Color.init(hex: "#78F0B9"))
-                    .font(.custom("Nunito-Bold", size: 7))
-                    //.minimumScaleFactor(0.5)
-                    .multilineTextAlignment(.center)
+                VStack(spacing:-3){
+                    Text("Complete")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("5 Quizes")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
                     
             }
-            .frame(width:38,height: 38)
+            .frame(width:45,height: 36)
             .background {
                 RoundedRectangle(cornerRadius:8)
                     .fill(Color.init(hex: "#6A6070"))
@@ -264,26 +291,29 @@ struct QuizeView: View {
             
             Spacer()
             
-            Button {
-                //
-            } label: {
-                Image("search")
-                    .resizable()
-                    .frame(width:20,height:20)
-                    .scaledToFit()
-                    .background {
-                        Circle()
-                            .fill(.ultraThinMaterial)
-                            .frame(width:36,height:36)
-                            
-                    }
-                
-            }
-            //.padding(viewPadding)
-            Spacer()
+//            Button {
+//                //
+//            } label: {
+//                Image("search")
+//                    .resizable()
+//                    .renderingMode(.template)
+//                    .foregroundColor(.white)
+//                    
+//                    .frame(width:20,height:20)
+//                    .scaledToFit()
+//                    .background {
+//                        Circle()
+//                            .fill(.ultraThinMaterial)
+//                            .frame(width:36,height:36)
+//                            
+//                    }
+//                
+//            }
+//            //.padding(viewPadding)
+//            Spacer()
             
         }
-        .padding(.horizontal,5)
+        .padding(.all,5)
        
     }
 }

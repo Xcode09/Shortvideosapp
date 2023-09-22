@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+var dummyURL = ""
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -28,6 +29,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         for family in UIFont.familyNames.sorted() {
             let names = UIFont.fontNames(forFamilyName: family)
             print("Family: \(family) Font names: \(names)")
+        }
+        
+        if let url = Bundle.main.url(forResource: "1", withExtension: "mp4") {
+            debugPrint("Video URL",url)
+            dummyURL = url.absoluteString
         }
     }
 

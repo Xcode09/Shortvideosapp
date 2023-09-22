@@ -16,9 +16,21 @@ struct VideoSmallCell: View {
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .overlay(alignment:.topTrailing) {
-            Image("like")
-                .frame(width: 20,height: 20)
-                .offset(x:-10,y: 10)
+            
+            Image(systemName: "hand.thumbsup.fill")
+                .resizable()
+                .frame(width: 14,height: 14)
+                .foregroundColor(.yellow)
+                
+                .background {
+                    RoundedRectangle(cornerRadius: cornerRadiusValue)
+                        .fill(.ultraThinMaterial)
+                        .frame(width:34,height: 34)
+                        
+                }
+                .offset(x:-14,y:20)
+                
+                
         }
         .overlay(alignment:.bottomLeading) {
             HStack(spacing:5){
