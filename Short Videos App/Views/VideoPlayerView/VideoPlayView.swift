@@ -12,53 +12,54 @@ struct VideoPlayView: View {
     @State private var showQuiz = false
         var body: some View {
             ZStack {
-                Color.black.ignoresSafeArea()
+//                Color.black.background(.ultraThinMaterial)
+//                    .frame(maxWidth: .infinity,maxHeight:.infinity)
+//                    //.ignoresSafeArea()
                 
                 Player(shouldPlay: true,player: .init(url: .init(string: dummyURL)!))
                     //.ignoresSafeArea()
-                    .frame(height:UIScreen.main.bounds.height * 0.75)
-//                    .overlay(alignment:.bottom){
-//                        Color.clear.background(.ultraThinMaterial)
-//                            .frame(height:20)
-//                    }
+                    .aspectRatio(9/16, contentMode: .fit)
+                    //.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 16/9)
+                    .frame(height:UIScreen.main.bounds.height * 0.8)
+
                     .onTapGesture {
                         showQuiz.toggle()
                     }
-//                Color.red
-//                    .frame(height:UIScreen.main.bounds.height * 0.85)
+
 //                    .overlay(alignment:.bottom){
-//                        Color.clear.background(.ultraThinMaterial)
-//                            .frame(height:20)
+//                        VideoPlayFooterView()
 //                    }
-                
-                
+
+
                 VStack {
                     VideoPlayHeaderView()
-                        .frame(height: 90)
-                        .offset(y:-10)
-                        
-                            
-                            
+                        .frame(height: 46)
+
+
+
+
                     Spacer()
-                    
+
                     VStack {
                         Spacer()
                         HStack {
                             Spacer()
                             LikeFollowButtonsView()
-                                .offset(x:10,y:10)
-                            
-                        
+                                .offset(x:10,y:20)
+
+
                         }
                     }
-                
+
+                    Spacer()
                     
                     VStack (spacing: 0){
                         VideoPlayFooterView()
-                        VideoDetailView(videoTitle: "Video title in less than 30char", videoDescription: "Short description that summarize the video in less than 90 characters over two lines",isPlaylistTapped: $isPlaylistTapped)
-                        
+                        VideoDetailView(videoTitle: "Video title in less than 30char", videoDescription: "Short description that summarize the video in less than 90 characters over two lines.",isPlaylistTapped: $isPlaylistTapped)
+
                     }
                     .overlay(alignment:.topLeading){
+
                         if isPlaylistTapped{
                             VideoPlaylistView(isPlaylistTapped: $isPlaylistTapped)
                                 .frame(width:UIScreen.main.bounds.width * 0.8,height: UIScreen.main.bounds.height * 0.4)
@@ -66,17 +67,21 @@ struct VideoPlayView: View {
                         }
                     }
                     .offset(y:15)
-                    .background(.ultraThinMaterial)
+                    .background {
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .offset(y:25)
+                            .environment(\.colorScheme, .light)
+                    }
                     
                 }
                 
                 
                 
             }
-            
-            .sheet(isPresented: $showQuiz) {
+            .fullScreenCover(isPresented: $showQuiz) {
                 QuizeView()
-                    .presentationDetents([.fraction(0.9)])
+                    
             }
         }
         
@@ -101,7 +106,7 @@ struct Player : UIViewControllerRepresentable {
         player.automaticallyWaitsToMinimizeStalling = false
         view.player = player
         view.showsPlaybackControls = isShowController
-        view.videoGravity = .resizeAspectFill
+        //view.videoGravity = .re
         
 //        if let videoTrack = (self.player.currentItem?.asset.tracks(withMediaType: .video).first) {
 //

@@ -19,16 +19,16 @@ struct VideoSmallCell: View {
             
             Image(systemName: "hand.thumbsup.fill")
                 .resizable()
-                .frame(width: 14,height: 14)
+                .frame(width: 12,height: 12)
                 .foregroundColor(.yellow)
                 
                 .background {
-                    RoundedRectangle(cornerRadius: cornerRadiusValue)
+                    RoundedRectangle(cornerRadius: 5)
                         .fill(.ultraThinMaterial)
-                        .frame(width:34,height: 34)
+                        .frame(width:24,height: 24)
                         
                 }
-                .offset(x:-14,y:20)
+                .offset(x:-10,y:10)
                 
                 
         }

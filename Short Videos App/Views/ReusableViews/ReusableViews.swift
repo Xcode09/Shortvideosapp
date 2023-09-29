@@ -72,7 +72,7 @@ struct StatView: View {
         .background(content: {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.init(hex: color))
-                .shadow(color: .black.opacity(0.5), radius: 10)
+                .shadow(color: .black.opacity(0.5), radius: 1)
         })
     }
 }

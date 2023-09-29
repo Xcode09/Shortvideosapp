@@ -26,3 +26,16 @@ struct CustomRoundedRectangleModifier: ViewModifier {
             )
     }
 }
+
+struct TransparentBlurView:ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background {
+                RoundedRectangle(cornerRadius: 6.0)
+                    .foregroundColor(.white).opacity(0.5)
+                    //.frame(width: 380, height: 480)
+                    .shadow(color: Color.black.opacity(0.5), radius: 10, x: 0, y: 10)
+                    .blur(radius: 2)
+            }
+    }
+}

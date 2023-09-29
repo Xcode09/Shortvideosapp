@@ -96,18 +96,23 @@ extension View {
     }
     
     func customRoundedRectangle(
-            cornerRadiusValue: CGFloat = cornerRadiusValue,
-            borderWidth: CGFloat = borderWidth,
-            backgroundColor: Color,
-            borderColor: Color = Color.black
-        ) -> some View {
-            modifier(
-                CustomRoundedRectangleModifier(
-                    cornerRadiusValue: cornerRadiusValue,
-                    borderWidth: borderWidth,
-                    backgroundColor: backgroundColor,
-                    borderColor: borderColor
-                )
+        cornerRadiusValue: CGFloat = cornerRadiusValue,
+        borderWidth: CGFloat = borderWidth,
+        backgroundColor: Color,
+        borderColor: Color = Color.black
+    ) -> some View {
+        modifier(
+            CustomRoundedRectangleModifier(
+                cornerRadiusValue: cornerRadiusValue,
+                borderWidth: borderWidth,
+                backgroundColor: backgroundColor,
+                borderColor: borderColor
             )
-        }
+        )
+    }
+    
+    
+    func applyBlur() -> some View {
+        modifier(TransparentBlurView())
+    }
 }

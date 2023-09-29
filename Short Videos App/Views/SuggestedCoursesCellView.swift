@@ -59,10 +59,7 @@ struct SuggestedCoursesCellView: View {
             }
             
         }
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color(hex: "#110031"))
-        )
+        .customRoundedRectangle(borderWidth: borderWidth+1,backgroundColor: Color(hex: "#110031"))
     }
 }
 

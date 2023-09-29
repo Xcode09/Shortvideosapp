@@ -12,7 +12,6 @@
 		68280F452AB38A2100898220 /* QuizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68280F442AB38A2100898220 /* QuizeView.swift */; };
 		68280F472AB38E3A00898220 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68280F462AB38E3A00898220 /* ViewModifier.swift */; };
 		68661F162A9F8DBA00E91113 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68661F152A9F8DBA00E91113 /* ProfileCardView.swift */; };
-		686E3CAA2ABCCF2F00236E09 /* 1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 686E3CA92ABCCF2F00236E09 /* 1.mp4 */; };
 		6871336D2AAF5A2B0072C798 /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6871335D2AAF5A290072C798 /* Nunito-SemiBoldItalic.ttf */; };
 		6871336E2AAF5A2B0072C798 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6871335E2AAF5A290072C798 /* Nunito-BlackItalic.ttf */; };
 		6871336F2AAF5A2B0072C798 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6871335F2AAF5A290072C798 /* Nunito-Regular.ttf */; };
@@ -47,6 +46,8 @@
 		68C4A2B32A928B6300A2E204 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C4A2B22A928B6300A2E204 /* Assets.xcassets */; };
 		68C4A2B62A928B6300A2E204 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C4A2B42A928B6300A2E204 /* LaunchScreen.storyboard */; };
 		68C4A2E92A92908000A2E204 /* GlidingCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E82A92908000A2E204 /* GlidingCollection */; };
+		68D264FB2AC3273E00A246AB /* 1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 68D264FA2AC3273E00A246AB /* 1.mp4 */; };
+		68D264FD2AC5F5A400A246AB /* TeacherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D264FC2AC5F5A400A246AB /* TeacherProfileView.swift */; };
 		68DAB2F32AA109C50033EF06 /* SearchVideosFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F22AA109C50033EF06 /* SearchVideosFilterView.swift */; };
 		68DAB2F62AA117460033EF06 /* ReusableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F52AA117460033EF06 /* ReusableViews.swift */; };
 		68DAB2F92AA117C40033EF06 /* CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F82AA117C40033EF06 /* CustomShapes.swift */; };
@@ -81,7 +82,6 @@
 		68280F442AB38A2100898220 /* QuizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizeView.swift; sourceTree = "<group>"; };
 		68280F462AB38E3A00898220 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 		68661F152A9F8DBA00E91113 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
-		686E3CA92ABCCF2F00236E09 /* 1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.mp4; sourceTree = "<group>"; };
 		6871335D2AAF5A290072C798 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-SemiBoldItalic.ttf"; path = "../../../Downloads/Nunito/static/Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		6871335E2AAF5A290072C798 /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-BlackItalic.ttf"; path = "../../../Downloads/Nunito/static/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		6871335F2AAF5A290072C798 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../../../Downloads/Nunito/static/Nunito-Regular.ttf"; sourceTree = "<group>"; };
@@ -117,6 +117,8 @@
 		68C4A2B22A928B6300A2E204 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68C4A2B52A928B6300A2E204 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68C4A2B72A928B6300A2E204 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68D264FA2AC3273E00A246AB /* 1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.mp4; sourceTree = "<group>"; };
+		68D264FC2AC5F5A400A246AB /* TeacherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherProfileView.swift; sourceTree = "<group>"; };
 		68DAB2F22AA109C50033EF06 /* SearchVideosFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVideosFilterView.swift; sourceTree = "<group>"; };
 		68DAB2F52AA117460033EF06 /* ReusableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViews.swift; sourceTree = "<group>"; };
 		68DAB2F82AA117C40033EF06 /* CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShapes.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				68DAB2FF2AA1269A0033EF06 /* MyCollectionsView.swift */,
 				68DAB3012AA20B060033EF06 /* VideoWithDetailCellView.swift */,
 				68DAB3032AA22BE30033EF06 /* CourseDetailView.swift */,
+				68D264FC2AC5F5A400A246AB /* TeacherProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -235,7 +238,7 @@
 		68C4A2A82A928B6000A2E204 /* Short Videos App */ = {
 			isa = PBXGroup;
 			children = (
-				686E3CA92ABCCF2F00236E09 /* 1.mp4 */,
+				68D264FA2AC3273E00A246AB /* 1.mp4 */,
 				687133652AAF5A2A0072C798 /* Nunito-Black.ttf */,
 				6871335E2AAF5A290072C798 /* Nunito-BlackItalic.ttf */,
 				687133662AAF5A2A0072C798 /* Nunito-Bold.ttf */,
@@ -367,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D264FB2AC3273E00A246AB /* 1.mp4 in Resources */,
 				687133742AAF5A2B0072C798 /* Nunito-ExtraBold.ttf in Resources */,
 				6871336F2AAF5A2B0072C798 /* Nunito-Regular.ttf in Resources */,
 				687133792AAF5A2B0072C798 /* Nunito-BoldItalic.ttf in Resources */,
@@ -384,7 +388,6 @@
 				68C4A2B12A928B6000A2E204 /* Main.storyboard in Resources */,
 				6871336E2AAF5A2B0072C798 /* Nunito-BlackItalic.ttf in Resources */,
 				6871337C2AAF5A2B0072C798 /* Nunito-MediumItalic.ttf in Resources */,
-				686E3CAA2ABCCF2F00236E09 /* 1.mp4 in Resources */,
 				687133782AAF5A2B0072C798 /* Nunito-LightItalic.ttf in Resources */,
 				687133752AAF5A2B0072C798 /* Nunito-Black.ttf in Resources */,
 			);
@@ -410,6 +413,7 @@
 				68DAB2FE2AA123F60033EF06 /* HeaderTabView.swift in Sources */,
 				68DAB2F62AA117460033EF06 /* ReusableViews.swift in Sources */,
 				6879825A2A9A5E1300E021A7 /* ProfileView.swift in Sources */,
+				68D264FD2AC5F5A400A246AB /* TeacherProfileView.swift in Sources */,
 				68DAB3002AA1269A0033EF06 /* MyCollectionsView.swift in Sources */,
 				68DAB2F32AA109C50033EF06 /* SearchVideosFilterView.swift in Sources */,
 				6879B5912AA653FE005C2252 /* FollowingView.swift in Sources */,

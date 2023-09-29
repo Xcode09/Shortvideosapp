@@ -14,6 +14,7 @@ enum VideoTabViewSheetItems:String,Identifiable{
     case myCollectionsTapped
     case courseDetailView
     case trendingTapped
+    case onlineTutors
 }
 
 class VideoTabViewModel:ObservableObject {

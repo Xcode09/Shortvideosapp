@@ -19,12 +19,14 @@ struct VideoPlayFooterView: View {
                             .padding(6)
                             .foregroundColor(.white)
                             .background(.ultraThinMaterial)
+                            .environment(\.colorScheme, .light)
                             .cornerRadius(5, corners: .allCorners)
                         Text("Algebra")
                             .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
                             .background(.ultraThinMaterial)
+                            .environment(\.colorScheme, .light)
                             .cornerRadius(5, corners: .allCorners)
 
                         Text("Probability")
@@ -32,6 +34,7 @@ struct VideoPlayFooterView: View {
                             .padding(6)
                             .foregroundColor(.white)
                             .background(.ultraThinMaterial)
+                            .environment(\.colorScheme, .light)
                             .cornerRadius(5, corners: .allCorners)
 
                     }
@@ -42,7 +45,12 @@ struct VideoPlayFooterView: View {
             .padding(.horizontal)
             
         }
-        //.background(.ultraThinMaterial)
+//        .background {
+//            Rectangle()
+//                .fill(.ultraThinMaterial)
+//                .offset(y:13)
+//                .environment(\.colorScheme, .light)
+//        }
         
     }
 }
@@ -114,7 +122,8 @@ struct VideoPlaylistView:View
             }
             
         }
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 10,style: .continuous))
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10,style: .continuous))
+        .environment(\.colorScheme, .light)
     }
 }
 
@@ -143,6 +152,8 @@ struct VideoDetailView: View {
                 Text(videoDescription)
                     .font(.custom("Nunito-regular", size: 14))
                     .foregroundColor(Color.gray)
+                    .frame(maxWidth: .infinity)
+                    .lineSpacing(0)
                 
                 Spacer()
                 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileCardView: View {
     var body: some View {
-        VStack{
+        VStack(spacing:viewPadding){
             Circle()
                 .strokeBorder(Color.green,lineWidth: 4)
                 .frame(width:63,height: 63)
@@ -45,9 +45,8 @@ struct ProfileCardView: View {
 
 
             }
-            //.frame(maxWidth:176)
             
-            Spacer().frame(height:36)
+            Spacer().frame(height:viewPadding)
             
         }
         .padding(viewPadding)

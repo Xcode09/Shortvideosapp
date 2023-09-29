@@ -50,6 +50,7 @@ struct VideosTabView: View {
  
                     onlineTutors
                         
+                        
    
                     followingSection
                         .padding(.top,viewPadding)
@@ -81,6 +82,8 @@ struct VideosTabView: View {
                     CourseDetailView()
                 case .trendingTapped:
                     TrendingVideosCollectionView()
+                case .onlineTutors:
+                    TeacherProfileView()
                 }
             })
         }
@@ -105,7 +108,7 @@ struct VideosTabView: View {
                         .fill(Color.init(hex: MyColors.pontsRectangleColor))
                 }
             
-            VStack(spacing:-5){
+            VStack(spacing:-4){
                 Text("50")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
                     .font(.custom("Nunito-Bold", size: 13))
@@ -137,7 +140,7 @@ struct VideosTabView: View {
             }
             
             
-            VStack(spacing:-5){
+            VStack(spacing:-4){
                 Text("100")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
                     .font(.custom("Nunito-Bold", size: 13))
@@ -166,7 +169,7 @@ struct VideosTabView: View {
                     .fill(Color.init(hex: "#6A6070"))
             }
             
-            VStack(spacing:-5){
+            VStack(spacing:-4){
                 Text("150")
                     .foregroundColor(Color.init(hex: "#78F0B9"))
                     .font(.custom("Nunito-Bold", size: 13))
@@ -249,7 +252,7 @@ struct VideosTabView: View {
                 HStack(spacing:viewPadding){
                     ForEach(0..<16,id:\.self) { index in
                         VideoSmallCell()
-                            .frame(width:95,height: 130)
+                            .frame(width:130,height: 160)
                             .onTapGesture {
                                 videoSheetitems = .videoTapped
                                 print("Did Tap Video")
@@ -309,7 +312,7 @@ struct VideosTabView: View {
                 HStack(spacing:viewPadding){
                     ForEach(0..<8) { index in
                         VideoSmallCell()
-                            .frame(width:95,height: 130)
+                            .frame(width:130,height: 160)
                             .background {
                                 GeometryReader {
                                     geometry in
@@ -449,6 +452,7 @@ struct VideosTabView: View {
                             
                             VStack{
                                 Text("Collection name")
+                                    .frame(width:70)
                                     .foregroundColor(.black)
                                     .font(.custom("Nunito-Bold", size: 12))
                                     .lineLimit(2)
@@ -468,7 +472,7 @@ struct VideosTabView: View {
                             .padding(viewPadding)
                             
                         }
-                        .frame(width:95,height: 130)
+                        .frame(width:130,height: 160)
                         .background {
                             GeometryReader {
                                 geometry in
@@ -491,7 +495,7 @@ struct VideosTabView: View {
             .coordinateSpace(name: "scroll")
         }
         .foregroundColor(.white)
-        .padding([.vertical,.horizontal])
+        .padding(viewPadding)
         .customRoundedRectangle(borderWidth: 2,backgroundColor: Color.init(hex: "#01024D"))
     }
     
@@ -503,6 +507,9 @@ struct VideosTabView: View {
                 LazyVGrid(columns: column,spacing: 30) {
                     ForEach(0..<4) { _ in
                         ProfileCardView()
+                            .onTapGesture {
+                                videoSheetitems = .onlineTutors
+                            }
                     }
 
                 }

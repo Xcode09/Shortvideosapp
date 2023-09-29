@@ -13,8 +13,8 @@ struct CourseDetailView: View {
         NavigationView {
             ScrollView{
                 VStack(spacing: viewPadding){
-                    VStack(spacing: 20){
-                        VStack(spacing:viewPadding){
+                    VStack(spacing: 20+viewPadding){
+                        VStack(spacing:viewPadding-5){
                             HStack{
                                 HStack {
                                     Image("location_on_fill")
@@ -30,7 +30,7 @@ struct CourseDetailView: View {
                                             .foregroundColor(Color.init(hex: "#FF7EC3"))
                                     }
                                 }
-                                
+                                .offset(y:-20)
                                 
                                 Spacer()
 
@@ -42,53 +42,52 @@ struct CourseDetailView: View {
                                         .resizable()
                                         .frame(width:12,height:15)
                                 }
+                                .offset(y:-20)
                             }
                             .frame(height:46)
                             
-                            //Spacer().frame(height:20)
                             
                             Text("First name and Lastname")
                                 .foregroundColor(.white)
-                            .regularFont()
+                                .font(Font.custom("Nunito-SemiBold", size: 10))
                             
-                            TagView(text: "Biology")
+                            TagView(text: "Mathematics")
+                                .foregroundColor(.black)
+                            
                             
                             Text("Course title over 2 lines")
                                 .foregroundColor(.white)
-                                .font(Font.custom("Nunito-Bold", size: 23))
+                                .frame(width:130)
+                                .font(Font.custom("Nunito-Bold", size: 22))
+                                .lineSpacing(0)
+                                
                             
                             Text("Course description over two lines maximum 80 characters")
+                                .frame(width:200)
                                 .foregroundColor(.white)
                             .regularFont()
                             .multilineTextAlignment(.center)
                             
-                            HStack {
+                            HStack(spacing:40){
                                 StatView(value: "2.2k", title: "Students",color: "#531886")
-                                    .frame(width:65,height:55)
+//                                    .frame(width:65,height:55)
                                 StatView(value: "4k", title: "Reactions",color: "#531886")
-                                    .frame(width:65,height:55)
+//                                    .frame(width:65,height:55)
                                 StatView(value: "124k", title: "Views",color: "#531886")
-                                    .frame(width:65,height:55)
-                                
+//                                    .frame(width:65,height:55)
+//
                                 StatView(value: "55", title: "Points",color: "#531886")
-                                    .frame(width:65,height:55)
+//                                    .frame(width:65,height:55)
                             }
                             
-                            Spacer().frame(height:20)
+                            Spacer().frame(height:viewPadding+viewPadding)
                             
                             
                             
                         }
                         .padding()
-                        .background {
-                            RoundedRectangle(cornerRadius: cornerRadiusValue)
-                                .stroke(Color.black,lineWidth: borderWidth)
-                                .background(content: {
-                                    RoundedRectangle(cornerRadius: cornerRadiusValue)
-                                        .fill(Color.init(hex:"#2E0A6A"))
-                                })
-                            
-                        }
+                        //.frame(height:290)
+                        .customRoundedRectangle(borderWidth:borderWidth+1,backgroundColor:Color.init(hex: "#2E0A6A"))
                         .overlay(alignment:.top){
                             Circle()
                                 .strokeBorder(Color.green,lineWidth: 6)
@@ -112,14 +111,26 @@ struct CourseDetailView: View {
                         .overlay(alignment:.bottom) {
                             HStack{
                                 //Spacer()
+                                VStack(spacing:-5){
+                                    Text("Available Now")
+                                        .font(.custom("Nunito-Bold", size: 16))
+                                        .frame(alignment:.center)
+                                        .lineLimit(2)
+                                        //.minimumScaleFactor(0.5)
+                                        .foregroundColor(Color.black)
+                                        .multilineTextAlignment(.center)
+                                        .lineSpacing(0)
                                     
-                                Text("Available Now for Quick Help")
-                                    .font(.custom("Nunito-Bold", size: 16))
-                                    .frame(alignment:.center)
-                                    .lineLimit(2)
-                                    //.minimumScaleFactor(0.5)
-                                    .foregroundColor(Color.black)
-                                    .multilineTextAlignment(.center)
+                                    Text("for Quick Help")
+                                        .font(.custom("Nunito-Bold", size: 16))
+                                        .frame(alignment:.center)
+                                        .lineLimit(2)
+                                        //.minimumScaleFactor(0.5)
+                                        .foregroundColor(Color.black)
+                                        .multilineTextAlignment(.center)
+                                        .lineSpacing(0)
+                                }
+                                
                                 
                                 Image("spark_green")
                                     .resizable()
@@ -129,22 +140,17 @@ struct CourseDetailView: View {
                                     
                             }
                             .frame(width:240,height:50)
-                            .background {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .strokeBorder(Color.black,lineWidth: borderWidth)
-                                    .frame(maxWidth: .infinity,maxHeight:.infinity)
-                                    .background(content: {
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(LinearGradient(colors: [Color.init(hex: "#47F2A9"),Color.init(hex: "#0A965A")], startPoint: .top, endPoint: .bottom))
-                                    })
-                            }
+                            .customRoundedRectangle(backgroundColor:Color.init(hex: "#4DD99E"))
                             .offset(y:20)
                         }
-                        
-                        ForEach(0..<5) { _ in
-                            VideoWithDetailCellView()
-                                //.frame(maxWidth:.infinity)
+                        VStack(spacing:-10){
+                            ForEach(0..<5) { _ in
+                                VideoWithDetailCellView()
+                                    //.frame(maxWidth:.infinity)
+                            }
                         }
+                        
+                        
                         HStack{
                             Button {
                                 //
@@ -183,12 +189,14 @@ struct CourseDetailView: View {
                     segmentView
                         .padding()
                     
-                    LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible())],spacing:10) {
-                        ForEach(0..<5) { _ in
+                    LazyVGrid(columns: [GridItem(spacing:0),GridItem(spacing:0)],spacing:0) {
+                        ForEach(0..<6) { _ in
                             courseDetailCell
                         }
                     }
-                    //.padding()
+                    .background {
+                        Color.init(hex: "#A879DE")
+                    }
                     
                 }
                 .frame(width:UIScreen.main.bounds.width)

@@ -22,10 +22,13 @@ struct VideoPlayHeaderView: View {
                 }) {
                     Image("back")
                         .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(.white)
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 20) // Adjust the size as needed
-                        .padding()
+                        .padding(10)
                         .background(.ultraThinMaterial)
+                        .environment(\.colorScheme, .light)
                         .clipShape(Circle()) // Clip the button and its background to a circle
                 }
                 HeaderEmojiView()
@@ -36,16 +39,27 @@ struct VideoPlayHeaderView: View {
                 }) {
                     Image("search")
                         .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(.white)
                         .aspectRatio(contentMode: .fit)
+                    
                         .frame(width: 20, height: 20) // Adjust the size as needed
-                        .padding()
+                        .padding(10)
                         .background(.ultraThinMaterial)
+                        .environment(\.colorScheme, .light)
                         .clipShape(Circle()) // Clip the button and its background to a circle
                 }
             }
+
         }
         .frame(maxWidth: .infinity)
-        .background(.ultraThinMaterial)
+        .background(alignment:.bottom){
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                //.frame(height:10)
+                .offset(y:5)
+                .environment(\.colorScheme, .light)
+        }
     }}
 
 struct VideoPlayHeaderView_Previews: PreviewProvider {

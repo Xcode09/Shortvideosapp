@@ -32,11 +32,26 @@ struct LikeFollowButtonsView: View {
   
 
                     VStack(spacing: 5) {
-                        CustomButton(imageName: "ProfileImage", buttonText: "1250", action: didTapButton)
-                            .frame(height: 40) // Adjust the height for the first button
-                            .padding(8)                        .background(.ultraThinMaterial)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                        Circle()
+                            .strokeBorder(Color.green,lineWidth: 3)
+                            .frame(width: 40,height: 40)
+                            .background(Circle().fill(Color.white))
+                            .overlay {
+                                ZStack{
+                                    Circle().fill(Color.init(hex: "#531886"))
+                                        .frame(width:20,height:20)
+                                    
+                                    Image(systemName: "plus")
+                                        .resizable()
+                                        .frame(width:10,height:10)
+                                        .scaledToFit()
+                                        .foregroundColor(.white)
+                                }
+                                .offset(y:20)
+                                
+                            }
+                            .padding(.bottom,12)
+                           
 
 
                         CustomButton(imageName: "quizfill", buttonText: "3/3", action: {
@@ -45,33 +60,37 @@ struct LikeFollowButtonsView: View {
                         //.frame(width:40,height: 40) // Adjust the height for the first button
                             .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
-                            .cornerRadius(10)
+                            .cornerRadius(6)
 
                         CustomButton(imageName: "likeHeart", buttonText: "24.6K", action: didTapButton)
                             //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)                        .background(.ultraThinMaterial)
                             .foregroundColor(.white)
-                            .cornerRadius(10)
-
-                        CustomButton(imageName: "share", buttonText: "7.9K", action: didTapButton)
-                            //.frame(height: 30) // Adjust the height for the first button
-                            .padding(8)                        .background(.ultraThinMaterial)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-
-                        CustomButton(imageName: "saved", buttonText: "5.2K", action: didTapButton)
-                            //.frame(height: 30) // Adjust the height for the first button
-                            .padding(8)                        .background(.ultraThinMaterial)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            
+                            .cornerRadius(6)
 
                         CustomButton(imageName: "groupEmoji", buttonText: "", action: didTapSelectEmoji)
                             //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)
                             .background(.ultraThinMaterial)
                             .foregroundColor(.white)
-                            .cornerRadius(10)
+                            .cornerRadius(6)
+                        
+                        
+
+                        CustomButton(imageName: "saved", buttonText: "", action: didTapButton,noText: true)
+                            //.frame(height: 30) // Adjust the height for the first button
+                            .padding(8)                        .background(.ultraThinMaterial)
+                            .foregroundColor(.white)
+                            .cornerRadius(6)
+                        
+                        CustomButton(imageName: "share", buttonText: "7.9K", action: didTapButton)
+                            //.frame(height: 30) // Adjust the height for the first button
+                            .padding(8)                        .background(.ultraThinMaterial)
+                            .foregroundColor(.white)
+                            .cornerRadius(6)
+                            
+
+                        
                                 
                         }
                     .padding()
@@ -87,6 +106,7 @@ struct LikeFollowButtonsView: View {
                     .presentationDetents([.fraction(reportContent ? 1 : 0.3)])
             }
         }
+        .environment(\.colorScheme, .light)
     }
     
     func didTapSelectEmoji() {
@@ -99,6 +119,8 @@ struct LikeFollowButtonsView: View {
         showSave.toggle()
     }
 }
+
+
 
 struct ReportVideoContentView:View {
     @Binding var reportContent:Bool
@@ -225,23 +247,35 @@ struct CustomButton: View {
     let imageName: String
     let buttonText: String
     let action: () -> Void // Closure to handle button tap
-
+    
+    var noText:Bool = false
     var body: some View {
         Button(action: {
             // Action to perform when button is tapped
             print("Button tapped: \(buttonText)")
             action()
         }) {
-            VStack {
+            if noText {
                 Image(imageName)
                     .resizable()
-                    .frame(width:24 * 0.7,height: 24 * 0.7)
-                    .foregroundColor(.blue)
-                Text(buttonText)
-                    .font(.system(size: 8))
+                    .frame(width:20,height: 20)
+                    //.foregroundColor(.blue)
+                    .clipped()
+            }else{
+                VStack {
+                    Image(imageName)
+                        .resizable()
+                        .frame(width:16,height: 16)
+                        //.foregroundColor(.blue)
+                        .clipped()
+                    Text(buttonText)
+                        .font(.system(size: 8))
+                }
             }
+            
         }
-        .frame(width: 30,height: 30)
+        .frame(width: 24,height: 24)
+        //.opacity(0.5)
     }
     
 }
