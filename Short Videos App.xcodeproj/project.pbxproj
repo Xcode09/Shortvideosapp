@@ -12,6 +12,7 @@
 		68280F452AB38A2100898220 /* QuizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68280F442AB38A2100898220 /* QuizeView.swift */; };
 		68280F472AB38E3A00898220 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68280F462AB38E3A00898220 /* ViewModifier.swift */; };
 		68661F162A9F8DBA00E91113 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68661F152A9F8DBA00E91113 /* ProfileCardView.swift */; };
+		68690C192ACC51C900F9F7AF /* FillintheBlanksQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68690C182ACC51C900F9F7AF /* FillintheBlanksQuizView.swift */; };
 		6871336D2AAF5A2B0072C798 /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6871335D2AAF5A290072C798 /* Nunito-SemiBoldItalic.ttf */; };
 		6871336E2AAF5A2B0072C798 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6871335E2AAF5A290072C798 /* Nunito-BlackItalic.ttf */; };
 		6871336F2AAF5A2B0072C798 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6871335F2AAF5A290072C798 /* Nunito-Regular.ttf */; };
@@ -48,6 +49,8 @@
 		68C4A2E92A92908000A2E204 /* GlidingCollection in Frameworks */ = {isa = PBXBuildFile; productRef = 68C4A2E82A92908000A2E204 /* GlidingCollection */; };
 		68D264FB2AC3273E00A246AB /* 1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 68D264FA2AC3273E00A246AB /* 1.mp4 */; };
 		68D264FD2AC5F5A400A246AB /* TeacherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D264FC2AC5F5A400A246AB /* TeacherProfileView.swift */; };
+		68D265052AC8741C00A246AB /* MatchQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D265042AC8741C00A246AB /* MatchQuizView.swift */; };
+		68D265072AC8982900A246AB /* DragDropQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D265062AC8982900A246AB /* DragDropQuizView.swift */; };
 		68DAB2F32AA109C50033EF06 /* SearchVideosFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F22AA109C50033EF06 /* SearchVideosFilterView.swift */; };
 		68DAB2F62AA117460033EF06 /* ReusableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F52AA117460033EF06 /* ReusableViews.swift */; };
 		68DAB2F92AA117C40033EF06 /* CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAB2F82AA117C40033EF06 /* CustomShapes.swift */; };
@@ -82,6 +85,7 @@
 		68280F442AB38A2100898220 /* QuizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizeView.swift; sourceTree = "<group>"; };
 		68280F462AB38E3A00898220 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 		68661F152A9F8DBA00E91113 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
+		68690C182ACC51C900F9F7AF /* FillintheBlanksQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillintheBlanksQuizView.swift; sourceTree = "<group>"; };
 		6871335D2AAF5A290072C798 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-SemiBoldItalic.ttf"; path = "../../../Downloads/Nunito/static/Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		6871335E2AAF5A290072C798 /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-BlackItalic.ttf"; path = "../../../Downloads/Nunito/static/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		6871335F2AAF5A290072C798 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../../../Downloads/Nunito/static/Nunito-Regular.ttf"; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 		68C4A2B72A928B6300A2E204 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68D264FA2AC3273E00A246AB /* 1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.mp4; sourceTree = "<group>"; };
 		68D264FC2AC5F5A400A246AB /* TeacherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherProfileView.swift; sourceTree = "<group>"; };
+		68D265042AC8741C00A246AB /* MatchQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchQuizView.swift; sourceTree = "<group>"; };
+		68D265062AC8982900A246AB /* DragDropQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDropQuizView.swift; sourceTree = "<group>"; };
 		68DAB2F22AA109C50033EF06 /* SearchVideosFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVideosFilterView.swift; sourceTree = "<group>"; };
 		68DAB2F52AA117460033EF06 /* ReusableViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViews.swift; sourceTree = "<group>"; };
 		68DAB2F82AA117C40033EF06 /* CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShapes.swift; sourceTree = "<group>"; };
@@ -158,7 +164,10 @@
 		68280F432AB38A0600898220 /* QuizesView */ = {
 			isa = PBXGroup;
 			children = (
+				68D265042AC8741C00A246AB /* MatchQuizView.swift */,
 				68280F442AB38A2100898220 /* QuizeView.swift */,
+				68D265062AC8982900A246AB /* DragDropQuizView.swift */,
+				68690C182ACC51C900F9F7AF /* FillintheBlanksQuizView.swift */,
 			);
 			path = QuizesView;
 			sourceTree = "<group>";
@@ -416,7 +425,9 @@
 				68D264FD2AC5F5A400A246AB /* TeacherProfileView.swift in Sources */,
 				68DAB3002AA1269A0033EF06 /* MyCollectionsView.swift in Sources */,
 				68DAB2F32AA109C50033EF06 /* SearchVideosFilterView.swift in Sources */,
+				68D265072AC8982900A246AB /* DragDropQuizView.swift in Sources */,
 				6879B5912AA653FE005C2252 /* FollowingView.swift in Sources */,
+				68690C192ACC51C900F9F7AF /* FillintheBlanksQuizView.swift in Sources */,
 				6879825C2A9B45D100E021A7 /* VideosTabView.swift in Sources */,
 				68DAB2F92AA117C40033EF06 /* CustomShapes.swift in Sources */,
 				68280F452AB38A2100898220 /* QuizeView.swift in Sources */,
@@ -431,6 +442,7 @@
 				681EB0862AA7A5430053E7C5 /* ShowMyCollectionsView.swift in Sources */,
 				68C4A2AA2A928B6000A2E204 /* AppDelegate.swift in Sources */,
 				B5B45E502A9E433A0076C51F /* CustomAppColors.swift in Sources */,
+				68D265052AC8741C00A246AB /* MatchQuizView.swift in Sources */,
 				68C4A2AC2A928B6000A2E204 /* SceneDelegate.swift in Sources */,
 				68DAB2FC2AA1192B0033EF06 /* VideoTabViewModel.swift in Sources */,
 			);

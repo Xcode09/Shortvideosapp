@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         //CustomTabBar()
-        window.rootViewController = UIHostingController(rootView: CustomTabBar())
+        window.rootViewController = UIHostingController(rootView: DragDropQuizView())
         
         window.makeKeyAndVisible()
         self.window = window
