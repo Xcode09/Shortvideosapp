@@ -63,101 +63,137 @@ struct DragDropQuizView: View {
                         }
                     }
                 }
-                .offset(y:20)
+                .offset(y:10)
                 
                 VStack {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: cornerRadiusValue)
-                            .fill(Color.init(hex:  0x9EF3BE))
+                    VStack{
+                        Text("Question related to the quizz text here, upto 300 characters")
+                            .padding(viewPadding)
+                            .font(.custom("Nunito-Bold", size: 16))
+                            //.frame(height:100)
+                            .customRoundedRectangle(backgroundColor: .init(hex: 0x3B1D68))
                         
-                        VStack{
-                            Text("Question related to the quizz text here, upto 300 characters")
-                                .padding(viewPadding)
-                                .frame(width:UIScreen.main.bounds.width - 20 ,height:100)
-                                .customRoundedRectangle(backgroundColor: .init(hex: 0x3B1D68))
-                            
-                            //Spacer()
-                            
-                            HStack{
-                                KenbeView(ansers: group1Answers, color: "#F3E0FD")
-                                    .dropDestination(for: String.self) { dropObject, location in
-                                        if group1Answers.count == 4 {
-                                            return false
-                                        }else{
-                                            for drop in dropObject {
-                                                if group1Answers.contains(drop) {
-                                                    return false
-                                                }else{
-                                                    group1Answers += dropObject
-                                                    
-                                                    dummyAnswers.removeAll(where: {$0 == drop})
-                                                    return true
-                                                }
+                        //Spacer()
+                        
+                        HStack{
+                            KenbeView(ansers: group1Answers, color: "#F3E0FD")
+                                .dropDestination(for: String.self) { dropObject, location in
+                                    if group1Answers.count == 4 {
+                                        return false
+                                    }else{
+                                        for drop in dropObject {
+                                            if group1Answers.contains(drop) {
+                                                return false
+                                            }else{
+                                                group1Answers += dropObject
                                                 
+                                                dummyAnswers.removeAll(where: {$0 == drop})
+                                                return true
                                             }
                                             
-                                            
-                                            return true
                                         }
                                         
+                                        
+                                        return true
                                     }
+                                    
+                                }
 
-                                KenbeView(ansers: group2Answers,color:"#DAE6FA")
-                                    .dropDestination(for: String.self) { dropObject, location in
-                                        if group2Answers.count == 4 {
-                                            return false
-                                        }else{
-                                            for drop in dropObject {
-                                                if group2Answers.contains(drop) {
-                                                    return false
-                                                }else{
-                                                    group2Answers += dropObject
-                                                    
-                                                    dummyAnswers.removeAll(where: {$0 == drop})
-                                                    return true
-                                                }
+                            KenbeView(ansers: group2Answers,color:"#DAE6FA")
+                                .dropDestination(for: String.self) { dropObject, location in
+                                    if group2Answers.count == 4 {
+                                        return false
+                                    }else{
+                                        for drop in dropObject {
+                                            if group2Answers.contains(drop) {
+                                                return false
+                                            }else{
+                                                group2Answers += dropObject
                                                 
+                                                dummyAnswers.removeAll(where: {$0 == drop})
+                                                return true
                                             }
                                             
-                                            
-                                            return true
                                         }
                                         
+                                        
+                                        return true
                                     }
-                            }
-                            
-                            Spacer()
-                            
-                            ScrollView(.horizontal) {
-                                HStack(spacing:viewPadding){
-                                    ForEach(dummyAnswers,id:\.self) { index in
-                                        Text(index)
-                                            .padding()
+                                    
+                                }
+                        }
+                        
+                        Spacer()
+                        ZStack{
+                            Color.black.opacity(0.3)
+                            VStack{
+                                Text("Drag and Drop the answers to the correct slots")
+                                    .font(.custom("Nunito-Bold", size: 13))
+                                    .foregroundColor(.black)
+                                
+                                ScrollView(.horizontal) {
+                                    HStack(spacing:viewPadding){
+                                        ForEach(dummyAnswers,id:\.self) { index in
+                                            ZStack{
+                                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                                    .stroke(Color.black,lineWidth:2)
+                                                    .background(content: {
+                                                        RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                                            .fill(Color.init(hex: "#E5E3EE"))
+                                                    })
+                                                    
+                                                Text(index)
+        //                                            .padding(viewPadding)
+                                                    .font(.custom("Nunito-Bold", size: 20))
+                                                    .foregroundColor(.black)
+                                            }
                                             .frame(width:120,height:120)
-                                            .font(.custom("Nunito-Bold", size: 20))
-                                            .foregroundColor(.black)
-                                            .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:3,backgroundColor: .init(hex: "#E5E3EE"))
+    //                                        .customRoundedRectangle(backgroundColor: .init(hex: "#E5E3EE"))
                                             .draggable(index)
+                                        }
                                     }
                                 }
                             }
-                            .dropDestination(for: String.self) { items, location in
-                                
-                                dummyAnswers += items
-                                return true
-                            }
-
-                            
-                            Spacer().frame(height:20)
+                            .padding(viewPadding)
                         }
-                        .padding(viewPadding)
+                        .frame(height:160)
+                    
+                        
+                        Spacer().frame(height:45)
                     }
-                    .frame(height:UIScreen.main.bounds.height * 0.7)
-                    .padding(viewPadding)
+                    //.padding(viewPadding)
                     .overlay(alignment:.bottom){
                         checkAnserButton
                     }
+                    .dropDestination(for: String.self) { items, location in
+                        for i in items {
+                            
+                            if group1Answers.contains(where: {$0 == i}) {
+                                if let inde = group1Answers.firstIndex(of: i) {
+                                    group1Answers.remove(at: inde)
+                                }
+                                
+                            }else if group2Answers.contains(where: {$0 == i}) {
+                                if let inde = group2Answers.firstIndex(of: i) {
+                                    group2Answers.remove(at: inde)
+                                }
+                                
+                            }
+                            
+                            if !dummyAnswers.contains(i) {
+                                dummyAnswers.append(i)
+                            }
+                        }
+                        
+                        return true
+                    }
                 }
+                .padding(viewPadding)
+                .frame(width:UIScreen.main.bounds.width * 0.95,height:UIScreen.main.bounds.height * 0.7)
+                .background(content: {
+                    RoundedRectangle(cornerRadius: cornerRadiusValue)
+                        .fill(Color.init(hex:  0x9EF3BE))
+                })
                 
                 
             }
@@ -188,7 +224,7 @@ struct DragDropQuizView: View {
             //.padding(.top, 10)
         }
         .disabled(dummyAnswers.isEmpty ? false : true)
-        .padding(.bottom, -20)
+        .padding(.bottom, -40)
     }
     
     func getCheckAnswerButtonText()-> some View {
@@ -230,22 +266,27 @@ struct KenbeView:View{
                     .font(.custom("Nunito-Bold", size: 20))
                     .foregroundColor(.black)
                     .frame(width:proxy.size.width,height: 60)
-                    .customRoundedRectangle(borderWidth:3,backgroundColor: .init(hex: color).opacity(1.0))
-                LazyVGrid(columns: [GridItem(.flexible(),spacing: 0),GridItem(.flexible(),spacing: 5)]) {
+                    .customRoundedRectangle(cornerRadiusValue:8,borderWidth:2,backgroundColor: .init(hex: color).opacity(1.0))
+                LazyHGrid(rows: [GridItem(.flexible(),spacing: 0),GridItem(.flexible(),spacing: 5)],alignment:.top) {
                     ForEach(ansers.indices,id: \.self) {
                         index in
+                        
                         Text(ansers[index])
                             .padding()
                             .font(.custom("Nunito-Bold", size: 14))
                             .foregroundColor(.black)
                             .frame(width:74,height:74)
-                            .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:3,backgroundColor: .init(hex: "#E5E3EE"))
+                            .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
                             .draggable(ansers[index])
+                        
+                        
                     }
+                    
+                    //Spacer()
                     
                     
                 }
-                .padding(.horizontal,5)
+                .padding(.vertical,viewPadding)
                 .frame(height:180)
             }
             .customRoundedRectangle(backgroundColor: .init(hex: color))

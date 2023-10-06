@@ -9,6 +9,11 @@ import SwiftUI
 
 struct SearchVideosFilterView: View {
     @Environment(\.presentationMode) var presentationMode
+    
+    @State var segmentArr = ["Curriculum","Topic"]
+    
+    @State var selectedTab = "Curriculum"
+    @State var selectedIndex = -0
     var body: some View {
         NavigationView {
             ZStack {
@@ -16,15 +21,24 @@ struct SearchVideosFilterView: View {
                     .ignoresSafeArea()
                 ScrollView{
                     ZStack{
-                        VStack(spacing:40){
+                        VStack(spacing:35){
                             Text("Video Search")
                                 .foregroundColor(.white)
                                 .font(.custom("Nunito-Bold", size: 24))
-                                .padding()
+                            //.padding(vi)
                             
-                            ForEach(0..<5) { _ in
-                                FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
+                            segmentView
+                            
+                            if selectedTab == "Curriculum" {
+                                ForEach(0..<3) { _ in
+                                    FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
+                                }
+                            }else{
+                                ForEach(0..<5) { _ in
+                                    FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
+                                }
                             }
+                            
                             
                             HStack {
                                 Text("Videos that require no sound.")
@@ -41,11 +55,113 @@ struct SearchVideosFilterView: View {
                                         .fill(Color.white)
                                 }
                                 .frame(width:24,height:24)
-
+                                
+                            }
+                            .offset(y:-15)
+                            
+                            if selectedTab == "Curriculum" {
+                                Divider().frame(height:1.5).overlay {
+                                    Color.white
+                                }
+                                //.offset(y:-10)
+                                
+                                ScrollView{
+                                    VStack(spacing:30){
+                                        Spacer().frame(height:5)
+                                        ForEach(0..<5,id:\.self) {
+                                            index in
+                                            HStack(spacing:0){
+                                                VStack(spacing:30){
+                                                    Text("Curriculum")
+                                                        .foregroundColor(.init(hex:"#531886"))
+                                                        .font(.custom("Nunito-ExtraBold", size: 14))
+                                                        .frame(width:100,height:25)
+                                                        .offset(x:-50)
+                                                        .rotationEffect(.degrees(-270))
+                                                    
+                                                    
+                                                    Text("Section")
+                                                        .foregroundColor(.init(hex:"#531886"))
+                                                        .font(.custom("Nunito-ExtraBold", size: 14))
+                                                        .frame(width:100,height:25)
+                                                        .offset(x:-40)
+                                                        .rotationEffect(.degrees(-270))
+                                                    
+                                                    
+                                                    
+                                                }
+                                                //                                            .rotationEffect(.degrees(-270))
+                                                .frame(width:30,height:260)
+                                                
+                                                .customRoundedRectangle(cornerRadiusValue:30,borderWidth:2,backgroundColor: .init(hex:"#A890FF"), borderColor: .init(hex:"#49208B"))
+                                                .offset(x:-5)
+                                                
+                                                
+                                                
+                                                ScrollView {
+                                                    VStack{
+                                                        ForEach(0..<10,id:\.self) {
+                                                            subIndex in
+                                                            if selectedIndex == subIndex {
+                                                                HStack {
+                                                                    Circle()
+                                                                        .fill(Color.black)
+                                                                        .frame(width:14,height:14)
+                                                                        
+                                                                    Text("Curriculum Section title ovar 2 lines and with ovarflow....")
+                                                                        .foregroundColor(.black)
+                                                                        .font(.custom("Nunito-Bold", size: 14))
+                                                                        .frame(maxWidth:.infinity,alignment:.leading)
+                                                                }
+                                                                .onTapGesture {
+                                                                    selectedIndex = subIndex
+                                                                }
+                                                                .padding(viewPadding)
+                                                                .customRoundedRectangle(backgroundColor: .white)
+                                                            }
+                                                            else{
+                                                                HStack {
+                                                                    Circle()
+                                                                        .frame(width:14,height:14)
+                                                                        
+                                                                    Text("Curriculum Section title ovar 2 lines and with ovarflow....")
+                                                                        .foregroundColor(.white)
+                                                                        .font(.custom("Nunito-Bold", size: 14))
+                                                                        .frame(maxWidth:.infinity,alignment:.leading)
+                                                                }
+                                                                .padding(viewPadding)
+                                                                .onTapGesture {
+                                                                    selectedIndex = subIndex
+                                                                }
+                                                            }
+                                                            
+                                                            
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                                
+                                                
+                                            }
+                                            .padding(.horizontal,5)
+                                            .frame(height:250)
+                                            .customRoundedRectangle(borderWidth:3,backgroundColor: .init(hex:"#2C0A62"), borderColor: .init(hex:"#2C0A62"))
+                                            
+                                            
+                                            
+                                        }
+                                    }
+                                    
+                                }
+                                .offset(y:-30)
                             }
                             
+                            
+                            
+                            
+                            
                         }
-                        .padding(.vertical,30)
+                        .padding(.vertical,25)
                         .padding(.horizontal,20)
                         .background {
                             RoundedRectangle(cornerRadius: 10)
@@ -56,8 +172,9 @@ struct SearchVideosFilterView: View {
                                 }
                         }
                         .overlay(alignment:.bottom){
-                            CardOffSetButton(title: "Search",offSetY: 28,colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")])
-                                .foregroundColor(.black)
+                            CardOffSetButton(title: "Search", offSetY: 28, colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")], forColor: "")
+                            //                            CardOffSetButton(title: "Search",offSetY: 28,colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")],forColor:Color.black)
+                            //.foregroundColor(.black)
                         }
                     }
                     .padding()
@@ -73,7 +190,7 @@ struct SearchVideosFilterView: View {
                         print("Button tapped")
                         //presentationMode.wrappedValue.dismiss()
                         presentationMode.wrappedValue.dismiss()
-
+                        
                     }) {
                         Image("back")
                             .renderingMode(.template)
@@ -83,7 +200,7 @@ struct SearchVideosFilterView: View {
                             .frame(width: 20, height: 20) // Adjust the size as needed
                             .padding()
                             .background(Color.init(hex: "#A890FF"))
-                            
+                        
                             .clipShape(Circle()) // Clip the button and its background to a circle
                     }
                 }
@@ -92,6 +209,55 @@ struct SearchVideosFilterView: View {
         
         //.padding()
         
+    }
+    
+    var segmentView:some View{
+        HStack(spacing:40){
+            ForEach(0..<segmentArr.count,id:\.self) {
+                index in
+                if selectedTab == segmentArr[index] {
+                    Button {
+                        withAnimation {
+                            selectedTab = segmentArr[index]
+                        }
+                    } label: {
+                        Text(segmentArr[index])
+                            .foregroundColor(selectedTab == segmentArr[index] ? Color.black : Color.white)
+                            .font(.custom("Nunito-Bold", size: 18))
+                            .padding(viewPadding)
+                        
+                    }
+                    .frame(width:140,height:30)
+                    .customRoundedRectangle(cornerRadiusValue:6,backgroundColor: .white)
+                }else{
+                    Button {
+                        withAnimation {
+                            selectedTab = segmentArr[index]
+                        }
+                        
+                    } label: {
+                        Text(segmentArr[index])
+                            .foregroundColor(Color.white)
+                            .font(.custom("Nunito-Bold", size: 18))
+                            .padding(viewPadding)
+                        
+                    }
+                    .frame(width:140,height:30)
+                    .customRoundedRectangle(cornerRadiusValue:6,backgroundColor: .clear,borderColor: .init(hex: "#49208B"))
+                }
+                
+                
+                
+                
+            }
+            
+            
+        }
+        .padding(viewPadding)
+        .background {
+            RoundedRectangle(cornerRadius: cornerRadiusValue)
+                .stroke(Color.black,lineWidth:3)
+        }
     }
 }
 
@@ -107,10 +273,10 @@ struct FilterTextFieldView:View
                     Text(placeHolder)
                         .foregroundColor(.black)
                         .regularFont()
-                        
+                    
                 }
                 
-                 Triangle()
+                Triangle()
                     .frame(width: 20, height: 20)
                     .foregroundColor(Color.init(hex: "#B38BFE"))
                     .rotationEffect(.degrees(180))
@@ -119,8 +285,8 @@ struct FilterTextFieldView:View
                             .stroke(Color.black, lineWidth: 2)
                             .rotationEffect(.degrees(180))
                     )
-                    
-                    
+                
+                
                 
             }
             .padding()
@@ -131,7 +297,7 @@ struct FilterTextFieldView:View
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.init(hex: "#F3E0FD"))
                     }
-                    
+                
             }
             .overlay(alignment:.topLeading){
                 Text(label)
@@ -149,7 +315,7 @@ struct FilterTextFieldView:View
 
 struct SearchVideosFilterView_Previews: PreviewProvider {
     static var previews: some View {
-//        FilterTextFieldView(placeHolder: "Pakistan", label: "Main Language")
+        //        FilterTextFieldView(placeHolder: "Pakistan", label: "Main Language")
         SearchVideosFilterView()
     }
 }

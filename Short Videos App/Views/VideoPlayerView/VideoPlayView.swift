@@ -20,7 +20,7 @@ struct VideoPlayView: View {
                     //.ignoresSafeArea()
                     .aspectRatio(9/16, contentMode: .fit)
                     //.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 16/9)
-                    .frame(height:UIScreen.main.bounds.height * 0.8)
+                    .frame(height:UIScreen.main.bounds.height * 0.85)
 
                     .onTapGesture {
                         showQuiz.toggle()
@@ -62,17 +62,19 @@ struct VideoPlayView: View {
 
                         if isPlaylistTapped{
                             VideoPlaylistView(isPlaylistTapped: $isPlaylistTapped)
-                                .frame(width:UIScreen.main.bounds.width * 0.8,height: UIScreen.main.bounds.height * 0.4)
-                                .offset(y:-UIScreen.main.bounds.height * 0.45)
+                                .padding(.leading,viewPadding)
+                                .frame(width:UIScreen.main.bounds.width * 0.85,height: UIScreen.main.bounds.height * 0.65)
+                                .offset(y:-UIScreen.main.bounds.height * 0.6)
                         }
                     }
                     .offset(y:15)
-                    .background {
-                        Rectangle()
-                            .fill(.ultraThinMaterial)
-                            .offset(y:25)
-                            .environment(\.colorScheme, .light)
-                    }
+//                    .background {
+//                        Rectangle()
+//                            .fill(Color.gray.opacity(0.5))
+//                            .blur(radius: 1)
+//                            .offset(y:22)
+//                            .environment(\.colorScheme, .light)
+//                    }
                     
                 }
                 

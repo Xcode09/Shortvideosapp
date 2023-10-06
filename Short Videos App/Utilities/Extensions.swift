@@ -112,7 +112,7 @@ extension View {
     }
     
     
-    func applyBlur() -> some View {
-        modifier(TransparentBlurView())
+    func applyBlur(color:Color=Color.gray,isOpacity:CGFloat=0.7) -> some View {
+        modifier(TransparentBlurView(color: color,isOpacity: isOpacity))
     }
 }

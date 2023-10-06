@@ -39,6 +39,7 @@ struct ShowMyCollectionsView: View {
             }
         
             Spacer().frame(height:30)
+            
             GeometryReader {
                 proxy in
                 ScrollView(showsIndicators: false){
@@ -73,10 +74,13 @@ struct ShowMyCollectionsView: View {
                         }
                         
                         
-                    }.frame(maxWidth:.infinity)
+                    }
+                    .padding(.top,viewPadding)
+                    .frame(maxWidth:.infinity)
                 }
                 //.frame(height:proxy.size.height * 0.6)
             }
+         
             
 
         }
@@ -115,7 +119,7 @@ struct ShowMyCollectionsView: View {
                             .frame(width: 32,height: 32)
                             .background {
                                 RoundedRectangle(cornerRadius: 4)
-                                    .stroke(lineWidth: 2)
+                                    .stroke(Color.black,lineWidth: 4)
                             }
                         Spacer()
                     }
@@ -179,6 +183,7 @@ struct FloatingBorderLabelTextField: View {
                 .stroke(self.text.isEmpty ? .white : .white, lineWidth: 2)
                 .background(content: {
                     RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.black)
                 })
         )
     }

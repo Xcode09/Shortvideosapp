@@ -23,7 +23,7 @@ struct LikeFollowButtonsView: View {
                     Spacer()
                     if isGridViewVisible {
                         SquareButtonsGridView()
-                            .background(.ultraThinMaterial)
+                            .applyBlur()
                             .cornerRadius(10, corners: .allCorners)
                     }
                 }
@@ -58,20 +58,20 @@ struct LikeFollowButtonsView: View {
                             showReportVideo.toggle()
                         })
                         //.frame(width:40,height: 40) // Adjust the height for the first button
-                            .padding(8)                        .background(.ultraThinMaterial)
+                            .padding(8)                        .applyBlur()
                             .foregroundColor(.white)
                             .cornerRadius(6)
 
                         CustomButton(imageName: "likeHeart", buttonText: "24.6K", action: didTapButton)
                             //.frame(height: 30) // Adjust the height for the first button
-                            .padding(8)                        .background(.ultraThinMaterial)
+                            .padding(8)                        .applyBlur()
                             .foregroundColor(.white)
                             .cornerRadius(6)
 
                         CustomButton(imageName: "groupEmoji", buttonText: "", action: didTapSelectEmoji)
                             //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)
-                            .background(.ultraThinMaterial)
+                            .applyBlur()
                             .foregroundColor(.white)
                             .cornerRadius(6)
                         
@@ -79,13 +79,13 @@ struct LikeFollowButtonsView: View {
 
                         CustomButton(imageName: "saved", buttonText: "", action: didTapButton,noText: true)
                             //.frame(height: 30) // Adjust the height for the first button
-                            .padding(8)                        .background(.ultraThinMaterial)
+                            .padding(8)                        .applyBlur()
                             .foregroundColor(.white)
                             .cornerRadius(6)
                         
                         CustomButton(imageName: "share", buttonText: "7.9K", action: didTapButton)
                             //.frame(height: 30) // Adjust the height for the first button
-                            .padding(8)                        .background(.ultraThinMaterial)
+                            .padding(8)                        .applyBlur()
                             .foregroundColor(.white)
                             .cornerRadius(6)
                             
@@ -135,8 +135,10 @@ struct ReportVideoContentView:View {
                 reasonsSignalingView
             }
             Button {
-                //isCreateNewTapped.toggle()
-                reportContent.toggle()
+                withAnimation {
+                    reportContent.toggle()
+                }
+                
             } label: {
                 Text("Report inappropriate content.")
                     .foregroundColor(.black)
@@ -176,11 +178,11 @@ struct ReportVideoContentView:View {
     }
     
     var reasonsSignalingView:some View {
-        VStack(alignment:.leading,spacing: 5){
+        VStack(alignment:.leading,spacing:5){
             Text("Reasons for signaling")
                 .boldFont()
                 .foregroundColor(.white)
-                .padding()
+                .padding(viewPadding)
             
             SignalingRowView(title: "Off-topic content")
             
@@ -222,11 +224,11 @@ struct SignalingRowView:View {
             Text(title)
                 .boldFont()
                 .foregroundColor(.white)
-                .padding()
+                .padding(viewPadding)
             
             Spacer()
         }
-        .padding(.horizontal)
+        .padding(.horizontal,viewPadding)
     }
 }
 

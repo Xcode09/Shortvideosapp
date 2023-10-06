@@ -14,7 +14,7 @@ struct FillintheBlanksQuizView: View {
     @State private var selectedColor: Color = .clear
     
     @Environment(\.presentationMode) var presentationMode
-    
+    @State private var isTarget = false
     let quizData = [
         ("Quiz 1", "correct", Color(hex: 0xE39DF8)),
         ("Quiz 2", "correct", Color(hex: 0xC3F5FE)),
@@ -60,102 +60,107 @@ struct FillintheBlanksQuizView: View {
                                                                                 if selectedColor == colors{
                                 Image(imageName)
                                     .resizable()
-                                    .offset(x: -10)
+                                    //.offset(x: -10)
                                     .frame(width: 20, height: 20)
                                                                                 }
                                 
                                 //                                        )
                             }
                         }
+                        .frame(width: 110, height: 34)
                     }
                 }
                 .offset(y:20)
                 
                 VStack {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: cornerRadiusValue)
-                            .fill(Color.init(hex:  0x9EF3BE))
+                    VStack{
+                        Spacer().frame(height:viewPadding)
                         
-                        VStack{
-                            Spacer().frame(height:viewPadding)
-                            
-                            Image(systemName:"photo")
-                                .resizable()
-                                .frame(width:180,height:180)
-                                .padding(viewPadding)
-                                .customRoundedRectangle(cornerRadiusValue:16,borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
-                            
-                            ScrollView {
-                                LazyVGrid(columns:Array(repeating: GridItem(), count: 2)) {
-                                    ForEach(dummyQuestions.indices,id:\.self) {
-                                        index in
-                                        FillintheBlankView(text: dummyQuestions[index],ansers: $userAnswersDic)
-                                            .dropDestination(for: String.self) { items, location in
-                                                for i in items {
-                                                    userAnswersDic[dummyQuestions[index]] = i
-                                                    
-                                                    dummyAnswers.removeAll(where: {$0 == i})
-                                                }
-                                                return true
-                                            } isTargeted: { done in
-                                                //
-                                            }
-
-                                    }
-                                }
-                            }
+                        Image(systemName:"photo")
+                            .resizable()
+                            .frame(width:180,height:180)
                             .padding(viewPadding)
-                            
-                            
-                            VStack(spacing:-viewPadding){
-                                Text("Question related to the quizz text here, upto 300 characters")
-                                    .padding(viewPadding)
-                                    .frame(width:UIScreen.main.bounds.width - 20)
-                                
-                                LazyVGrid(columns:Array(repeating: GridItem(spacing:-5), count: 6)) {
-                                    ForEach(dummyAnswers.indices,id:\.self) {
-                                        index in
-                                        ResizableChipView(text: dummyAnswers[index])
-                                            .draggable(dummyAnswers[index])
-                                    }
-                                }
-                                
-                                .padding(viewPadding)
-                                
-                                Spacer()
-                                
-                            }
-                            
-
-                            .frame(maxHeight:.infinity)
-                            .customRoundedRectangle(backgroundColor: .init(hex: "#5539BC"))
-                            .dropDestination(for: String.self, action: { items, loction in
-                                for i in items {
-                                    for v in userAnswersDic.values{
-                                        if (v as! String) == i {
-                                            let key = getKey(forValue: (v as! String), in: userAnswersDic)
-                                            
-                                            debugPrint("Key \(key)",v)
-                                            
-                                            userAnswersDic.removeValue(forKey: key)
+                            .customRoundedRectangle(cornerRadiusValue:16,borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
+                        
+                        ScrollView {
+                            LazyVGrid(columns:Array(repeating: GridItem(spacing:0), count: 2),spacing:5) {
+                                ForEach(dummyQuestions.indices,id:\.self) {
+                                    index in
+                                    FillintheBlankView(text: dummyQuestions[index],ansers: $userAnswersDic, isTarget: $isTarget)
+                                        .dropDestination(for: String.self) { items, location in
+                                            for i in items {
+                                                userAnswersDic[dummyQuestions[index]] = i
+                                                
+                                                dummyAnswers.removeAll(where: {$0 == i})
+                                            }
+                                            return true
+                                        } isTargeted: { done in
+                                            isTarget = done
                                         }
-                                    }
+
                                 }
-                                dummyAnswers += items
-                                return true
-                            })
-                            
-                            Spacer().frame(height:20)
+                            }
                         }
                         .padding(viewPadding)
+                        
+                        VStack(spacing:-viewPadding){
+                            Text("Question related to the quizz text here, upto 300 characters")
+                                .padding(viewPadding)
+                                .frame(width:UIScreen.main.bounds.width - 20)
+                            
+                            LazyVGrid(columns:Array(repeating: GridItem(spacing:viewPadding), count: 6)) {
+                                ForEach(dummyAnswers.indices,id:\.self) {
+                                    index in
+                                    ResizableChipView(text: dummyAnswers[index])
+                                        .draggable(dummyAnswers[index])
+                                }
+                            }
+                            
+                            .padding(viewPadding)
+                            
+                            Spacer()
+                            
+                        }
+                        .frame(width:UIScreen.main.bounds.width * 0.9)
+                        .customRoundedRectangle(backgroundColor: .init(hex: "#5539BC"))
+                        
+                        
+                        
+                        
+                        Spacer().frame(height:50)
                     }
-                    .frame(height:UIScreen.main.bounds.height * 0.7)
-                    .padding(viewPadding)
+                    .frame(width:UIScreen.main.bounds.width * 0.95,height:UIScreen.main.bounds.height * 0.7)
+                    .background(content: {
+                        RoundedRectangle(cornerRadius: cornerRadiusValue)
+                            .fill(Color.init(hex:  0x9EF3BE))
+                    })
                     .overlay(alignment:.bottom){
                         checkAnserButton
                     }
                 }
+                .padding(viewPadding)
+                .dropDestination(for: String.self, action: { items, loction in
+                    for i in items {
+                        for v in userAnswersDic.values{
+                            if (v as! String) == i {
+                                let key = getKey(forValue: (v as! String), in: userAnswersDic)
+                                
+                                debugPrint("Key \(key)",v)
+                                
+                                userAnswersDic.removeValue(forKey: key)
+                            }
+                        }
+                        
+                        if !dummyAnswers.contains(i) {
+                            dummyAnswers.append(i)
+                        }
+                    }
+                    
+                    return true
+                })
                 
+                
+
                 
             }
             .frame(maxWidth:.infinity,maxHeight:.infinity)
@@ -219,6 +224,7 @@ struct FillintheBlanksQuizView: View {
 struct FillintheBlankView:View {
     let text:String
     @Binding var ansers:[String:Any]
+    @Binding var isTarget : Bool
     var body: some View {
         HStack(spacing:2){
             Text(text)
@@ -230,18 +236,18 @@ struct FillintheBlankView:View {
             ZStack{
                 if let value = ansers[text] as? String {
                     Text(value)
-                        .padding(viewPadding)
+//                        .padding(viewPadding)
                         .foregroundColor(.black)
-                        .font(.custom("Nunito-ExtraBold", size: 12))
-                        .frame(maxWidth:.infinity)
-                        .customRoundedRectangle(cornerRadiusValue: 8, backgroundColor: .init(hex: "#DA86FF"))
+                        .font(.custom("Nunito-ExtraBold", size: 14))
+                        .frame(maxWidth:.infinity,maxHeight:24)
+                        .customRoundedRectangle(cornerRadiusValue: 6, backgroundColor: .init(hex: "#DA86FF"))
                         .draggable(value)
                     
                 }else{
                     RoundedRectangle(cornerRadius: 8)
                         
-                        .fill(Color.gray.opacity(0.7))
-                        .frame(height:34)
+                        .fill(isTarget ? Color.gray : Color.gray.opacity(0.7))
+                        .frame(height:24)
                 }
                 
             }
@@ -267,7 +273,7 @@ struct ResizableChipView: View {
             .minimumScaleFactor(0.5)
             .foregroundColor(.black)
             .frame(height:34)
-            .customRoundedRectangle(cornerRadiusValue: 6, borderWidth:3,backgroundColor: .init(hex: "#DA86FF"))
+            .customRoundedRectangle(cornerRadiusValue: 6,backgroundColor: .init(hex: "#DA86FF"))
         
     }
 }

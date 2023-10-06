@@ -18,14 +18,14 @@ struct VideoPlayFooterView: View {
                             .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .background(.ultraThinMaterial)
+                            .applyBlur()
                             .environment(\.colorScheme, .light)
                             .cornerRadius(5, corners: .allCorners)
                         Text("Algebra")
                             .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .background(.ultraThinMaterial)
+                            .applyBlur()
                             .environment(\.colorScheme, .light)
                             .cornerRadius(5, corners: .allCorners)
 
@@ -33,7 +33,7 @@ struct VideoPlayFooterView: View {
                             .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .background(.ultraThinMaterial)
+                            .applyBlur()
                             .environment(\.colorScheme, .light)
                             .cornerRadius(5, corners: .allCorners)
 
@@ -45,12 +45,14 @@ struct VideoPlayFooterView: View {
             .padding(.horizontal)
             
         }
-//        .background {
-//            Rectangle()
-//                .fill(.ultraThinMaterial)
-//                .offset(y:13)
-//                .environment(\.colorScheme, .light)
-//        }
+//        .applyBlur()
+        .background {
+            Rectangle()
+                .fill(Color.gray.opacity(0.7))
+                .blur(radius: 5)
+                .offset(y:13)
+                .environment(\.colorScheme, .light)
+        }
         
     }
 }
@@ -64,10 +66,10 @@ struct VideoPlaylistView:View
                 VStack{
                     Text("Course Name")
                         .font(.custom("Nunito-Bold", size: 14))
-                        .foregroundColor(.init(hex: "#989898"))
+                        .foregroundColor(.init(hex: "#439693"))
                     Text("+34k Students")
                         .font(.custom("Nunito-Bold", size: 14))
-                        .foregroundColor(.init(hex: "#989898"))
+                        .foregroundColor(.init(hex: "#439693"))
                 }
                 
                 Spacer()
@@ -86,7 +88,7 @@ struct VideoPlaylistView:View
             }
             .padding(10)
             ScrollView{
-                VStack(alignment:.leading){
+                VStack(alignment:.leading,spacing:0){
                     ForEach(0..<4) { _ in
                         HStack{
                             RoundedRectangle(cornerRadius: 10)
@@ -122,8 +124,9 @@ struct VideoPlaylistView:View
             }
             
         }
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10,style: .continuous))
-        .environment(\.colorScheme, .light)
+        .applyBlur(color: Color(.init(red: 41, green: 49, blue: 60)),isOpacity: 0.85)
+//        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10,style: .continuous))
+//        .environment(\.colorScheme, .light)
     }
 }
 

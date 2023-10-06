@@ -17,10 +17,10 @@ struct CustomRoundedRectangleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(
-                RoundedRectangle(cornerRadius: cornerRadiusValue)
+                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
                     .stroke(borderColor, lineWidth: borderWidth)
                     .background(
-                        RoundedRectangle(cornerRadius: cornerRadiusValue)
+                        RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
                             .fill(backgroundColor)
                     )
             )
@@ -28,14 +28,14 @@ struct CustomRoundedRectangleModifier: ViewModifier {
 }
 
 struct TransparentBlurView:ViewModifier {
+    var color: Color = Color.gray
+    var isOpacity : CGFloat = 0.7
     func body(content: Content) -> some View {
         content
             .background {
-                RoundedRectangle(cornerRadius: 6.0)
-                    .foregroundColor(.white).opacity(0.5)
-                    //.frame(width: 380, height: 480)
-                    .shadow(color: Color.black.opacity(0.5), radius: 10, x: 0, y: 10)
-                    .blur(radius: 2)
+                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                    .fill(color.opacity(isOpacity))
+                    .blur(radius:1)
             }
     }
 }
