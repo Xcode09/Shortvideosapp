@@ -53,13 +53,13 @@ struct VideoPlayHeaderView: View {
 
         }
         .frame(maxWidth: .infinity)
-        .background(alignment:.bottom){
-            Rectangle()
-                .fill(Color.gray.opacity(0.7))
-                .blur(radius: 5)
-                .offset(y:5)
-                .environment(\.colorScheme, .light)
-        }
+//        .background(alignment:.bottom){
+//            Rectangle()
+//                .fill(Color.gray.opacity(0.7))
+//                .blur(radius: 5)
+//                .offset(y:5)
+//                .environment(\.colorScheme, .light)
+//        }
     }}
 
 struct VideoPlayHeaderView_Previews: PreviewProvider {

@@ -22,18 +22,26 @@ struct VideoPlayView: View {
                     //.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 16/9)
                     .frame(height:UIScreen.main.bounds.height * 0.85)
 
-                    .onTapGesture {
-                        showQuiz.toggle()
-                    }
-
-//                    .overlay(alignment:.bottom){
-//                        VideoPlayFooterView()
-//                    }
+////                    .onTapGesture {
+////                        showQuiz.toggle()
+////                    }
+//
+////                    .overlay(alignment:.bottom){
+////                        VideoPlayFooterView()
+////                    }
 
 
                 VStack {
                     VideoPlayHeaderView()
                         .frame(height: 46)
+                        .background {
+                            Rectangle()
+                                .fill(Color.gray.opacity(0.7))
+                                .frame(height:22)
+                                .blur(radius: 5)
+                                .offset(y:22)
+                                //.environment(\.colorScheme, .light)
+                        }
 
 
 
@@ -43,6 +51,7 @@ struct VideoPlayView: View {
                     VStack {
                         Spacer()
                         HStack {
+                            
                             Spacer()
                             LikeFollowButtonsView()
                                 .offset(x:10,y:20)
@@ -63,8 +72,28 @@ struct VideoPlayView: View {
                         if isPlaylistTapped{
                             VideoPlaylistView(isPlaylistTapped: $isPlaylistTapped)
                                 .padding(.leading,viewPadding)
-                                .frame(width:UIScreen.main.bounds.width * 0.85,height: UIScreen.main.bounds.height * 0.65)
-                                .offset(y:-UIScreen.main.bounds.height * 0.6)
+                                .frame(width:UIScreen.main.bounds.width * 0.85,height: UIScreen.main.bounds.height * 0.55)
+                                .offset(y:-UIScreen.main.bounds.height * 0.55)
+                        }
+                        else{
+                            Button {
+                                isPlaylistTapped.toggle()
+                            } label: {
+                                Image("spark_green")
+                                    .resizable()
+                                    .frame(width:18,height: 18)
+                                    .scaledToFit()
+                                    
+                            }
+                            .padding(.horizontal,viewPadding)
+                            .padding(.vertical,5)
+                            .background(content: {
+                                Color(.init(red: 86, green: 127, blue: 119)).opacity(0.7)
+                            })
+                            .cornerRadius(14, corners: [.topRight,.bottomRight])
+                            .offset(y:-50)
+                            
+
                         }
                     }
                     .offset(y:15)

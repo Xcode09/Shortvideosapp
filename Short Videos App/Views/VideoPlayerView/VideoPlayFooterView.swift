@@ -161,9 +161,9 @@ struct VideoDetailView: View {
                 Spacer()
                 
                 Button(action: {
-                    withAnimation {
-                        isPlaylistTapped.toggle()
-                    }
+//                    withAnimation {
+//                        //isPlaylistTapped.toggle()
+//                    }
                 }) {
                     Image("more")
                         .resizable()

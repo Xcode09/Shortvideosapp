@@ -19,51 +19,48 @@ struct SearchVideosFilterView: View {
             ZStack {
                 BackgroundView()
                     .ignoresSafeArea()
-                ScrollView{
-                    ZStack{
-                        VStack(spacing:35){
-                            Text("Video Search")
-                                .foregroundColor(.white)
-                                .font(.custom("Nunito-Bold", size: 24))
-                            //.padding(vi)
-                            
-                            segmentView
-                            
-                            if selectedTab == "Curriculum" {
+                ZStack{
+                    VStack(spacing:35){
+                        Text("Video Search")
+                            .foregroundColor(.white)
+                            .font(.custom("Nunito-Bold", size: 24))
+                        //.padding(vi)
+                        
+                        segmentView
+                        
+                        if selectedTab == "Curriculum" {
+                            ScrollView {
                                 ForEach(0..<3) { _ in
                                     FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
+                                        .padding(.vertical)
                                 }
-                            }else{
-                                ForEach(0..<5) { _ in
-                                    FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
-                                }
-                            }
-                            
-                            
-                            HStack {
-                                Text("Videos that require no sound.")
-                                    .foregroundColor(.white)
-                                    .font(.custom("Nunito-SemiBold", size: 18))
-                                    .frame(maxWidth:.infinity,alignment:.leading)
-                                    .lineLimit(2)
-                                    .minimumScaleFactor(0.5)
+                                .offset(y:5)
                                 
-                                Button {
-                                    //
-                                } label: {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .fill(Color.white)
+                                HStack {
+                                    Text("Videos that require no sound.")
+                                        .foregroundColor(.white)
+                                        .font(.custom("Nunito-SemiBold", size: 18))
+                                        .frame(maxWidth:.infinity,alignment:.leading)
+                                        .lineLimit(2)
+                                        .minimumScaleFactor(0.5)
+                                    
+                                    Button {
+                                        //
+                                    } label: {
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .fill(Color.white)
+                                    }
+                                    .frame(width:24,height:24)
+                                    
                                 }
-                                .frame(width:24,height:24)
+                                //.offset(y:-15)
                                 
-                            }
-                            .offset(y:-15)
-                            
-                            if selectedTab == "Curriculum" {
                                 Divider().frame(height:1.5).overlay {
                                     Color.white
                                 }
                                 //.offset(y:-10)
+                                
+                                titleView
                                 
                                 ScrollView{
                                     VStack(spacing:30){
@@ -153,62 +150,127 @@ struct SearchVideosFilterView: View {
                                     }
                                     
                                 }
-                                .offset(y:-30)
                             }
                             
+                        }else{
+                            ForEach(0..<5) { _ in
+                                FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
+                            }
                             
-                            
-                            
-                            
-                        }
-                        .padding(.vertical,25)
-                        .padding(.horizontal,20)
-                        .background {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.black,lineWidth:2)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.init(hex:"#49208B"))
+                            HStack {
+                                Text("Videos that require no sound.")
+                                    .foregroundColor(.white)
+                                    .font(.custom("Nunito-SemiBold", size: 18))
+                                    .frame(maxWidth:.infinity,alignment:.leading)
+                                    .lineLimit(2)
+                                    .minimumScaleFactor(0.5)
+                                
+                                Button {
+                                    //
+                                } label: {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .fill(Color.white)
                                 }
+                                .frame(width:24,height:24)
+                                
+                            }
+                            .offset(y:-15)
                         }
-                        .overlay(alignment:.bottom){
-                            CardOffSetButton(title: "Search", offSetY: 28, colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")], forColor: "")
-                            //                            CardOffSetButton(title: "Search",offSetY: 28,colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")],forColor:Color.black)
-                            //.foregroundColor(.black)
-                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     }
-                    .padding()
+                    .padding(.vertical,25)
+                    .padding(.horizontal,20)
+                    .frame(width:UIScreen.main.bounds.width * 0.95,height:UIScreen.main.bounds.height * 0.8)
+                    .customRoundedRectangle(borderWidth:3,backgroundColor: Color.init(hex:"#49208B"))
+                    .overlay(alignment:.bottom){
+                        CardOffSetButton(title: "Search", offSetY: 28, colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")], forColor: "")
+                        //                            CardOffSetButton(title: "Search",offSetY: 28,colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")],forColor:Color.black)
+                        //.foregroundColor(.black)
+                    }
+                    .overlay(alignment:.topLeading) {
+                        Button(action: {
+                            // Action to perform when button is tapped
+                            print("Button tapped")
+                            //presentationMode.wrappedValue.dismiss()
+                            presentationMode.wrappedValue.dismiss()
+                            
+                        }) {
+                            Image(systemName:"xmark")
+                                .renderingMode(.template)
+                                .resizable()
+                                .foregroundColor(.black)
+                                .aspectRatio(contentMode: .fill)
+                                
+                                .frame(width: 14, height: 14) // Adjust the size as needed
+                                .padding()
+                                .background(Color.init(hex: "#A890FF"))
+                                
+                                .clipShape(Circle())
+                                
+                                
+                        }
+                        .background(content: {
+                            Circle().stroke(Color.black,lineWidth:6)
+                        })
+                        .offset(y:-10)
+                    }
                 }
+                .padding()
                 
                 
             }
             .frame(maxWidth: .infinity,maxHeight: .infinity)
-            .toolbar {
-                ToolbarItem(placement:.navigationBarLeading) {
-                    Button(action: {
-                        // Action to perform when button is tapped
-                        print("Button tapped")
-                        //presentationMode.wrappedValue.dismiss()
-                        presentationMode.wrappedValue.dismiss()
-                        
-                    }) {
-                        Image("back")
-                            .renderingMode(.template)
-                            .resizable()
-                            .foregroundColor(.white)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(Color.init(hex: "#A890FF"))
-                        
-                            .clipShape(Circle()) // Clip the button and its background to a circle
-                    }
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement:.navigationBarLeading) {
+//                    Button(action: {
+//                        // Action to perform when button is tapped
+//                        print("Button tapped")
+//                        //presentationMode.wrappedValue.dismiss()
+//                        presentationMode.wrappedValue.dismiss()
+//
+//                    }) {
+//                        Image("back")
+//                            .renderingMode(.template)
+//                            .resizable()
+//                            .foregroundColor(.white)
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 20, height: 20) // Adjust the size as needed
+//                            .padding()
+//                            .background(Color.init(hex: "#A890FF"))
+//
+//                            .clipShape(Circle()) // Clip the button and its background to a circle
+//                    }
+//                }
+//            }
         }
         
         //.padding()
         
+    }
+    
+    var titleView:some View{
+        VStack{
+            Text("Mathematics")
+                .foregroundColor(.white)
+                .font(.custom("Nunito-ExtraBold", size: 22))
+            
+            Text("Year 7 Curriculum")
+                .foregroundColor(.white)
+                .font(.custom("Nunito-ExtraBold", size: 22))
+            
+            
+            Text("Select curriculum item")
+                .foregroundColor(.white)
+                .font(.custom("Nunito-regular", size: 13))
+        }
     }
     
     var segmentView:some View{
@@ -285,6 +347,7 @@ struct FilterTextFieldView:View
                             .stroke(Color.black, lineWidth: 2)
                             .rotationEffect(.degrees(180))
                     )
+                    
                 
                 
                 

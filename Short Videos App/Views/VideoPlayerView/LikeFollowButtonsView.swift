@@ -12,6 +12,7 @@ struct LikeFollowButtonsView: View {
     @State private var showSave = false
     @State private var showReportVideo = false
     @State private var reportContent = false
+    @State private var showQuiz = false
     var body: some View {
         ZStack {
 //            Color.black
@@ -55,7 +56,8 @@ struct LikeFollowButtonsView: View {
 
 
                         CustomButton(imageName: "quizfill", buttonText: "3/3", action: {
-                            showReportVideo.toggle()
+                            showQuiz.toggle()
+                            //showReportVideo.toggle()
                         })
                         //.frame(width:40,height: 40) // Adjust the height for the first button
                             .padding(8)                        .applyBlur()
@@ -80,7 +82,7 @@ struct LikeFollowButtonsView: View {
                         CustomButton(imageName: "saved", buttonText: "", action: didTapButton,noText: true)
                             //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)                        .applyBlur()
-                            .foregroundColor(.white)
+//                            .foregroundColor(.white)
                             .cornerRadius(6)
                         
                         CustomButton(imageName: "share", buttonText: "7.9K", action: didTapButton)
@@ -104,6 +106,10 @@ struct LikeFollowButtonsView: View {
             .sheet(isPresented: $showReportVideo) {
                 ReportVideoContentView(reportContent: $reportContent)
                     .presentationDetents([.fraction(reportContent ? 1 : 0.3)])
+            }
+            .fullScreenCover(isPresented: $showQuiz) {
+                QuizeView()
+                    
             }
         }
         .environment(\.colorScheme, .light)
