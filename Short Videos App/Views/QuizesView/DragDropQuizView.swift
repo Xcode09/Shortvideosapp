@@ -24,13 +24,13 @@ struct DragDropQuizView: View {
     @State var dummyAnswers = ["Value = 0.5","2/2", "Value = 1","Value = 2","4/5","Audio", "Latex","Image"]
     @State var group1Answers : [String] = []
     @State var group2Answers : [String] = []
-    
+    @State var showFillInBlanks = false
     
     var body: some View {
-        NavigationView{
+        ZStack {
             VStack{
                 Text("Video Title")
-                    .font(.system(size: 22, weight: .bold))
+                    .font(.custom("Nunito-Bold", size: 18))
                     .padding(.top,viewPadding)
                     .frame( height: 25)
                     .foregroundColor(.white)
@@ -41,26 +41,31 @@ struct DragDropQuizView: View {
                         Button(action: {
                             selectedColor = colors
                         }) {
-                            HStack(spacing: -13) {
+                            HStack(spacing: 0) {
                                 Text(quiz)
-                                    .offset(x: -15)
+                                    //.offset(x: -15)
                                     .font(.custom("Nunito-Bold", size: 12))
-                                    .frame(width: 110, height: 34)
-                                    .background(colors)
+                                    .frame(maxWidth:.infinity,maxHeight: 34)
                                     .foregroundColor(.black)
-                                    .cornerRadius(12, corners: [.topRight,.topLeft])
+                                    
                                 
                                 //                                            .overlay(
                                                                                 if selectedColor == colors{
                                 Image(imageName)
                                     .resizable()
-                                    .offset(x: -10)
-                                    .frame(width: 20, height: 20)
+                                    //.offset(x: -10)
+                                    .frame(width:20,height: 20)
                                                                                 }
+                                
+                                Spacer()
                                 
                                 //                                        )
                             }
                         }
+                        .background(colors)
+                        
+                        .frame(width: 110, height: 34)
+                        .cornerRadius(12, corners: [.topRight,.topLeft])
                     }
                 }
                 .offset(y:10)
@@ -124,6 +129,7 @@ struct DragDropQuizView: View {
                         }
                         
                         Spacer()
+                        
                         ZStack{
                             Color.black.opacity(0.3)
                             VStack{
@@ -149,6 +155,8 @@ struct DragDropQuizView: View {
                                             }
                                             .frame(width:120,height:120)
     //                                        .customRoundedRectangle(backgroundColor: .init(hex: "#E5E3EE"))
+                                            .lineLimit(0)
+                                            .minimumScaleFactor(0.5)
                                             .draggable(index)
                                         }
                                     }
@@ -159,12 +167,12 @@ struct DragDropQuizView: View {
                         .frame(height:160)
                     
                         
-                        Spacer().frame(height:45)
+                        Spacer().frame(height:25)
                     }
                     //.padding(viewPadding)
-                    .overlay(alignment:.bottom){
-                        checkAnserButton
-                    }
+//                    .overlay(alignment:.bottom){
+//                        checkAnserButton
+//                    }
                     .dropDestination(for: String.self) { items, location in
                         for i in items {
                             
@@ -189,25 +197,204 @@ struct DragDropQuizView: View {
                     }
                 }
                 .padding(viewPadding)
-                .frame(width:UIScreen.main.bounds.width * 0.95,height:UIScreen.main.bounds.height * 0.7)
+                .frame(width:UIScreen.main.bounds.width * 0.9,height:UIScreen.main.bounds.height * 0.65)
                 .background(content: {
-                    RoundedRectangle(cornerRadius: cornerRadiusValue)
+                    RoundedRectangle(cornerRadius: 14)
                         .fill(Color.init(hex:  0x9EF3BE))
                 })
                 
                 
             }
-            .frame(maxWidth:.infinity,maxHeight:.infinity)
+            .padding(viewPadding)
+            .frame(width:UIScreen.main.bounds.width * 0.95)
             .background {
                 Color.init(hex:  0x3B1D68)
             }
+            .clipShape(TopRoundedRectangle(cornerRadius: 40, style: .continuous))
+            .overlay(alignment:.bottom){
+                checkAnserButton
+                    .offset(y:-15)
+            }
+            .fullScreenCover(isPresented: $showFillInBlanks) {
+                FillintheBlanksQuizView()
+            }
         }
+        
+        .frame(maxWidth:.infinity,maxHeight:.infinity)
+        .navigationBarBackButtonHidden()
+        .toolbar(content: {
+            ToolbarItem(placement: .principal) {
+                headerView
+                
+            }
+            
+            ToolbarItem(placement:.navigationBarLeading){
+                Button(action: {
+                    // Action to perform when button is tapped
+                    print("Button tapped")
+                    presentationMode.wrappedValue.dismiss()
+
+                }) {
+                    ZStack{
+                        Circle()
+                            .fill(AppColors.customLightGrayColor.opacity(0.5))
+                            .frame(width: 40, height: 40)
+                        Image("back")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                    }
+//                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                    
+                     // Adjust the size as needed
+//                            .padding()
+//                            .background(AppColors.customLightGrayColor.opacity(0.5))
+//                            .clipShape(Circle()) // Clip the button and its background to a circle
+                }
+            }
+        })
+    }
+    
+    var headerView:some View {
+        HStack(spacing:10){
+            
+            Spacer().frame(width:viewPadding)
+            
+            Text("1250 Pts")
+                .foregroundColor(Color.init(hex: MyColors.pointsColor))
+                .padding(viewPadding)
+                .frame(width: 134,height: 36)
+                .font(.custom("Nunito-Bold", size: 22))
+                //.minimumScaleFactor(0.7)
+                .background {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.init(hex: MyColors.pontsRectangleColor))
+                }
+            
+            VStack(spacing:-5){
+                Text("50")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 13))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                VStack(spacing:-3){
+                    Text("Daily")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+    //                    .lineLimit(2)
+    //                    .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("Bouns")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+    //                    .lineLimit(2)
+    //                    .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
+                
+                    
+            }
+            .frame(width:45,height: 36)
+            .background {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.init(hex: "#0099A0"))
+            }
+            
+            
+            VStack(spacing:-5){
+                Text("100")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 13))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                
+                VStack(spacing:-3){
+                    Text("Watch")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("3 videos")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
+                    
+            }
+            .frame(width:45,height: 36)
+            .background {
+                RoundedRectangle(cornerRadius:8)
+                    .fill(Color.init(hex: "#6A6070"))
+            }
+            
+            VStack(spacing:-5){
+                Text("150")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 13))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                VStack(spacing:-3){
+                    Text("Complete")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("5 Quizes")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
+                    
+            }
+            .frame(width:45,height: 36)
+            .background {
+                RoundedRectangle(cornerRadius:8)
+                    .fill(Color.init(hex: "#6A6070"))
+            }
+            
+            Spacer()
+            
+//            Button {
+//                //
+//            } label: {
+//                Image("search")
+//                    .resizable()
+//                    .renderingMode(.template)
+//                    .foregroundColor(.white)
+//
+//                    .frame(width:20,height:20)
+//                    .scaledToFit()
+//                    .background {
+//                        Circle()
+//                            .fill(.ultraThinMaterial)
+//                            .frame(width:36,height:36)
+//
+//                    }
+//
+//            }
+//            //.padding(viewPadding)
+//            Spacer()
+            
+        }
+        .padding(.all,5)
+       
     }
     
     var checkAnserButton:some View{
+        
+        
         //#D8D8D8
         Button(action: {
             // Handle button tap action here
+            showFillInBlanks.toggle()
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
@@ -266,6 +453,8 @@ struct KenbeView:View{
                     .font(.custom("Nunito-Bold", size: 20))
                     .foregroundColor(.black)
                     .frame(width:proxy.size.width,height: 60)
+                    .lineLimit(0)
+                    .minimumScaleFactor(0.5)
                     .customRoundedRectangle(cornerRadiusValue:8,borderWidth:2,backgroundColor: .init(hex: color).opacity(1.0))
                 LazyHGrid(rows: [GridItem(.flexible(),spacing: 0),GridItem(.flexible(),spacing: 5)],alignment:.top) {
                     ForEach(ansers.indices,id: \.self) {
@@ -276,6 +465,8 @@ struct KenbeView:View{
                             .font(.custom("Nunito-Bold", size: 14))
                             .foregroundColor(.black)
                             .frame(width:74,height:74)
+                            .lineLimit(0)
+                            .minimumScaleFactor(0.5)
                             .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
                             .draggable(ansers[index])
                         

@@ -30,7 +30,7 @@ struct SearchVideosFilterView: View {
                         
                         if selectedTab == "Curriculum" {
                             ScrollView {
-                                ForEach(0..<3) { _ in
+                                ForEach(0..<2) { _ in
                                     FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
                                         .padding(.vertical)
                                 }
@@ -61,10 +61,11 @@ struct SearchVideosFilterView: View {
                                 //.offset(y:-10)
                                 
                                 titleView
+                                    
                                 
                                 ScrollView{
                                     VStack(spacing:30){
-                                        Spacer().frame(height:5)
+                                        Spacer().frame(height:0)
                                         ForEach(0..<5,id:\.self) {
                                             index in
                                             HStack(spacing:0){
@@ -150,6 +151,7 @@ struct SearchVideosFilterView: View {
                                     }
                                     
                                 }
+                                .offset(y:-30)
                             }
                             
                         }else{
@@ -223,7 +225,7 @@ struct SearchVideosFilterView: View {
                         .offset(y:-10)
                     }
                 }
-                .padding()
+                .padding(viewPadding)
                 
                 
             }

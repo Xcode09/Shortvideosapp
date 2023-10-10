@@ -50,29 +50,34 @@ struct QuizeView: View {
                                     Button(action: {
                                         selectedColor = colors
                                     }) {
-                                        HStack(spacing: -13) {
+                                        HStack(spacing: 0) {
                                             Text(quiz)
-                                                .offset(x: -15)
+                                                //.offset(x: -15)
                                                 .font(.custom("Nunito-Bold", size: 12))
-                                                .frame(width: 110, height: 50)
-                                                .background(colors)
+                                                .frame(maxWidth:.infinity,maxHeight: 34)
                                                 .foregroundColor(.black)
-                                                .cornerRadius(18, corners: [.topRight,.topLeft])
+                                                
                                             
                                             //                                            .overlay(
                                                                                             if selectedColor == colors{
                                             Image(imageName)
                                                 .resizable()
-                                                .offset(x: -16)
-                                                .frame(width: 20, height: 20)
+                                                //.offset(x: -10)
+                                                .frame(width:20,height: 20)
                                                                                             }
+                                            
+                                            Spacer()
                                             
                                             //                                        )
                                         }
                                     }
+                                    .background(colors)
+                                    
+                                    .frame(width: 110, height: 34)
+                                    .cornerRadius(12, corners: [.topRight,.topLeft])
                                 }
                             }
-                            //                        .offset(y: )
+                            .offset(y:7)
                         }
                         .offset(y: -275) // Adjust the offset as needed
                     )
@@ -149,9 +154,10 @@ struct QuizeView: View {
                     }
                     
                     // Button with padding, offset, and centered text
-                    Button(action: {
-                        // Handle button tap action here
-                    }) {
+                    
+                    NavigationLink {
+                        DragDropQuizView()
+                    } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
                                 .frame(width: 300, height: 50)
@@ -168,7 +174,30 @@ struct QuizeView: View {
                         }
                         .padding(.top, 10)
                     }
-                    .padding(.bottom, -15) // Offset from the bottom
+                    .padding(.bottom, -15)
+                    .buttonStyle(PlainButtonStyle())
+
+                    
+//                    Button(action: {
+//                        // Handle button tap action here
+//                    }) {
+//                        ZStack {
+//                            RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
+//                                .frame(width: 300, height: 50)
+//                                .foregroundColor(Color(hex: 0x2BE2B3))
+//                                .overlay(
+//                                    Text("Check Answer")
+//                                        .font(.system(size: 27, weight: .medium))
+//                                        .foregroundColor(.black)
+//                                )
+//                                .overlay(
+//                                    RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
+//                                        .stroke(Color.black, lineWidth: 2) // Border color and width
+//                                )
+//                        }
+//                        .padding(.top, 10)
+//                    }
+//                    .padding(.bottom, -15) // Offset from the bottom
                 }
                 .offset(y: 210)
             }
@@ -186,13 +215,21 @@ struct QuizeView: View {
                         presentationMode.wrappedValue.dismiss()
 
                     }) {
-                        Image("back")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
-                            .clipShape(Circle()) // Clip the button and its background to a circle
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("back")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+//                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                        
+                         // Adjust the size as needed
+//                            .padding()
+//                            .background(AppColors.customLightGrayColor.opacity(0.5))
+//                            .clipShape(Circle()) // Clip the button and its background to a circle
                     }
                 }
             })
