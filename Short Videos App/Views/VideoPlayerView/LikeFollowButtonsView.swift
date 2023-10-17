@@ -15,17 +15,16 @@ struct LikeFollowButtonsView: View {
     @State private var showQuiz = false
     var body: some View {
         ZStack {
-//            Color.black
-//                .edgesIgnoringSafeArea(.all)
-            
             HStack {
                 Spacer()
                 VStack {
                     Spacer()
                     if isGridViewVisible {
                         SquareButtonsGridView()
-                            .applyBlur()
-                            .cornerRadius(10, corners: .allCorners)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
                     }
                 }
                 VStack {
@@ -52,6 +51,10 @@ struct LikeFollowButtonsView: View {
                                 
                             }
                             .padding(.bottom,12)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
                            
 
 
@@ -60,42 +63,54 @@ struct LikeFollowButtonsView: View {
                             //showReportVideo.toggle()
                         })
                         //.frame(width:40,height: 40) // Adjust the height for the first button
-                            .padding(8)                        .applyBlur()
+                            .padding(8)
                             .foregroundColor(.white)
-                            .cornerRadius(6)
+                            .background(.ultraThinMaterial)
 
                         CustomButton(imageName: "likeHeart", buttonText: "24.6K", action: didTapButton)
                             //.frame(height: 30) // Adjust the height for the first button
-                            .padding(8)                        .applyBlur()
+                            .padding(8)
                             .foregroundColor(.white)
-                            .cornerRadius(6)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
 
                         CustomButton(imageName: "groupEmoji", buttonText: "", action: didTapSelectEmoji)
                             //.frame(height: 30) // Adjust the height for the first button
                             .padding(8)
-                            .applyBlur()
                             .foregroundColor(.white)
-                            .cornerRadius(6)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
                         
                         
 
                         CustomButton(imageName: "saved", buttonText: "", action: didTapButton,noText: true)
                             //.frame(height: 30) // Adjust the height for the first button
-                            .padding(8)                        .applyBlur()
-//                            .foregroundColor(.white)
-                            .cornerRadius(6)
+                            .padding(8)
+                    
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
                         
                         CustomButton(imageName: "share", buttonText: "7.9K", action: didTapButton)
                             //.frame(height: 30) // Adjust the height for the first button
-                            .padding(8)                        .applyBlur()
+                            .padding(8)
                             .foregroundColor(.white)
-                            .cornerRadius(6)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
                             
 
                         
                                 
                         }
                     .padding()
+                    
                     
                 }
             }
@@ -112,7 +127,7 @@ struct LikeFollowButtonsView: View {
                     
             }
         }
-        .environment(\.colorScheme, .light)
+        //.environment(\.colorScheme, .light)
     }
     
     func didTapSelectEmoji() {

@@ -20,6 +20,7 @@ struct MyCollectionsView: View {
                             Text("Courses")
                                 .foregroundColor(Color.init(hex: "#65C0E8"))
                                 .boldFont()
+                                .padding(.vertical,viewPadding + 5)
                             
                             LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible())],spacing:30) {
                                 ForEach(0..<4) { _ in

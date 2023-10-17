@@ -18,24 +18,33 @@ struct VideoPlayFooterView: View {
                             .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .applyBlur()
-                            .environment(\.colorScheme, .light)
-                            .cornerRadius(5, corners: .allCorners)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
+//                            //.environment(\.colorScheme, .light)
+//                            .cornerRadius(5, corners: .allCorners)
                         Text("Algebra")
                             .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .applyBlur()
-                            .environment(\.colorScheme, .light)
-                            .cornerRadius(5, corners: .allCorners)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
+//                            .environment(\.colorScheme, .light)
+//                            .cornerRadius(5, corners: .allCorners)
 
                         Text("Probability")
                             .font(.custom("Nunito-Bold", size: 10))
                             .padding(6)
                             .foregroundColor(.white)
-                            .applyBlur()
-                            .environment(\.colorScheme, .light)
-                            .cornerRadius(5, corners: .allCorners)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
+//                            .environment(\.colorScheme, .light)
+//                            .cornerRadius(5, corners: .allCorners)
 
                     }
                        }
@@ -48,10 +57,9 @@ struct VideoPlayFooterView: View {
 //        .applyBlur()
         .background {
             Rectangle()
-                .fill(Color.gray.opacity(0.7))
-                .blur(radius: 5)
+                .fill(.ultraThinMaterial)
                 .offset(y:13)
-                .environment(\.colorScheme, .light)
+                //.environment(\.colorScheme, .light)
         }
         
     }
@@ -124,8 +132,7 @@ struct VideoPlaylistView:View
             }
             
         }
-        .applyBlur(color: Color(.init(red: 41, green: 49, blue: 60)),isOpacity: 0.85)
-//        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10,style: .continuous))
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10,style: .continuous))
 //        .environment(\.colorScheme, .light)
     }
 }

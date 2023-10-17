@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import UniformTypeIdentifiers
 struct MatchQuizView: View {
     @State private var selectedTarget: Int = 0
     @State private var selectedSource: Int = 3
@@ -132,11 +132,48 @@ struct MatchQuizView: View {
     }
 }
 
+struct Anse:Codable,Identifiable,Hashable,Transferable{
+    var id = UUID().uuidString
+    let question:String
+    let answer:String
+    var isShow:Bool = false
+    
+    static var transferRepresentation: some TransferRepresentation {
+        CodableRepresentation(contentType: .fillInBlanks)
+    }
+    
+}
+
+extension UTType{
+    static let fillInBlanks = UTType(exportedAs: "co.ali.fillInBlanks")
+}
+
+let data = [Anse(question: "Hello Hello Hello", answer: "Chawal"),Anse(question: "Hello", answer: "Chawal"),Anse(question: "Hello", answer: "Chawal"),Anse(question: "Hello,Hello,Hello", answer: "Chawal"),Anse(question: "Hello", answer: "Chawal")]
+
+
+struct fillint:View{
+    var body: some View {
+        ScrollView {
+            FlexibleView(availableWidth: UIScreen.main.bounds.width - 0, data: data, spacing: 5, alignment: .leading) { item in
+                HStack{
+                    Text(item.question)
+                        //.frame(maxWidth:300)
+                    
+                    Text(item.answer)
+                        .overlay {
+                            RoundedBackgroundView(backgroundColor: .white)
+                        }
+                }
+            }
+        }
+       
+    }
+}
 
 
 struct MatchQuizView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchQuizView()
+        fillint()
     }
 }
 

@@ -10,25 +10,63 @@ import AVKit
 struct VideoPlayView: View {
     @State private var isPlaylistTapped:Bool = false
     @State private var showQuiz = false
+    @State private var isPlayTouch = false
+    @State private var isPlaying = true
+    var player : AVPlayer = .init(url: .init(string: dummyURL)!)
         var body: some View {
             ZStack {
 //                Color.black.background(.ultraThinMaterial)
 //                    .frame(maxWidth: .infinity,maxHeight:.infinity)
 //                    //.ignoresSafeArea()
                 
-                Player(shouldPlay: true,player: .init(url: .init(string: dummyURL)!))
+                Player(shouldPlay: $isPlaying,player: player)
                     //.ignoresSafeArea()
                     .aspectRatio(9/16, contentMode: .fit)
                     //.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 16/9)
                     .frame(height:UIScreen.main.bounds.height * 0.85)
-
-////                    .onTapGesture {
-////                        showQuiz.toggle()
-////                    }
-//
-////                    .overlay(alignment:.bottom){
-////                        VideoPlayFooterView()
-////                    }
+                    .onTapGesture {
+                        isPlayTouch.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now()+5.0) {
+                            isPlayTouch = false
+                        }
+                    }
+                    .overlay(alignment:.center){
+                        if isPlayTouch {
+                            Button(action: {
+                                // Action to perform when button is tapped
+                                if isPlaying {
+                                    player.pause()
+                                    isPlaying = false
+                                }
+                                else{
+                                    player.play()
+                                    isPlaying = true
+                                }
+                                
+                            }) {
+                                
+                                ZStack{
+                                    Circle()
+                                        .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                        .frame(width: 60, height: 60)
+                                    Image(systemName:isPlaying ? "pause" : "play")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(.white)
+                                }
+                                
+        //                        Image("search")
+        //                            .resizable()
+        //                            .aspectRatio(contentMode: .fit)
+        //                            .frame(width: 20, height: 20) // Adjust the size as needed
+        //                            .padding()
+        //                            .background(AppColors.customLightGrayColor.opacity(0.5))
+        //                            .clipShape(Circle()) // Clip the button and its background to a circle
+                            }
+                        }
+                        
+                    }
 
 
                 VStack {
@@ -36,9 +74,8 @@ struct VideoPlayView: View {
                         .frame(height: 46)
                         .background {
                             Rectangle()
-                                .fill(Color.gray.opacity(0.7))
+                                .fill(.ultraThinMaterial)
                                 .frame(height:22)
-                                .blur(radius: 5)
                                 .offset(y:22)
                                 //.environment(\.colorScheme, .light)
                         }
@@ -126,7 +163,7 @@ struct VideoPlayView_Previews: PreviewProvider {
 
 
 struct Player : UIViewControllerRepresentable {
-    var shouldPlay : Bool? = true
+    @Binding var shouldPlay : Bool
     var player : AVPlayer
     var isShowController = false
     
@@ -161,6 +198,8 @@ struct Player : UIViewControllerRepresentable {
 //        }
         if shouldPlay == true {
             view.player?.play()
+        }else{
+            view.player?.pause()
         }
         return view
     }

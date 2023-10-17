@@ -44,7 +44,7 @@ struct QuizeView: View {
                                 .padding(.bottom, 10)
                             
                             
-                            HStack(spacing: 5) {
+                            HStack(spacing: 10) {
                                 ForEach(quizData.indices, id: \.self) { index in
                                     let (quiz, imageName, colors) = quizData[index]
                                     Button(action: {
@@ -73,11 +73,12 @@ struct QuizeView: View {
                                     }
                                     .background(colors)
                                     
-                                    .frame(width: 110, height: 34)
+                                    .frame(height: 34)
                                     .cornerRadius(12, corners: [.topRight,.topLeft])
                                 }
                             }
-                            .offset(y:7)
+                            .frame(width:UIScreen.main.bounds.width * 0.85)
+                            .offset(y:-7)
                         }
                         .offset(y: -275) // Adjust the offset as needed
                     )
@@ -86,7 +87,7 @@ struct QuizeView: View {
                 // Subview with Blue Color
                 Color.clear
                     .padding()
-                    .frame(width:UIScreen.main.bounds.width * 0.95,height: 550)
+                    .frame(width:UIScreen.main.bounds.width * 0.95,height: 580)
                     .customRoundedRectangle(cornerRadiusValue: 20,borderWidth:2,backgroundColor: selectedColor == .clear ? Color(hex: 0x9EF3BE) : selectedColor,borderColor: selectedColor == .clear ? Color.black : selectedColor)
                     
                     .offset(y: 55)
@@ -154,28 +155,29 @@ struct QuizeView: View {
                     }
                     
                     // Button with padding, offset, and centered text
-                    
-                    NavigationLink {
-                        DragDropQuizView()
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
-                                .frame(width: 300, height: 50)
-                                .foregroundColor(Color(hex: 0x2BE2B3))
-                                .overlay(
-                                    Text("Check Answer")
-                                        .font(.system(size: 27, weight: .medium))
-                                        .foregroundColor(.black)
-                                )
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
-                                        .stroke(Color.black, lineWidth: 2) // Border color and width
-                                )
-                        }
-                        .padding(.top, 10)
-                    }
-                    .padding(.bottom, -15)
-                    .buttonStyle(PlainButtonStyle())
+                    Spacer()
+                        .frame(height:55)
+//                    NavigationLink {
+//                        DragDropQuizView()
+//                    } label: {
+//                        ZStack {
+//                            RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
+//                                .frame(width: 300, height: 46)
+//                                .foregroundColor(Color(hex: 0x2BE2B3))
+//                                .overlay(
+//                                    Text("Check Answer")
+//                                        .font(.system(size: 27, weight: .medium))
+//                                        .foregroundColor(.black)
+//                                )
+//                                .overlay(
+//                                    RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
+//                                        .stroke(Color.black, lineWidth: 2) // Border color and width
+//                                )
+//                        }
+//                        .padding(.top, 10)
+//                    }
+//                    .padding(.bottom, 15)
+//                    .buttonStyle(PlainButtonStyle())
 
                     
 //                    Button(action: {
@@ -233,6 +235,29 @@ struct QuizeView: View {
                     }
                 }
             })
+            .overlay(alignment:.bottom) {
+                NavigationLink {
+                    DragDropQuizView()
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
+                            .frame(width: 300, height: 46)
+                            .foregroundColor(Color(hex: 0x2BE2B3))
+                            .overlay(
+                                Text("Check Answer")
+                                    .font(.system(size: 27, weight: .medium))
+                                    .foregroundColor(.black)
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
+                                    .stroke(Color.black, lineWidth: 2) // Border color and width
+                            )
+                    }
+                    .padding(.top, 10)
+                }
+                .padding(.bottom, -15)
+                .buttonStyle(PlainButtonStyle())
+            }
         }
     }
     

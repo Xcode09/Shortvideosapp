@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct FillintheBlanksQuizView: View {
     @State private var isButtonTapped = false
     @State private var selectedAnswer: Int?
@@ -21,28 +20,45 @@ struct FillintheBlanksQuizView: View {
         ("Quiz 3", "correct", Color(hex: 0x9EF3BE))
     ]
     
-    @State var dummyQuestions = ["The sky is","Trees are","The sun is a ","Sea water is", "The snow is"]
+    @State var dummyQuestions = ["The sky is","Trees are","The sun is a","Sea water is", "The snow is The snow is "]
     
-    @State var dummyAnswers = ["blue","green","cricle","salty", "white"]
+    @State var dummyAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The sun is a", answer: "cricle"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
+    //["blue","green","cricle","salty", "white"]
     
-    @State var userAnswers : [String] = []
+    @State var items = [
+        ChipItem(name: "Red"),
+        ChipItem(name: "Green"),
+        ChipItem(name: "Blue"),
+        ChipItem(name: "Purple"),
+        ChipItem(name: "Orange")
+    ]
+    
+    @State var userAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The sun is a", answer: "cricle"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
     
     @State var userAnswersDic : [String:Any] = [:]
     
     @State var width = CGFloat.zero
     @State var height = CGFloat.zero
     
+    
+
+    @State private var minItemWidth: CGFloat = 100
+    
+//    let columns = [
+//        GridItem(.adaptive(minimum: minItemWidth)),
+//        //GridItem(.adaptive(minimum: 150))
+//    ]
     var body: some View {
         NavigationView{
             ZStack {
                 VStack{
                     Text("Video Title")
-                        .font(.system(size: 22, weight: .bold))
-                        .padding(.top,viewPadding)
+                        .font(.custom("Nunito-Bold", size: 18))
+                        .padding(.top,25)
                         .frame( height: 25)
                         .foregroundColor(.white)
                     
-                    HStack(spacing: 5) {
+                    HStack(spacing: 10) {
                         ForEach(quizData.indices, id: \.self) { index in
                             let (quiz, imageName, colors) = quizData[index]
                             Button(action: {
@@ -71,10 +87,11 @@ struct FillintheBlanksQuizView: View {
                             }
                             .background(colors)
                             
-                            .frame(width: 110, height: 34)
+                            .frame(height: 34)
                             .cornerRadius(12, corners: [.topRight,.topLeft])
                         }
                     }
+                    .frame(width:UIScreen.main.bounds.width * 0.85)
                     .offset(y:20)
                     
                     VStack {
@@ -87,53 +104,45 @@ struct FillintheBlanksQuizView: View {
                                 .padding(viewPadding)
                                 .customRoundedRectangle(cornerRadiusValue:16,borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
                             
-                            ScrollView {
-                                LazyVGrid(columns:Array(repeating: GridItem(spacing:0), count: 2),spacing:5) {
-                                    ForEach(dummyQuestions.indices,id:\.self) {
-                                        index in
-                                        FillintheBlankView(text: dummyQuestions[index],ansers: $userAnswersDic, isTarget: $isTarget)
-                                            .dropDestination(for: String.self) { items, location in
-                                                for i in items {
-                                                    userAnswersDic[dummyQuestions[index]] = i
-                                                    
-                                                    dummyAnswers.removeAll(where: {$0 == i})
-                                                }
-                                                return true
-                                            } isTargeted: { done in
-                                                isTarget = done
-                                            }
+                            
+                            ScrollView
+                            {
+                                FlexibleView(availableWidth: UIScreen.main.bounds.width - 20, data: dummyAnswers, spacing: 10, alignment: .leading) { item in
+                                    
+                                    FillintheBlankView(ansers: item, dummyAns: $userAnswers)
+                                        .frame(height:34)
 
-                                    }
+                                    
                                 }
                             }
-                            .padding(viewPadding)
                             
-                            VStack(spacing:-viewPadding){
+                            
+                            
+                            
+                            
+                            
+                    
+                            
+                            VStack(alignment:.leading, spacing:0){
                                 Text("Question related to the quizz text here, upto 300 characters")
                                     .font(.custom("Nunito-Bold", size: 18))
                                     .padding(viewPadding)
-                                    .frame(width:UIScreen.main.bounds.width - 20)
+                                    //.frame(height:80)
+
                                 
-                                LazyVGrid(columns:Array(repeating: GridItem(spacing:viewPadding), count: 6)) {
-                                    ForEach(dummyAnswers.indices,id:\.self) {
-                                        index in
-                                        ResizableChipView(text: dummyAnswers[index])
-                                            .draggable(dummyAnswers[index])
-                                    }
+                                FlexibleView(availableWidth: UIScreen.main.bounds.width - 85, data: userAnswers, spacing: 10, alignment: .leading) { item in
+                                    ResizableChipView(text: item.answer)
+                                        .draggable(item)
                                 }
-                                
                                 .padding(viewPadding)
                                 
-                                Spacer()
+ 
                                 
                             }
                             .frame(width:UIScreen.main.bounds.width * 0.9)
                             .customRoundedRectangle(backgroundColor: .init(hex: "#5539BC"))
-                            
-                            
-                            
-                            
-                            Spacer().frame(height:20)
+            
+                            Spacer().frame(height:40)
                         }
                         .frame(width:UIScreen.main.bounds.width * 0.95,height:UIScreen.main.bounds.height * 0.65)
                         .background(content: {
@@ -142,23 +151,23 @@ struct FillintheBlanksQuizView: View {
                         })
                     }
                     .padding(viewPadding)
-                    .dropDestination(for: String.self, action: { items, loction in
+                    .dropDestination(for: Anse.self, action: { items, loction in
                         for i in items {
-                            for v in userAnswersDic.values{
-                                if (v as! String) == i {
-                                    let key = getKey(forValue: (v as! String), in: userAnswersDic)
-                                    
-                                    debugPrint("Key \(key)",v)
-                                    
-                                    userAnswersDic.removeValue(forKey: key)
-                                }
-                            }
-                            
-                            if !dummyAnswers.contains(i) {
-                                dummyAnswers.append(i)
+//                            for v in userAnswersDic.values{
+//                                if (v as! String) == i.answer {
+//                                    let key = getKey(forValue: (v as! String), in: userAnswersDic)
+//
+//                                    debugPrint("Key \(key)",v)
+//
+//                                    userAnswersDic.removeValue(forKey: key)
+//                                }
+//                            }
+
+                            if !userAnswers.contains(where: {$0 == i}) {
+                                userAnswers.append(i)
                             }
                         }
-                        
+
                         return true
                     })
                     
@@ -342,6 +351,14 @@ struct FillintheBlanksQuizView: View {
        
     }
     
+    func calculateMinWidth(for text: String) -> CGFloat {
+            let font = UIFont(name: "Nunito-ExtraBold", size: 16) // Adjust font size as needed
+           
+            let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+            let textSize = (text as NSString).size(withAttributes: attributes)
+            return textSize.width + 32 // Adding padding for a better appearance
+        }
+    
     var checkAnserButton:some View{
         //#D8D8D8
         Button(action: {
@@ -349,7 +366,7 @@ struct FillintheBlanksQuizView: View {
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
-                    .frame(width: UIScreen.main.bounds.width * 0.9, height: 50)
+                    .frame(width: UIScreen.main.bounds.width * 0.85, height: 46)
                     .foregroundColor(dummyAnswers.isEmpty ? Color(hex: 0x2BE2B3) : Color.init(hex: "#D8D8D8"))
                     .overlay(
                         getCheckAnswerButtonText()
@@ -394,41 +411,61 @@ struct FillintheBlanksQuizView: View {
 }
 
 struct FillintheBlankView:View {
-    let text:String
-    @Binding var ansers:[String:Any]
-    @Binding var isTarget : Bool
+    var ansers:Anse
+    @Binding var dummyAns:[Anse]
+    @State var isHS = false
     var body: some View {
-        HStack(spacing:2){
-            Text(text)
+        HStack(spacing:5){
+            Text(ansers.question)
+//                .padding(.horizontal,8)
+//                .padding(.vertical,4)
                 .font(.custom("Nunito-ExtraBold", size: 16))
                 .lineLimit(1)
-                .minimumScaleFactor(0.5)
-                .frame(maxWidth:.infinity)
+                //.minimumScaleFactor(0.5)
+                //.frame(maxWidth:.infinity,alignment:.leading)
                 .foregroundColor(.black)
-            ZStack{
-                if let value = ansers[text] as? String {
-                    Text(value)
-//                        .padding(viewPadding)
-                        .foregroundColor(.black)
-                        .font(.custom("Nunito-ExtraBold", size: 14))
-                        .frame(maxWidth:.infinity,maxHeight:24)
-                        .customRoundedRectangle(cornerRadiusValue: 6, backgroundColor: .init(hex: "#DA86FF"))
-                        .draggable(value)
-                    
-                }else{
-                    RoundedRectangle(cornerRadius: 8)
-                        
-                        .fill(Color.gray.opacity(0.7))
-                        .frame(height:24)
-                }
+            if isHS {
+                Text(ansers.answer)
+                    .padding(.horizontal,8)
+                    .padding(.vertical,4)
+                    .font(.custom("Nunito-ExtraBold", size: 16))
+                    .foregroundColor(Color.black)
+                    .customRoundedRectangle(cornerRadiusValue: 6,backgroundColor: .init(hex: "#DA86FF"))
+                    .draggable(ansers)
                 
+            }else{
+             
+                Text(ansers.answer)
+                    .padding(.horizontal,8)
+                    .padding(.vertical,4)
+                    .font(.custom("Nunito-ExtraBold", size: 16))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: cornerRadiusValue)
+                            .fill(Color.init(hex: "#909090"))
+                    }
             }
+                
 
-            
-            
             Circle()
                 .fill(Color.black)
                 .frame(width:3,height: 3)
+        }
+        .onChange(of: dummyAns, perform: { newValue in
+            for i in newValue {
+                if ansers.question == i.question {
+                    isHS = false
+                }
+            }
+        })
+        .dropDestination(for: Anse.self) { itemm, location in
+            for i in itemm {
+                if dummyAns.contains(where: {$0 == i}) {
+                    dummyAns.removeAll(where: {$0.id == i.id})
+                }
+            }
+            isHS.toggle()
+            
+            return true
         }
     }
 }
@@ -441,13 +478,34 @@ struct ResizableChipView: View {
             .padding(.horizontal,8)
             .padding(.vertical,4)
             .font(.custom("Nunito-ExtraBold", size: 16))
-            .lineLimit(1)
-            .minimumScaleFactor(0.5)
+//            .lineLimit(1)
+//            .minimumScaleFactor(0.5)
             .foregroundColor(.black)
             .frame(height:34)
             .customRoundedRectangle(cornerRadiusValue: 6,backgroundColor: .init(hex: "#DA86FF"))
+            .overlay {
+                GeometryReader { reader -> Color in
+                    
+                    let maxX = reader.frame(in: .global).maxX
+                    
+                    if maxX > 30 {
+                        
+                    }
+                    
+                    return Color.clear
+                }
+
+            }
         
     }
+    
+    func calculateMinWidth(for text: String) -> CGFloat {
+            let font = UIFont(name: "Nunito-ExtraBold", size: 16) // Adjust font size as needed
+           
+            let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+            let textSize = (text as NSString).size(withAttributes: attributes)
+            return textSize.width + 50 // Adding padding for a better appearance
+        }
 }
 
 
@@ -455,4 +513,10 @@ struct FillintheBlanksQuizView_Previews: PreviewProvider {
     static var previews: some View {
         FillintheBlanksQuizView()
     }
+}
+
+struct ChipData:Identifiable,Hashable {
+    var id = UUID().uuidString
+    let chipText:String
+    var isExceeded = false
 }

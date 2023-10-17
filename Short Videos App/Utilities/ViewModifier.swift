@@ -39,3 +39,18 @@ struct TransparentBlurView:ViewModifier {
             }
     }
 }
+
+struct RoundedBackgroundView:View{
+    var cornerRadiusValue: CGFloat = 10
+    var borderWidth: CGFloat = 1.0
+    var backgroundColor: Color
+    var borderColor: Color = .black
+    var body: some View {
+        RoundedRectangle(cornerRadius: cornerRadiusValue)
+            .stroke(borderColor,lineWidth: borderWidth)
+            .background {
+                RoundedRectangle(cornerRadius: cornerRadiusValue)
+                    .fill(backgroundColor)
+            }
+    }
+}

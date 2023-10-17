@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         //CustomTabBar()
-        window.rootViewController = UIHostingController(rootView:CustomTabBar())
+        window.rootViewController = UIHostingController(rootView:FillintheBlanksQuizView())
         
         //FillintheBlanksQuizView()
         //CustomTabBar()
@@ -30,10 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
         
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family) Font names: \(names)")
-        }
+        
         
         if let url = Bundle.main.url(forResource: "1", withExtension: "mp4") {
             debugPrint("Video URL",url)

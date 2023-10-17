@@ -23,7 +23,7 @@ struct SearchVideosFilterView: View {
                     VStack(spacing:35){
                         Text("Video Search")
                             .foregroundColor(.white)
-                            .font(.custom("Nunito-Bold", size: 24))
+                            .font(.custom("Nunito-Bold", size: 20))
                         //.padding(vi)
                         
                         segmentView
@@ -155,9 +155,16 @@ struct SearchVideosFilterView: View {
                             }
                             
                         }else{
-                            ForEach(0..<5) { _ in
-                                FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
+                            ScrollView {
+                                VStack(spacing:40){
+                                    ForEach(0..<5) { _ in
+                                        FilterTextFieldView(placeHolder: "Pakistan", label: "Target Country")
+                                    }
+                                    .offset(y:30)
+                                }
                             }
+                            
+                            
                             
                             HStack {
                                 Text("Videos that require no sound.")
@@ -193,7 +200,7 @@ struct SearchVideosFilterView: View {
                     .frame(width:UIScreen.main.bounds.width * 0.95,height:UIScreen.main.bounds.height * 0.8)
                     .customRoundedRectangle(borderWidth:3,backgroundColor: Color.init(hex:"#49208B"))
                     .overlay(alignment:.bottom){
-                        CardOffSetButton(title: "Search", offSetY: 28, colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")], forColor: "")
+                        CardOffSetButton(title: "Search", offSetY: 20, colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")], forColor: "")
                         //                            CardOffSetButton(title: "Search",offSetY: 28,colors: [.init(hex: "#50FFC9"),.init(hex: "#288065")],forColor:Color.black)
                         //.foregroundColor(.black)
                     }
@@ -262,11 +269,11 @@ struct SearchVideosFilterView: View {
         VStack{
             Text("Mathematics")
                 .foregroundColor(.white)
-                .font(.custom("Nunito-ExtraBold", size: 22))
+                .font(.custom("Nunito-ExtraBold", size: 18))
             
             Text("Year 7 Curriculum")
                 .foregroundColor(.white)
-                .font(.custom("Nunito-ExtraBold", size: 22))
+                .font(.custom("Nunito-ExtraBold", size: 18))
             
             
             Text("Select curriculum item")

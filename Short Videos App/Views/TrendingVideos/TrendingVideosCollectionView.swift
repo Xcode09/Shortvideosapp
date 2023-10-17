@@ -18,10 +18,10 @@ struct TrendingVideosCollectionView: View {
                     .ignoresSafeArea()
                 ScrollView {
                     VStack(spacing:0){
-                        LazyVGrid(columns: [.init(.flexible()),.init(.flexible())],spacing:0) {
+                        LazyVGrid(columns: [.init(.flexible(),spacing: 1),.init(.flexible(),spacing: 1)],spacing:1) {
                             ForEach(0..<100) { _ in
                                 VideoSmallCell()
-                                    .frame(height: 240)
+                                    .frame(height: 200)
                             }
                            
                         }
@@ -30,6 +30,7 @@ struct TrendingVideosCollectionView: View {
                 
                 
             }
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement:.navigationBarLeading){
                     Button(action: {
@@ -38,13 +39,23 @@ struct TrendingVideosCollectionView: View {
                         presentationMode.wrappedValue.dismiss()
 
                     }) {
-                        Image("back")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
-                            .clipShape(Circle()) // Clip the button and its background to a circle
+                        
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("back")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+//                        Image("back")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 20, height: 20) // Adjust the size as needed
+//                            .padding()
+//                            .background(AppColors.customLightGrayColor.opacity(0.5))
+//                            .clipShape(Circle()) // Clip the button and its background to a circle
                     }
                 }
                 
@@ -59,13 +70,24 @@ struct TrendingVideosCollectionView: View {
                         // Action to perform when button is tapped
                         print("Button tapped")
                     }) {
-                        Image("search")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
-                            .clipShape(Circle()) // Clip the button and its background to a circle
+                        
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("search")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        
+//                        Image("search")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 20, height: 20) // Adjust the size as needed
+//                            .padding()
+//                            .background(AppColors.customLightGrayColor.opacity(0.5))
+//                            .clipShape(Circle()) // Clip the button and its background to a circle
                     }
                 }
                 

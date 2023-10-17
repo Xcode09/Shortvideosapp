@@ -35,7 +35,7 @@ struct DragDropQuizView: View {
                     .frame( height: 25)
                     .foregroundColor(.white)
                 
-                HStack(spacing: 5) {
+                HStack(spacing: 10) {
                     ForEach(quizData.indices, id: \.self) { index in
                         let (quiz, imageName, colors) = quizData[index]
                         Button(action: {
@@ -64,10 +64,11 @@ struct DragDropQuizView: View {
                         }
                         .background(colors)
                         
-                        .frame(width: 110, height: 34)
+                        .frame(height: 34)
                         .cornerRadius(12, corners: [.topRight,.topLeft])
                     }
                 }
+                .frame(width:UIScreen.main.bounds.width * 0.85)
                 .offset(y:10)
                 
                 VStack {
@@ -128,46 +129,46 @@ struct DragDropQuizView: View {
                                 }
                         }
                         
-                        Spacer()
+                        //Spacer()
                         
                         ZStack{
-                            Color.black.opacity(0.3)
-                            VStack{
+                            Color.black.opacity(0.15)
+                            VStack(spacing:10){
                                 Text("Drag and Drop the answers to the correct slots")
                                     .font(.custom("Nunito-Bold", size: 13))
                                     .foregroundColor(.black)
                                 
-                                ScrollView(.horizontal) {
+                                ScrollView(.horizontal,showsIndicators:false) {
                                     HStack(spacing:viewPadding){
                                         ForEach(dummyAnswers,id:\.self) { index in
                                             ZStack{
-                                                RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                                    .stroke(Color.black,lineWidth:2)
-                                                    .background(content: {
-                                                        RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                                            .fill(Color.init(hex: "#E5E3EE"))
-                                                    })
-                                                    
+                                                RoundedRectangle(cornerRadius: 14,style:.circular)
+                                                    .stroke(Color.black,lineWidth:4)
+                                                    .background(Color.init(hex: "#E5E3EE"))
+                                                    .frame(width:120)
+                                                    .cornerRadius(14)
+                                                
                                                 Text(index)
         //                                            .padding(viewPadding)
-                                                    .font(.custom("Nunito-Bold", size: 20))
+                                                    .font(.custom("Nunito-Bold", size: 18))
+                                                    .lineLimit(0)
+                                                    .minimumScaleFactor(0.5)
                                                     .foregroundColor(.black)
+                                                //.frame(width:120,height:120)
                                             }
-                                            .frame(width:120,height:120)
-    //                                        .customRoundedRectangle(backgroundColor: .init(hex: "#E5E3EE"))
-                                            .lineLimit(0)
-                                            .minimumScaleFactor(0.5)
                                             .draggable(index)
                                         }
                                     }
                                 }
+                                
                             }
                             .padding(viewPadding)
                         }
-                        .frame(height:160)
+                        .padding(.top,viewPadding)
+                        .frame(height:180)
                     
                         
-                        Spacer().frame(height:25)
+                        Spacer().frame(height:20)
                     }
                     //.padding(viewPadding)
 //                    .overlay(alignment:.bottom){
@@ -213,7 +214,7 @@ struct DragDropQuizView: View {
             .clipShape(TopRoundedRectangle(cornerRadius: 40, style: .continuous))
             .overlay(alignment:.bottom){
                 checkAnserButton
-                    .offset(y:-15)
+                    .offset(y:-25)
             }
             .fullScreenCover(isPresented: $showFillInBlanks) {
                 FillintheBlanksQuizView()
@@ -398,7 +399,7 @@ struct DragDropQuizView: View {
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 30) // Adjust the corner radius as needed
-                    .frame(width: UIScreen.main.bounds.width * 0.9, height: 50)
+                    .frame(width: UIScreen.main.bounds.width * 0.85, height: 46)
                     .foregroundColor(dummyAnswers.isEmpty ? Color(hex: 0x2BE2B3) : Color.init(hex: "#D8D8D8"))
                     .overlay(
                         getCheckAnswerButtonText()
@@ -444,6 +445,7 @@ struct DragDropQuizView_Previews: PreviewProvider {
 struct KenbeView:View{
     let ansers:[String]
     let color:String
+    @State var isShow = false
     var body: some View{
         GeometryReader {
             proxy in
@@ -456,31 +458,66 @@ struct KenbeView:View{
                     .lineLimit(0)
                     .minimumScaleFactor(0.5)
                     .customRoundedRectangle(cornerRadiusValue:8,borderWidth:2,backgroundColor: .init(hex: color).opacity(1.0))
-                LazyHGrid(rows: [GridItem(.flexible(),spacing: 0),GridItem(.flexible(),spacing: 5)],alignment:.top) {
-                    ForEach(ansers.indices,id: \.self) {
-                        index in
+                if ansers.count <= 2 {
+                    HStack{
+                        ForEach(ansers.prefix(2),id:\.self) { index in
+                            VStack{
+                                Text(index)
+                                    .padding()
+                                    .font(.custom("Nunito-Bold", size: 11))
+                                    .foregroundColor(.black)
+                                    .frame(width:64,height:70)
+                                    .lineLimit(0)
+                                    .minimumScaleFactor(0.5)
+                                    .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
+                                    .draggable(index)
+                                
+                                Spacer()
+                            }
+                            
+                        }
                         
-                        Text(ansers[index])
-                            .padding()
-                            .font(.custom("Nunito-Bold", size: 14))
-                            .foregroundColor(.black)
-                            .frame(width:74,height:74)
-                            .lineLimit(0)
-                            .minimumScaleFactor(0.5)
-                            .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
-                            .draggable(ansers[index])
+                        Spacer()
+                    }
+                    .padding(.vertical,viewPadding)
+                    .padding(.horizontal,viewPadding - 6)
+                    .frame(height:165)
+                    
+                    
+                }else{
+                    LazyVGrid(columns: [GridItem(.flexible(),spacing: 0, alignment: .top),GridItem(.flexible(),spacing: 5,alignment: .top)],alignment:.listRowSeparatorLeading,spacing: viewPadding) {
+                        ForEach(ansers.indices,id: \.self) {
+                            index in
+                            
+                            Text(ansers[index])
+                                .padding()
+                                .font(.custom("Nunito-Bold", size: 11))
+                                .foregroundColor(.black)
+                                .frame(width:64,height:70)
+                                .lineLimit(0)
+                                .minimumScaleFactor(0.5)
+                                .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
+                                .draggable(ansers[index])
+                            
+                            
+                            
+                        }
+                        
+                        //Spacer()
                         
                         
                     }
-                    
-                    //Spacer()
-                    
-                    
+                    .padding(.vertical,viewPadding)
+                    .padding(.horizontal,viewPadding - 5)
+                    .frame(height:165)
+                    .alignmentGuide(.top) { dimensions in
+                                    // Align each item to the top-leading side
+                                    dimensions[VerticalAlignment.top]
+                                }
                 }
-                .padding(.vertical,viewPadding)
-                .frame(height:180)
+                
             }
-            .customRoundedRectangle(backgroundColor: .init(hex: color))
+            .customRoundedRectangle(borderWidth:2,backgroundColor: .init(hex: color))
         }
         
     }

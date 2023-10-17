@@ -31,5 +31,22 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>com.public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Fillinblanks</string>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>co.ali.fillInBlanks</string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
+	</array>
 </dict>
 </plist>

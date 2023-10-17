@@ -19,15 +19,16 @@ struct FollowingView: View {
                         LazyVGrid(columns: [.init(.flexible()),.init(.flexible())],spacing:40) {
                             ForEach(0..<100) { _ in
                                 ProfileCardView()
-                                    .frame(height: 200)
+                                    //.frame(height: 200)
                             }
                            
                         }
-                    }
+                    }.padding(.horizontal,viewPadding)
                 }
                 
                 
             }
+            //.navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement:.navigationBarLeading){
                     Button(action: {
@@ -36,13 +37,21 @@ struct FollowingView: View {
                         presentationMode.wrappedValue.dismiss()
 
                     }) {
-                        Image("back")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
-                            .clipShape(Circle()) // Clip the button and its background to a circle
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("back")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+    //                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                        
+                         // Adjust the size as needed
+    //                            .padding()
+    //                            .background(AppColors.customLightGrayColor.opacity(0.5))
+    //                            .clipShape(Circle()) // Clip the button and its background to a circle
                     }
                 }
                 

@@ -12,7 +12,7 @@ import SwiftUI
 
 let viewPadding : CGFloat = 10
 let stackPadding : CGFloat = 20
-let cornerRadiusValue : CGFloat = 10
+let cornerRadiusValue : CGFloat = 8
 let borderWidth : CGFloat = 1
 
 let capsuleCornerRadiusValue : CGFloat = 20

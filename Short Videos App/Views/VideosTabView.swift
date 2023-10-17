@@ -55,7 +55,8 @@ struct VideosTabView: View {
                     followingSection
                         .padding(.top,viewPadding)
                     
-                    //Spacer()
+                    Spacer()
+                        .frame(height:80)
                 }
                 .padding(viewPadding)
             }
@@ -84,6 +85,8 @@ struct VideosTabView: View {
                     TrendingVideosCollectionView()
                 case .onlineTutors:
                     TeacherProfileView()
+                case .following:
+                    FollowingView()
                 }
             })
         }
@@ -546,7 +549,9 @@ struct VideosTabView: View {
                 
             }
             .overlay(alignment:.bottom,content: {
-                CardOffSetButton(title: "Following 123", offSetY: 20)
+                CardOffSetButton(title: "Following 123", offSetY: 20) {
+                    videoSheetitems = .following
+                }
             })
             .customRoundedRectangle(borderWidth:2,backgroundColor: Color.init(hex: "#01024D"))
             
