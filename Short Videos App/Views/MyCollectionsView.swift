@@ -15,6 +15,7 @@ struct MyCollectionsView: View {
                 BackgroundView().ignoresSafeArea()
                 ScrollView {
                     HeaderTabView()
+                        .padding(.top,5)
                     VStack{
                         VStack{
                             Text("Courses")
@@ -32,6 +33,7 @@ struct MyCollectionsView: View {
                         .customRoundedRectangle(backgroundColor: Color.init(hex: "#01024D"))
                         
                     }
+                    .padding(.top,-8)
                     .padding(.horizontal,5)
                     
                     VStack{
@@ -51,7 +53,7 @@ struct MyCollectionsView: View {
                     
                     
                     
-                    
+                    //Spacer()
                     
                 }
                 .frame(maxWidth: .infinity,maxHeight: .infinity)
@@ -66,13 +68,15 @@ struct MyCollectionsView: View {
                         presentationMode.wrappedValue.dismiss()
 
                     }) {
-                        Image("back")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
-                            .clipShape(Circle()) // Clip the button and its background to a circle
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("back")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
                     }
                 }
                 
@@ -92,13 +96,16 @@ struct MyCollectionsView: View {
                         // Action to perform when button is tapped
                         print("Button tapped")
                     }) {
-                        Image("search")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
-                            .clipShape(Circle()) // Clip the button and its background to a circle
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("search")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        
                     }
                     
                 }

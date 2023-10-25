@@ -211,13 +211,17 @@ struct CourseDetailView: View {
                         presentationMode.wrappedValue.dismiss()
 
                     }) {
-                        Image("back")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
-                            .clipShape(Circle()) // Clip the button and its background to a circle
+                        
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("back")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        
                     }
                 }
                 
@@ -237,13 +241,16 @@ struct CourseDetailView: View {
                         // Action to perform when button is tapped
                         print("Button tapped")
                     }) {
-                        Image("search")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20) // Adjust the size as needed
-                            .padding()
-                            .background(AppColors.customLightGrayColor.opacity(0.5))
-                            .clipShape(Circle()) // Clip the button and its background to a circle
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("search")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+                        
                     }
                     
                 }

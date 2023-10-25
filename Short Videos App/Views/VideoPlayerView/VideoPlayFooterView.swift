@@ -54,13 +54,13 @@ struct VideoPlayFooterView: View {
             .padding(.horizontal)
             
         }
-//        .applyBlur()
-        .background {
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .offset(y:13)
-                //.environment(\.colorScheme, .light)
-        }
+////        .applyBlur()
+//        .background {
+//            Rectangle()
+//                .fill(.ultraThinMaterial)
+//                .offset(y:13)
+//                //.environment(\.colorScheme, .light)
+//        }
         
     }
 }

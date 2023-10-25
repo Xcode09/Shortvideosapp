@@ -29,12 +29,12 @@ struct HeaderTabView: View {
                                 if selectedItem == item {
                                     Rectangle()
                                         .fill(Color.init(hex: "#01024D"))
-                                    
+
                                 }else{
                                     Rectangle()
                                         .fill(LinearGradient(colors: [Color.init(hex: "3C0A62").opacity(0.5),Color.init(hex: "3C0A62")], startPoint: .leading, endPoint: .trailing))
                                 }
-                                
+
                             }
                             .onTapGesture {
                                 selectedItem = item
@@ -42,7 +42,22 @@ struct HeaderTabView: View {
                             }
                     }
                 }
+                
                 //.padding()
+            }
+        }
+        .overlay {
+            HStack{
+                LinearGradient(colors: [Color.black.opacity(0.5),Color.white.opacity(0.5)], startPoint: .leading, endPoint: .trailing)
+                    .frame(width:UIScreen.main.bounds.width * 0.2,height: 60)
+                    .opacity(0.5)
+//                Color.red.frame(width:UIScreen.main.bounds.width * 0.2,height: 60)
+                
+                Spacer()
+                
+                LinearGradient(colors: [Color.white.opacity(0.5),Color.black.opacity(0.5)], startPoint: .trailing, endPoint: .leading)
+                    .frame(width:UIScreen.main.bounds.width * 0.2,height: 60)
+                    .opacity(0.5)
             }
         }
         .onAppear {

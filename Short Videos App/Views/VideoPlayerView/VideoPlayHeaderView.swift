@@ -31,7 +31,11 @@ struct VideoPlayHeaderView: View {
                         .environment(\.colorScheme, .light)
                         .clipShape(Circle()) // Clip the button and its background to a circle
                 }
+                .offset(y:20)
+                
                 HeaderEmojiView()
+                    .offset(y:20)
+                    //.frame(height: 46)
                 
                 Button(action: {
                     // Action to perform when button is tapped
@@ -49,6 +53,7 @@ struct VideoPlayHeaderView: View {
                         .environment(\.colorScheme, .light)
                         .clipShape(Circle()) // Clip the button and its background to a circle
                 }
+                .offset(y:20)
             }
 
         }

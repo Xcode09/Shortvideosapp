@@ -135,7 +135,7 @@ struct MatchQuizView: View {
 struct Anse:Codable,Identifiable,Hashable,Transferable{
     var id = UUID().uuidString
     let question:String
-    let answer:String
+    var answer:String
     var isShow:Bool = false
     
     static var transferRepresentation: some TransferRepresentation {

@@ -14,7 +14,7 @@ struct VideoPlayView: View {
     @State private var isPlaying = true
     var player : AVPlayer = .init(url: .init(string: dummyURL)!)
         var body: some View {
-            ZStack {
+            ZStack(alignment:.top){
 //                Color.black.background(.ultraThinMaterial)
 //                    .frame(maxWidth: .infinity,maxHeight:.infinity)
 //                    //.ignoresSafeArea()
@@ -71,14 +71,16 @@ struct VideoPlayView: View {
 
                 VStack {
                     VideoPlayHeaderView()
-                        .frame(height: 46)
+                        .frame(height: 100)
                         .background {
                             Rectangle()
                                 .fill(.ultraThinMaterial)
-                                .frame(height:22)
-                                .offset(y:22)
-                                //.environment(\.colorScheme, .light)
+                                //.offset(y:40)
+//                                .frame(height:22)
+//                                .offset(y:22)
+//                                //.environment(\.colorScheme, .light)
                         }
+                        .edgesIgnoringSafeArea(.top)
 
 
 
@@ -133,14 +135,13 @@ struct VideoPlayView: View {
 
                         }
                     }
-                    .offset(y:15)
-//                    .background {
-//                        Rectangle()
-//                            .fill(Color.gray.opacity(0.5))
-//                            .blur(radius: 1)
-//                            .offset(y:22)
-//                            .environment(\.colorScheme, .light)
-//                    }
+                    //.offset(y:15)
+                    .background {
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .offset(y:15)
+                    }
+                    .edgesIgnoringSafeArea(.bottom)
                     
                 }
                 

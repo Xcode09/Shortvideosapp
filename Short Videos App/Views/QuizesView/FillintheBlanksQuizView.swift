@@ -11,7 +11,7 @@ struct FillintheBlanksQuizView: View {
     @State private var selectedAnswer: Int?
     
     @State private var selectedColor: Color = .clear
-    
+    @State var dropAns:String = ""
     @Environment(\.presentationMode) var presentationMode
     @State private var isTarget = false
     let quizData = [
@@ -145,14 +145,20 @@ struct FillintheBlanksQuizView: View {
                             Spacer().frame(height:40)
                         }
                         .frame(width:UIScreen.main.bounds.width * 0.95,height:UIScreen.main.bounds.height * 0.65)
-                        .background(content: {
-                            RoundedRectangle(cornerRadius: cornerRadiusValue)
-                                .fill(Color.init(hex:  0x9EF3BE))
-                        })
+                        .customRoundedRectangle(borderWidth: 3, backgroundColor: Color.init(hex:  0x9EF3BE))
+//                        .background(content: {
+////                            RoundedRectangle(cornerRadius: cornerRadiusValue)
+////                                .fill(Color.init(hex:  0x9EF3BE))
+//
+//                            B
+//                        })
                     }
                     .padding(viewPadding)
                     .dropDestination(for: Anse.self, action: { items, loction in
                         for i in items {
+//                            if dropAns == i.answer {
+//                                dropAns = ""
+//                            }
 //                            for v in userAnswersDic.values{
 //                                if (v as! String) == i.answer {
 //                                    let key = getKey(forValue: (v as! String), in: userAnswersDic)
@@ -213,7 +219,7 @@ struct FillintheBlanksQuizView: View {
             })
             .overlay(alignment:.bottom){
                 checkAnserButton
-                    .offset(y:-30)
+                    .offset(y:-40)
             }
             
         }
@@ -379,7 +385,7 @@ struct FillintheBlanksQuizView: View {
             //.padding(.top, 10)
         }
         .disabled(dummyAnswers.isEmpty ? false : true)
-        .padding(.bottom, -20)
+        .padding(.bottom, -25)
     }
     
     func getCheckAnswerButtonText()-> some View {
@@ -414,6 +420,7 @@ struct FillintheBlankView:View {
     var ansers:Anse
     @Binding var dummyAns:[Anse]
     @State var isHS = false
+    @State var dropAns:String = ""
     var body: some View {
         HStack(spacing:5){
             Text(ansers.question)
@@ -425,13 +432,13 @@ struct FillintheBlankView:View {
                 //.frame(maxWidth:.infinity,alignment:.leading)
                 .foregroundColor(.black)
             if isHS {
-                Text(ansers.answer)
+                Text(dropAns)
                     .padding(.horizontal,8)
                     .padding(.vertical,4)
                     .font(.custom("Nunito-ExtraBold", size: 16))
                     .foregroundColor(Color.black)
                     .customRoundedRectangle(cornerRadiusValue: 6,backgroundColor: .init(hex: "#DA86FF"))
-                    .draggable(ansers)
+                    .draggable(Anse(id:ansers.id,question: ansers.question, answer: dropAns))
                 
             }else{
              
@@ -441,7 +448,7 @@ struct FillintheBlankView:View {
                     .font(.custom("Nunito-ExtraBold", size: 16))
                     .overlay {
                         RoundedRectangle(cornerRadius: cornerRadiusValue)
-                            .fill(Color.init(hex: "#909090"))
+                            .fill(.ultraThinMaterial)
                     }
             }
                 
@@ -452,13 +459,14 @@ struct FillintheBlankView:View {
         }
         .onChange(of: dummyAns, perform: { newValue in
             for i in newValue {
-                if ansers.question == i.question {
+                if ansers.id == i.id {
                     isHS = false
                 }
             }
         })
         .dropDestination(for: Anse.self) { itemm, location in
             for i in itemm {
+                dropAns = i.answer
                 if dummyAns.contains(where: {$0 == i}) {
                     dummyAns.removeAll(where: {$0.id == i.id})
                 }

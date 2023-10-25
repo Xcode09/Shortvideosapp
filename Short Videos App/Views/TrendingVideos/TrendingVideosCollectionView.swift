@@ -18,15 +18,16 @@ struct TrendingVideosCollectionView: View {
                     .ignoresSafeArea()
                 ScrollView {
                     VStack(spacing:0){
-                        LazyVGrid(columns: [.init(.flexible(),spacing: 1),.init(.flexible(),spacing: 1)],spacing:1) {
+                        LazyVGrid(columns: [.init(.flexible(),spacing: viewPadding),.init(.flexible(),spacing: viewPadding)],spacing:viewPadding) {
                             ForEach(0..<100) { _ in
                                 VideoSmallCell()
-                                    .frame(height: 200)
+//                                    .frame(width:100,height: 160)
+                                    .aspectRatio(9/16, contentMode: .fit)
                             }
                            
                         }
                     }
-                }
+                }.padding(viewPadding)
                 
                 
             }

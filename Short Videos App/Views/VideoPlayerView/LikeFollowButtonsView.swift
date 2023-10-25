@@ -65,7 +65,10 @@ struct LikeFollowButtonsView: View {
                         //.frame(width:40,height: 40) // Adjust the height for the first button
                             .padding(8)
                             .foregroundColor(.white)
-                            .background(.ultraThinMaterial)
+                            .background {
+                                RoundedRectangle(cornerRadius: cornerRadiusValue,style: .continuous)
+                                    .fill(.ultraThinMaterial)
+                            }
 
                         CustomButton(imageName: "likeHeart", buttonText: "24.6K", action: didTapButton)
                             //.frame(height: 30) // Adjust the height for the first button

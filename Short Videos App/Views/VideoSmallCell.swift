@@ -10,7 +10,7 @@ import SwiftUI
 struct VideoSmallCell: View {
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 6)
+            RoundedRectangle(cornerRadius: cornerRadiusValue)
                 .fill(LinearGradient(colors: [.init(hex: "#1C1C1C"),.init(hex: "#272727")], startPoint: .top, endPoint: .bottom))
                 //.frame(width: 160,height: 200)
         }

@@ -131,41 +131,42 @@ struct DragDropQuizView: View {
                         
                         //Spacer()
                         
-                        ZStack{
-                            Color.black.opacity(0.15)
-                            VStack(spacing:10){
-                                Text("Drag and Drop the answers to the correct slots")
-                                    .font(.custom("Nunito-Bold", size: 13))
-                                    .foregroundColor(.black)
-                                
-                                ScrollView(.horizontal,showsIndicators:false) {
-                                    HStack(spacing:viewPadding){
-                                        ForEach(dummyAnswers,id:\.self) { index in
-                                            ZStack{
-                                                RoundedRectangle(cornerRadius: 14,style:.circular)
-                                                    .stroke(Color.black,lineWidth:4)
-                                                    .background(Color.init(hex: "#E5E3EE"))
-                                                    .frame(width:120)
-                                                    .cornerRadius(14)
-                                                
-                                                Text(index)
-        //                                            .padding(viewPadding)
-                                                    .font(.custom("Nunito-Bold", size: 18))
-                                                    .lineLimit(0)
-                                                    .minimumScaleFactor(0.5)
-                                                    .foregroundColor(.black)
-                                                //.frame(width:120,height:120)
-                                            }
-                                            .draggable(index)
+                        VStack(spacing:10){
+                            Text("Drag and Drop the answers to the correct slots")
+                                .font(.custom("Nunito-Bold", size: 13))
+                                .foregroundColor(.black)
+                            
+                            ScrollView(.horizontal,showsIndicators:false) {
+                                HStack(spacing:viewPadding){
+                                    ForEach(dummyAnswers,id:\.self) { index in
+                                        ZStack{
+                                            RoundedRectangle(cornerRadius: 14,style:.circular)
+                                                .stroke(Color.black,lineWidth:4)
+                                                .background(Color.init(hex: "#E5E3EE"))
+                                                .frame(width:120)
+                                                .cornerRadius(14)
+                                            
+                                            Text(index)
+    //                                            .padding(viewPadding)
+                                                .font(.custom("Nunito-Bold", size: 18))
+                                                .lineLimit(0)
+                                                .minimumScaleFactor(0.5)
+                                                .foregroundColor(.black)
+                                            //.frame(width:120,height:120)
                                         }
+                                        //.frame(width:180,height:180)
+                                        .draggable(index)
                                     }
                                 }
-                                
                             }
-                            .padding(viewPadding)
+                            
                         }
-                        .padding(.top,viewPadding)
-                        .frame(height:180)
+                        .padding(.vertical,viewPadding)
+                        .frame(height:160)
+                        .background {
+                            Color.black.opacity(0.2)
+                                .frame(width:UIScreen.main.bounds.width + viewPadding)
+                        }
                     
                         
                         Spacer().frame(height:20)
@@ -199,10 +200,11 @@ struct DragDropQuizView: View {
                 }
                 .padding(viewPadding)
                 .frame(width:UIScreen.main.bounds.width * 0.9,height:UIScreen.main.bounds.height * 0.65)
-                .background(content: {
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(Color.init(hex:  0x9EF3BE))
-                })
+                .customRoundedRectangle(borderWidth: 3, backgroundColor: Color.init(hex:  0x9EF3BE))
+//                .background(content: {
+//                    RoundedRectangle(cornerRadius: 14)
+//                        .fill(Color.init(hex:  0x9EF3BE))
+//                })
                 
                 
             }
@@ -459,14 +461,15 @@ struct KenbeView:View{
                     .minimumScaleFactor(0.5)
                     .customRoundedRectangle(cornerRadiusValue:8,borderWidth:2,backgroundColor: .init(hex: color).opacity(1.0))
                 if ansers.count <= 2 {
-                    HStack{
+                    HStack(alignment:.center){
+                        Spacer().frame(width:viewPadding)
                         ForEach(ansers.prefix(2),id:\.self) { index in
                             VStack{
                                 Text(index)
                                     .padding()
                                     .font(.custom("Nunito-Bold", size: 11))
                                     .foregroundColor(.black)
-                                    .frame(width:64,height:70)
+                                    .frame(width:64,height:64)
                                     .lineLimit(0)
                                     .minimumScaleFactor(0.5)
                                     .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
@@ -480,7 +483,7 @@ struct KenbeView:View{
                         Spacer()
                     }
                     .padding(.vertical,viewPadding)
-                    .padding(.horizontal,viewPadding - 6)
+                    //.padding(.horizontal,viewPadding)
                     .frame(height:165)
                     
                     
@@ -493,7 +496,7 @@ struct KenbeView:View{
                                 .padding()
                                 .font(.custom("Nunito-Bold", size: 11))
                                 .foregroundColor(.black)
-                                .frame(width:64,height:70)
+                                .frame(width:64,height:64)
                                 .lineLimit(0)
                                 .minimumScaleFactor(0.5)
                                 .customRoundedRectangle(cornerRadiusValue: 10, borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
