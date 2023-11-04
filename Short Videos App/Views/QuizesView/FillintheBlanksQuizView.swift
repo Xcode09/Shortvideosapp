@@ -22,7 +22,7 @@ struct FillintheBlanksQuizView: View {
     
     @State var dummyQuestions = ["The sky is","Trees are","The sun is a","Sea water is", "The snow is The snow is "]
     
-    @State var dummyAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The sun is a", answer: "cricle"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
+    @State var dummyAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The electirc are way better than", answer: "cricle"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
     //["blue","green","cricle","salty", "white"]
     
     @State var items = [
@@ -33,7 +33,7 @@ struct FillintheBlanksQuizView: View {
         ChipItem(name: "Orange")
     ]
     
-    @State var userAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The sun is a", answer: "cricle"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
+    @State var userAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The electirc are way better than", answer: "cricle"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
     
     @State var userAnswersDic : [String:Any] = [:]
     

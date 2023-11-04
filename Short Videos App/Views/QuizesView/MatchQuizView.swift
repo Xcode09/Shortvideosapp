@@ -9,126 +9,154 @@ import Foundation
 import SwiftUI
 import UniformTypeIdentifiers
 struct MatchQuizView: View {
-    @State private var selectedTarget: Int = 0
-    @State private var selectedSource: Int = 3
-    @State private var isConnected = false
-    
-    @State private var targetCGPoint: CGPoint = .zero
-    @State private var sourceCGPoint: CGPoint = .zero
-    
     var body: some View {
-        
-        ZStack {
-            if isConnected {
-                getPath()
+        NavigationView{
+            ZStack {
+
+                MatchQuizUikit()
             }
-//            VStack {
-//                HStack {
-//                    ForEach(0..<6) { index in
-//                        GeometryReader { geo in
-//                        Text("Target \(index)")
-//                            .padding()
-//                            .foregroundColor(.white)
-//                            .background(selectedTarget == index ? Color.red : Color.black)
-//                            .onTapGesture {
-//                                let size = geo.size
-//                                targetCGPoint = CGPoint(x: geo.frame(in: .global).origin.x + (size.width / 2), y: geo.frame(in: .global).origin.y)
-//                                print("Target Global center: \(geo.frame(in: .global).midX) x \(geo.frame(in: .global).midY)")
-//                                selectedTarget = index
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                // Removed list for demo
-//                Spacer()
-//
-//                HStack {
-//                    ForEach(0..<6) { index in
-//                        GeometryReader { geo in
-//                            Text("Source \(index)")
-//                                .padding()
-//                                .foregroundColor(.white)
-//                                .background(selectedSource == index ? Color.orange : Color.black)
-//                                .onTapGesture {
-//                                    let size = geo.size
-//                                    sourceCGPoint = CGPoint(x: geo.frame(in: .global).origin.x + (size.width / 2), y: geo.frame(in: .global).origin.y)
-//                                    print("Source Global center: \(geo.frame(in: .global).midX) x \(geo.frame(in: .global).midY)")
-//                                    selectedSource = index
-//                                }
-//                        }
-//
-//                    }
-//                }
-//                Button(isConnected ? "CUT" : "CONNECT") {
-//                    isConnected.toggle()
-//                }
-//                .padding()
-//            }
-            VStack{
-                HStack {
-                    VStack {
-                        ForEach(0..<6) { index in
-                            GeometryReader { geo in
-                            Text("Target \(index)")
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(selectedTarget == index ? Color.red : Color.black)
-                                .onTapGesture {
-                                    let size = geo.size
-                                    targetCGPoint = CGPoint(x: geo.frame(in: .global).origin.x + (size.width / 3), y: geo.frame(in: .global).origin.y + (-10))
-                                    
-                                    print("Target Global center: \(geo.frame(in: .global).midX) x \(geo.frame(in: .global).midY)")
-                                    selectedTarget = index
-                                }
-                            }
-                        }
-                    }
-                    
-                    VStack {
-                                        ForEach(0..<6) { index in
-                                            GeometryReader { geo in
-                                                Text("Source \(index)")
-                                                    .padding()
-                                                    .foregroundColor(.white)
-                                                    .background(selectedSource == index ? Color.orange : Color.black)
-                                                    .onTapGesture {
-                                                        let size = geo.size
-                                                        sourceCGPoint = CGPoint(x: geo.frame(in: .global).origin.x, y: geo.frame(in: .global).origin.y)
-                                                        print("Source Global center: \(geo.frame(in: .global).midX) x \(geo.frame(in: .global).midY)")
-                                                        selectedSource = index
-                                                    }
-                                            }
-                                            
-                                        }
-                        }
+            .toolbar {
+                ToolbarItem(placement:.principal) {
+                    headerView
                 }
-                
-                Button(isConnected ? "CUT" : "CONNECT") {
-                    isConnected.toggle()
-                }
-                .padding()
             }
-            
         }
+        
+     
         
     }
     
-    func getPath() -> some View {
-        Path { path in
-            let controlPoint = CGPoint(x: 40, y: 100)
+    var headerView:some View {
+        HStack(spacing:10){
             
-            path.move(to: sourceCGPoint)
+            Spacer().frame(width:viewPadding)
             
-            path.addQuadCurve(to: targetCGPoint, control: controlPoint)
+            Text("1250 Pts")
+                .foregroundColor(Color.init(hex: MyColors.pointsColor))
+                .padding(viewPadding)
+                .frame(width: 134,height: 36)
+                .font(.custom("Nunito-Bold", size: 22))
+                //.minimumScaleFactor(0.7)
+                .background {
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.init(hex: MyColors.pontsRectangleColor))
+                }
             
-            path.addLine(to: targetCGPoint)
+            VStack(spacing:-5){
+                Text("50")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 13))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                VStack(spacing:-3){
+                    Text("Daily")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+    //                    .lineLimit(2)
+    //                    .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("Bouns")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+    //                    .lineLimit(2)
+    //                    .minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
+                
+                    
+            }
+            .frame(width:45,height: 36)
+            .background {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.init(hex: "#0099A0"))
+            }
             
-            //path.addCurve(to: sourceCGPoint, control1: targetCGPoint, control2: targetCGPoint)
-//                path.addArc(center: CGPoint(x:proxy.size.width/4, y:proxy.size.height/4), radius: 300, startAngle: .zero, endAngle: .degrees(.pi), clockwise: true)
+            
+            VStack(spacing:-5){
+                Text("100")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 13))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                
+                VStack(spacing:-3){
+                    Text("Watch")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("3 videos")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
+                    
+            }
+            .frame(width:45,height: 36)
+            .background {
+                RoundedRectangle(cornerRadius:8)
+                    .fill(Color.init(hex: "#6A6070"))
+            }
+            
+            VStack(spacing:-5){
+                Text("150")
+                    .foregroundColor(Color.init(hex: "#78F0B9"))
+                    .font(.custom("Nunito-Bold", size: 13))
+                    //.minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.center)
+                    
+                VStack(spacing:-3){
+                    Text("Complete")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("5 Quizes")
+                        .foregroundColor(Color.init(hex: "#78F0B9"))
+                        .font(.custom("Nunito-Bold", size: 7))
+                        //.minimumScaleFactor(0.5)
+                        .multilineTextAlignment(.center)
+                }
+                    
+            }
+            .frame(width:45,height: 36)
+            .background {
+                RoundedRectangle(cornerRadius:8)
+                    .fill(Color.init(hex: "#6A6070"))
+            }
+            
+            Spacer()
+            
+//            Button {
+//                //
+//            } label: {
+//                Image("search")
+//                    .resizable()
+//                    .renderingMode(.template)
+//                    .foregroundColor(.white)
+//
+//                    .frame(width:20,height:20)
+//                    .scaledToFit()
+//                    .background {
+//                        Circle()
+//                            .fill(.ultraThinMaterial)
+//                            .frame(width:36,height:36)
+//
+//                    }
+//
+//            }
+//            //.padding(viewPadding)
+//            Spacer()
+            
         }
-        .stroke(Color.blue, lineWidth: 3)
-        
+        .padding(.all,5)
+       
     }
 }
 
@@ -151,29 +179,9 @@ extension UTType{
 let data = [Anse(question: "Hello Hello Hello", answer: "Chawal"),Anse(question: "Hello", answer: "Chawal"),Anse(question: "Hello", answer: "Chawal"),Anse(question: "Hello,Hello,Hello", answer: "Chawal"),Anse(question: "Hello", answer: "Chawal")]
 
 
-struct fillint:View{
-    var body: some View {
-        ScrollView {
-            FlexibleView(availableWidth: UIScreen.main.bounds.width - 0, data: data, spacing: 5, alignment: .leading) { item in
-                HStack{
-                    Text(item.question)
-                        //.frame(maxWidth:300)
-                    
-                    Text(item.answer)
-                        .overlay {
-                            RoundedBackgroundView(backgroundColor: .white)
-                        }
-                }
-            }
-        }
-       
-    }
-}
-
-
 struct MatchQuizView_Previews: PreviewProvider {
     static var previews: some View {
-        fillint()
+        MatchQuizView()
     }
 }
 
