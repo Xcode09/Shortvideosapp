@@ -33,9 +33,9 @@ struct FillintheBlanksQuizView: View {
         ChipItem(name: "Orange")
     ]
     
-    @State var userAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The electirc are way better than", answer: "cricle"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
+    @State var userAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The electirc are way better than", answer: "Pertol Cars"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
     
-    @State var userAnswersDic : [String:Any] = [:]
+    @State var userAnswersD:[Anse] = []
     
     @State var width = CGFloat.zero
     @State var height = CGFloat.zero
@@ -92,7 +92,7 @@ struct FillintheBlanksQuizView: View {
                         }
                     }
                     .frame(width:UIScreen.main.bounds.width * 0.85)
-                    .offset(y:20)
+                    .offset(y:17)
                     
                     VStack {
                         VStack{
@@ -104,24 +104,25 @@ struct FillintheBlanksQuizView: View {
                                 .padding(viewPadding)
                                 .customRoundedRectangle(cornerRadiusValue:16,borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
                             
-                            
+                            Spacer().frame(height:viewPadding)
                             ScrollView
                             {
-                                FlexibleView(availableWidth: UIScreen.main.bounds.width - 20, data: dummyAnswers, spacing: 10, alignment: .leading) { item in
+                                FlexibleView(availableWidth: UIScreen.main.bounds.width - 20, data: dummyAnswers, spacing: 5, alignment: .leading) { item in
                                     
-                                    FillintheBlankView(ansers: item, dummyAns: $userAnswers)
+                                    FillintheBlankView(ansers: item, dummyAns: $userAnswers, enterAns: $userAnswersD)
                                         .frame(height:34)
+                                    
+//                                    HStack{
+//                                        Text(item.question)
+//
+//                                        Rectangle()
+//                                    }
 
                                     
                                 }
                             }
                             
                             
-                            
-                            
-                            
-                            
-                    
                             
                             VStack(alignment:.leading, spacing:0){
                                 Text("Question related to the quizz text here, upto 300 characters")
@@ -145,7 +146,7 @@ struct FillintheBlanksQuizView: View {
                             Spacer().frame(height:40)
                         }
                         .frame(width:UIScreen.main.bounds.width * 0.95,height:UIScreen.main.bounds.height * 0.65)
-                        .customRoundedRectangle(borderWidth: 3, backgroundColor: Color.init(hex:  0x9EF3BE))
+                        .customRoundedRectangle(borderWidth: 3, backgroundColor:selectedColor != Color.clear ? selectedColor : Color.init(hex:  0x9EF3BE), borderColor:selectedColor)
 //                        .background(content: {
 ////                            RoundedRectangle(cornerRadius: cornerRadiusValue)
 ////                                .fill(Color.init(hex:  0x9EF3BE))
@@ -169,8 +170,13 @@ struct FillintheBlanksQuizView: View {
 //                                }
 //                            }
 
-                            if !userAnswers.contains(where: {$0 == i}) {
+                            if userAnswersD.contains(where: {$0.answer == i.answer}) &&  userAnswers.contains(where: {$0.answer == i.answer}) == false {
+                                
                                 userAnswers.append(i)
+                                userAnswersD.removeAll(where: {$0.answer == i.answer})
+                                NotificationCenter.default.post(name: .init(rawValue: "hide"), object: self,userInfo: ["value":i])
+                            }else{
+                                
                             }
                         }
 
@@ -186,6 +192,7 @@ struct FillintheBlanksQuizView: View {
             .frame(maxWidth:.infinity,maxHeight:.infinity)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
+            
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     headerView
@@ -391,13 +398,13 @@ struct FillintheBlanksQuizView: View {
     func getCheckAnswerButtonText()-> some View {
         if dummyAnswers.isEmpty {
             return AnyView(Text("Check Answer")
-                .font(.custom("Nunito-Bold", size: 18))
+                .font(.custom("Nunito-Bold", size: 17))
                 .foregroundColor(.black))
         }else{
             return AnyView(
                 VStack(spacing:-viewPadding){
                 Text("Check Answer")
-                    .font(.custom("Nunito-Bold", size: 18))
+                    .font(.custom("Nunito-Bold", size: 17))
                     .foregroundColor(.black)
                     
                  Text("(Incomplete)")
@@ -419,14 +426,20 @@ struct FillintheBlanksQuizView: View {
 struct FillintheBlankView:View {
     var ansers:Anse
     @Binding var dummyAns:[Anse]
+    @Binding var enterAns:[Anse]
+    
     @State var isHS = false
     @State var dropAns:String = ""
+    @State var isItemAdded = false
+    
+    var questionsCount = 5
+    @State var ansCount = 0
     var body: some View {
         HStack(spacing:5){
             Text(ansers.question)
 //                .padding(.horizontal,8)
 //                .padding(.vertical,4)
-                .font(.custom("Nunito-ExtraBold", size: 16))
+                .font(.custom("Nunito-ExtraBold", size: 15))
                 .lineLimit(1)
                 //.minimumScaleFactor(0.5)
                 //.frame(maxWidth:.infinity,alignment:.leading)
@@ -435,21 +448,18 @@ struct FillintheBlankView:View {
                 Text(dropAns)
                     .padding(.horizontal,8)
                     .padding(.vertical,4)
-                    .font(.custom("Nunito-ExtraBold", size: 16))
+                    .font(.custom("Nunito-ExtraBold", size: 15))
                     .foregroundColor(Color.black)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
                     .customRoundedRectangle(cornerRadiusValue: 6,backgroundColor: .init(hex: "#DA86FF"))
                     .draggable(Anse(id:ansers.id,question: ansers.question, answer: dropAns))
                 
             }else{
              
-                Text(ansers.answer)
-                    .padding(.horizontal,8)
-                    .padding(.vertical,4)
-                    .font(.custom("Nunito-ExtraBold", size: 16))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: cornerRadiusValue)
-                            .fill(.ultraThinMaterial)
-                    }
+                RoundedRectangle(cornerRadius: cornerRadiusValue)
+                    .fill(.ultraThinMaterial)
+                    .frame(width: 50)
             }
                 
 
@@ -457,23 +467,27 @@ struct FillintheBlankView:View {
                 .fill(Color.black)
                 .frame(width:3,height: 3)
         }
-        .onChange(of: dummyAns, perform: { newValue in
-            for i in newValue {
-                if ansers.id == i.id {
-                    isHS = false
-                }
-            }
-        })
+        
         .dropDestination(for: Anse.self) { itemm, location in
             for i in itemm {
                 dropAns = i.answer
                 if dummyAns.contains(where: {$0 == i}) {
                     dummyAns.removeAll(where: {$0.id == i.id})
+                    enterAns.append(i)
                 }
             }
             isHS.toggle()
             
             return true
+        }
+        .onReceive(NotificationCenter.Publisher(center: .default, name: .init(rawValue: "hide"))) { noti in
+            if let value = noti.userInfo?["value"] as? Anse {
+                if value.answer == dropAns {
+                    //dropAns = ""
+                    isHS = false
+                }
+            }
+            
         }
     }
 }

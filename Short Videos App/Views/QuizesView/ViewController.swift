@@ -62,6 +62,7 @@ class MatchQuizController: UIViewController {
         // Create a UIBezierPath
         pupleMainView.layer.cornerRadius = 40
         mainView.layer.cornerRadius = 30
+        self.navigationItem.hidesBackButton = true
         //completeQuizBtn.layer.cornerRadius = 8.0
         //watchBtn.layer.cornerRadius = 8.0
         //dailyBtn.layer.cornerRadius = 8.0
@@ -71,7 +72,7 @@ class MatchQuizController: UIViewController {
         scrollView.layer.borderWidth = 2
         
         checkAnswerBtn.layer.borderWidth = 2
-        checkAnswerBtn.layer.cornerRadius = 20
+        checkAnswerBtn.layer.cornerRadius = 28
         checkAnswerBtn.layer.borderColor = UIColor.black.cgColor
         
         quizButtonView1.layer.borderWidth = 2
@@ -156,7 +157,9 @@ class MatchQuizController: UIViewController {
         lastButtonSelected?.layer.borderColor = UIColor.gray.cgColor
     }
     @IBAction func checkAnswerAction(_ sender: Any) {
-        
+        let vc = UIHostingController(rootView: FillintheBlanksQuizView())
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     @IBAction func quizButton1Click(_ sender: Any) {

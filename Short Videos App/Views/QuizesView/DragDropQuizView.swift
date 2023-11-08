@@ -143,7 +143,7 @@ struct DragDropQuizView: View {
                                             RoundedRectangle(cornerRadius: 14,style:.circular)
                                                 .stroke(Color.black,lineWidth:4)
                                                 .background(Color.init(hex: "#E5E3EE"))
-                                                .frame(width:120)
+                                                .frame(width:120,height:120)
                                                 .cornerRadius(14)
                                             
                                             Text(index)
@@ -219,8 +219,10 @@ struct DragDropQuizView: View {
                     .offset(y:-25)
             }
             .fullScreenCover(isPresented: $showFillInBlanks) {
-                FillintheBlanksQuizView()
+                //FillintheBlanksQuizView()
+                MatchQuizView()
             }
+            .navigationBarBackButtonHidden()
         }
         
         .frame(maxWidth:.infinity,maxHeight:.infinity)
@@ -420,13 +422,13 @@ struct DragDropQuizView: View {
     func getCheckAnswerButtonText()-> some View {
         if dummyAnswers.isEmpty {
             return AnyView(Text("Check Answer")
-                .font(.custom("Nunito-Bold", size: 22))
+                .font(.custom("Nunito-Bold", size:17))
                 .foregroundColor(.black))
         }else{
             return AnyView(
                 VStack(spacing:-viewPadding){
                 Text("Check Answer")
-                    .font(.custom("Nunito-Bold", size: 22))
+                    .font(.custom("Nunito-Bold", size: 17))
                     .foregroundColor(.black)
                     
                  Text("(Incomplete)")

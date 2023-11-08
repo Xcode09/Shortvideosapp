@@ -16,7 +16,7 @@ struct HeaderTabView: View {
     var body: some View {
         ScrollView(.horizontal) {
             ScrollViewReader { scrollView in
-                LazyHGrid(rows: [GridItem()],spacing: 0) {
+                LazyHGrid(rows: [GridItem()],spacing: 5) {
                     ForEach(items, id: \.self) { item in
                         Text("Collection Name")
                             .padding()
@@ -32,7 +32,7 @@ struct HeaderTabView: View {
 
                                 }else{
                                     Rectangle()
-                                        .fill(LinearGradient(colors: [Color.init(hex: "3C0A62").opacity(0.5),Color.init(hex: "3C0A62")], startPoint: .leading, endPoint: .trailing))
+                                        .fill(Color.init(hex: "3C0A62"))
                                 }
 
                             }
@@ -48,16 +48,16 @@ struct HeaderTabView: View {
         }
         .overlay {
             HStack{
-                LinearGradient(colors: [Color.black.opacity(0.5),Color.white.opacity(0.5)], startPoint: .leading, endPoint: .trailing)
+                LinearGradient(colors: [Color.black,Color.black.opacity(0.2)], startPoint: .leading, endPoint: .trailing)
                     .frame(width:UIScreen.main.bounds.width * 0.2,height: 60)
-                    .opacity(0.5)
+                    .opacity(0.7)
 //                Color.red.frame(width:UIScreen.main.bounds.width * 0.2,height: 60)
                 
                 Spacer()
                 
-                LinearGradient(colors: [Color.white.opacity(0.5),Color.black.opacity(0.5)], startPoint: .trailing, endPoint: .leading)
+                LinearGradient(colors: [Color.black.opacity(0.2),Color.black], startPoint: .leading, endPoint: .trailing)
                     .frame(width:UIScreen.main.bounds.width * 0.2,height: 60)
-                    .opacity(0.5)
+                    .opacity(0.7)
             }
         }
         .onAppear {

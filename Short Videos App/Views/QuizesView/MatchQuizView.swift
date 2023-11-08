@@ -9,15 +9,44 @@ import Foundation
 import SwiftUI
 import UniformTypeIdentifiers
 struct MatchQuizView: View {
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         NavigationView{
             ZStack {
 
                 MatchQuizUikit()
+                    .navigationBarBackButtonHidden()
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden()
             .toolbar {
                 ToolbarItem(placement:.principal) {
                     headerView
+                }
+                
+                ToolbarItem(placement:.navigationBarLeading){
+                    Button(action: {
+                        // Action to perform when button is tapped
+                        print("Button tapped")
+                        presentationMode.wrappedValue.dismiss()
+
+                    }) {
+                        ZStack{
+                            Circle()
+                                .fill(AppColors.customLightGrayColor.opacity(0.5))
+                                .frame(width: 40, height: 40)
+                            Image("back")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                        }
+//                        .background(AppColors.customLightGrayColor.opacity(0.5))
+                        
+                         // Adjust the size as needed
+//                            .padding()
+//                            .background(AppColors.customLightGrayColor.opacity(0.5))
+//                            .clipShape(Circle()) // Clip the button and its background to a circle
+                    }
                 }
             }
         }

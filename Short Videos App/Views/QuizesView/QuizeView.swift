@@ -245,7 +245,7 @@ struct QuizeView: View {
                             .foregroundColor(Color(hex: 0x2BE2B3))
                             .overlay(
                                 Text("Check Answer")
-                                    .font(.system(size: 27, weight: .medium))
+                                    .font(Font.custom("Nunito-Bold", size: 17))
                                     .foregroundColor(.black)
                             )
                             .overlay(

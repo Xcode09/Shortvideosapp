@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: scene)
         //CustomTabBar()
-        window.rootViewController = UIHostingController(rootView:MatchQuizView())
+        window.rootViewController = UIHostingController(rootView:FillintheBlanksQuizView())
         
         //FillintheBlanksQuizView()
         //CustomTabBar()

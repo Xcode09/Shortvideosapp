@@ -255,8 +255,8 @@ struct VideosTabView: View {
                 HStack(spacing:viewPadding){
                     ForEach(0..<16,id:\.self) { index in
                         VideoSmallCell()
-                            .frame(width:100,height: 160)
-                            .aspectRatio(9/16, contentMode: .fit)
+                            .frame(width:100,height: 178)
+                            .aspectRatio(9/16, contentMode: .fill)
                             .onTapGesture {
                                 videoSheetitems = .videoTapped
                                 print("Did Tap Video")
@@ -316,7 +316,7 @@ struct VideosTabView: View {
                 HStack(spacing:viewPadding){
                     ForEach(0..<8) { index in
                         VideoSmallCell()
-                            .frame(width:100,height: 160)
+                            .frame(width:100,height: 178)
                             .aspectRatio(9/16, contentMode: .fill)
                             .background {
                                 GeometryReader {
