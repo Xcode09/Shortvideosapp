@@ -44,6 +44,7 @@ class MatchQuizController: UIViewController {
     var selectedColor = UIColor.gray.cgColor
     var lastButtonSelected: UIButton?
     
+    var addedTargetsButton : [Int] = []
     
     @IBOutlet weak var quizButtonImage3: UIImageView!
     @IBOutlet weak var quizButtonCheckImage2: UIImageView!
@@ -209,10 +210,11 @@ class MatchQuizController: UIViewController {
         isSource.toggle()
  
         selectedColor = sender.layer.borderColor!
-        lastButtonSelected = nil
+        //lastButtonSelected = nil
     }
     
     @IBAction func btn2Action(_ sender: UIButton) {
+        if addedTargetsButton.contains(where: {$0 == sender.tag}) { return }
         if sourcePoints.last == CGPoint(x: sender.frame.midX-55, y: sender.frame.midY) {return}
         if isSource {
             self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
@@ -229,6 +231,7 @@ class MatchQuizController: UIViewController {
         setGrayColor()
         drawLine()
         lastButtonSelected = sender
+        addedTargetsButton.append(sender.tag)
         sender.layer.borderColor = selectedColor
     }
     @IBAction func btn3Action(_ sender: UIButton) {
@@ -250,32 +253,36 @@ class MatchQuizController: UIViewController {
         }
         isSource.toggle()
         selectedColor = sender.layer.borderColor!
-        lastButtonSelected = nil
+        //lastButtonSelected = nil
 
     }
     
     @IBAction func btn4Action(_ sender: UIButton) {
+        if addedTargetsButton.contains(where: {$0 == sender.tag}) { return }
         if sourcePoints.last == CGPoint(x: sender.frame.midX-55, y: sender.frame.midY) {return}
 
         if isSource {
             self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
         }else{
             if sourcePoints.count == targetPoints.count {
+                self.targetPoints.remove(at: targetPoints.count - 2)
                 self.targetPoints.removeLast()
                 self.lineLayer.removeLast().removeFromSuperlayer()
                 self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
-            }else{
+            }
+            else{
                 self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
             }
 
         }
-//        setGrayColor()
-//        sender.layer.borderColor = selectedColor
-//        drawLine()
+
         setGrayColor()
         drawLine()
         lastButtonSelected = sender
+        addedTargetsButton.append(sender.tag)
         sender.layer.borderColor = selectedColor
+        
+        
     }
     @IBAction func btn5Action(_ sender: UIButton) {
         if sourcePoints.last == CGPoint(x: sender.frame.midX+55, y: sender.frame.midY) {return}
@@ -296,11 +303,14 @@ class MatchQuizController: UIViewController {
         }
         isSource.toggle()
         selectedColor = sender.layer.borderColor!
-        lastButtonSelected = nil
+        //lastButtonSelected = nil
 
 
     }
     @IBAction func btn6Action(_ sender: UIButton) {
+        
+        if addedTargetsButton.contains(where: {$0 == sender.tag}) { return }
+        
         if sourcePoints.last == CGPoint(x: sender.frame.midX-55, y: sender.frame.midY) {return}
 
 
@@ -322,9 +332,93 @@ class MatchQuizController: UIViewController {
         setGrayColor()
         drawLine()
         lastButtonSelected = sender
+        addedTargetsButton.append(sender.tag)
         sender.layer.borderColor = selectedColor
     }
     
+    @IBAction func btn2RepeatAction(_ sender: UIButton) {
+        debugPrint("Repeat Action \(sender.tag)")
+        addedTargetsButton.removeAll(where: {$0 == sender.tag})
+        if sourcePoints.last == CGPoint(x: sender.frame.midX-55, y: sender.frame.midY) {return}
+
+
+        if isSource {
+            self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+        }else{
+            if sourcePoints.count == targetPoints.count {
+                self.targetPoints.removeLast()
+                self.lineLayer.removeLast().removeFromSuperlayer()
+                self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+            }else{
+                self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+            }
+
+        }
+//        setGrayColor()
+//        sender.layer.borderColor = selectedColor
+//        drawLine()
+        setGrayColor()
+        drawLine()
+        lastButtonSelected = sender
+        addedTargetsButton.append(sender.tag)
+        sender.layer.borderColor = selectedColor
+        
+    }
+    @IBAction func btn4RepeatAction(_ sender: UIButton) {
+        debugPrint("Repeat Action \(sender.tag)")
+        addedTargetsButton.removeAll(where: {$0 == sender.tag})
+        if sourcePoints.last == CGPoint(x: sender.frame.midX-55, y: sender.frame.midY) {return}
+
+
+        if isSource {
+            self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+        }else{
+            if sourcePoints.count == targetPoints.count {
+                self.targetPoints.removeLast()
+                self.lineLayer.removeLast().removeFromSuperlayer()
+                self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+            }else{
+                self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+            }
+
+        }
+//        setGrayColor()
+//        sender.layer.borderColor = selectedColor
+//        drawLine()
+        setGrayColor()
+        drawLine()
+        lastButtonSelected = sender
+        addedTargetsButton.append(sender.tag)
+        sender.layer.borderColor = selectedColor
+    }
+    @IBAction func btn6RepeatAction(_ sender: UIButton) {
+        debugPrint("Repeat Action \(sender.tag)")
+        addedTargetsButton.removeAll(where: {$0 == sender.tag})
+        if sourcePoints.last == CGPoint(x: sender.frame.midX-55, y: sender.frame.midY) {return}
+
+
+        if isSource {
+            self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+        }else{
+            if sourcePoints.count == targetPoints.count {
+                self.targetPoints.removeLast()
+                self.lineLayer.removeLast().removeFromSuperlayer()
+                self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+            }else{
+                self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+            }
+
+        }
+//        setGrayColor()
+//        sender.layer.borderColor = selectedColor
+//        drawLine()
+        setGrayColor()
+        drawLine()
+        lastButtonSelected = sender
+        addedTargetsButton.append(sender.tag)
+        sender.layer.borderColor = selectedColor
+        
+    }
     
     @IBAction func btn7Action(_ sender: UIButton) {
         if sourcePoints.last == CGPoint(x: sender.frame.midX+55, y: sender.frame.midY) {return}
@@ -346,12 +440,14 @@ class MatchQuizController: UIViewController {
         }
         isSource.toggle()
         selectedColor = sender.layer.borderColor!
-        lastButtonSelected = nil
+        //lastButtonSelected = nil
 
 
     }
     
     @IBAction func btn8Action(_ sender: UIButton) {
+        if lastButtonSelected?.tag == sender.tag { return }
+        
         if sourcePoints.last == CGPoint(x: sender.frame.midX-55, y: sender.frame.midY) {return}
 
         if isSource {
@@ -374,9 +470,42 @@ class MatchQuizController: UIViewController {
         drawLine()
         lastButtonSelected = sender
         sender.layer.borderColor = selectedColor
+        addedTargetsButton.append(sender.tag)
         checkAnswerBtn.isEnabled = true
         checkAnswerBtn.setTitle("Check Answer", for: .normal)
         
+    }
+    
+    
+    @IBAction func btn8RepeatAction(_ sender: UIButton) {
+        debugPrint("Repeat Action \(sender.tag)")
+        addedTargetsButton.removeAll(where: {$0 == sender.tag})
+        
+        if sourcePoints.last == CGPoint(x: sender.frame.midX-55, y: sender.frame.midY) {return}
+
+        if isSource {
+            self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+        }else{
+            if sourcePoints.count == targetPoints.count {
+                self.targetPoints.removeLast()
+                self.lineLayer.removeLast().removeFromSuperlayer()
+                self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+            }else{
+                self.targetPoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
+            }
+
+        }
+      
+//        setGrayColor()
+//        sender.layer.borderColor = selectedColor
+//        drawLine()
+        setGrayColor()
+        drawLine()
+        lastButtonSelected = sender
+        sender.layer.borderColor = selectedColor
+        addedTargetsButton.append(sender.tag)
+        checkAnswerBtn.isEnabled = true
+        checkAnswerBtn.setTitle("Check Answer", for: .normal)
     }
     
     func drawLine() {

@@ -107,10 +107,10 @@ struct FillintheBlanksQuizView: View {
                             Spacer().frame(height:viewPadding)
                             ScrollView
                             {
-                                FlexibleView(availableWidth: UIScreen.main.bounds.width - 20, data: dummyAnswers, spacing: 5, alignment: .leading) { item in
+                                FlexibleView(availableWidth: UIScreen.main.bounds.width - 20, data: dummyAnswers, spacing: 10, alignment: .leading) { item in
                                     
                                     FillintheBlankView(ansers: item, dummyAns: $userAnswers, enterAns: $userAnswersD)
-                                        .frame(height:34)
+                                        .frame(height:24)
                                     
 //                                    HStack{
 //                                        Text(item.question)
@@ -120,6 +120,7 @@ struct FillintheBlanksQuizView: View {
 
                                     
                                 }
+                                .padding(.top)
                             }
                             
                             
@@ -450,16 +451,16 @@ struct FillintheBlankView:View {
                     .padding(.vertical,4)
                     .font(.custom("Nunito-ExtraBold", size: 15))
                     .foregroundColor(Color.black)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
+//                    .lineLimit(1)
+//                    .minimumScaleFactor(0.5)
                     .customRoundedRectangle(cornerRadiusValue: 6,backgroundColor: .init(hex: "#DA86FF"))
                     .draggable(Anse(id:ansers.id,question: ansers.question, answer: dropAns))
                 
             }else{
-             
                 RoundedRectangle(cornerRadius: cornerRadiusValue)
                     .fill(.ultraThinMaterial)
-                    .frame(width: 50)
+                    .frame(width: 75)
+                
             }
                 
 
