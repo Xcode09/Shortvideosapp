@@ -431,10 +431,12 @@ struct FillintheBlankView:View {
     
     @State var isHS = false
     @State var dropAns:String = ""
+    @State var dropAnsId:String = ""
     @State var isItemAdded = false
     
     var questionsCount = 5
     @State var ansCount = 0
+    @State var ansDic : [String:Anse] = [:]
     var body: some View {
         HStack(spacing:5){
             Text(ansers.question)
@@ -470,21 +472,50 @@ struct FillintheBlankView:View {
         }
         
         .dropDestination(for: Anse.self) { itemm, location in
-            for i in itemm {
-                dropAns = i.answer
-                if dummyAns.contains(where: {$0 == i}) {
-                    dummyAns.removeAll(where: {$0.id == i.id})
-                    enterAns.append(i)
+            if enterAns.contains(where: {$0.answer == itemm.first!.answer}) {
+                return false
+            }else{
+                for i in itemm {
+                    if let anser = ansDic[ansers.id] {
+                        // if same blank already filled
+//                        guard enterAns.count == dummyAns.count else{
+//                            return
+//                        }
+                        dummyAns.contains(where: {$0.id == anser.id}) ? dummyAns.removeAll(where: {$0.id == anser.id}) : dummyAns.insert(anser, at: 0)
+                        enterAns.removeAll(where: {$0.id == anser.id})
+                        dropAns = i.answer
+                        dropAnsId = i.id
+                        ansDic[ansers.id] = nil
+                        dummyAns.removeAll(where: {$0.id == i.id})
+                        enterAns.append(i)
+                        
+                    }else{
+                        dropAns = i.answer
+                        dropAnsId = i.id
+                        ansDic[ansers.id] = i
+                        if dummyAns.contains(where: {$0 == i}) {
+                            dummyAns.removeAll(where: {$0.id == i.id})
+                            enterAns.append(i)
+                        }
+                    }
+                   
                 }
+                
+                isHS = true
+                return true
             }
-            isHS.toggle()
             
-            return true
         }
         .onReceive(NotificationCenter.Publisher(center: .default, name: .init(rawValue: "hide"))) { noti in
             if let value = noti.userInfo?["value"] as? Anse {
                 if value.answer == dropAns {
                     //dropAns = ""
+                    enterAns.removeAll(where: {$0.id == value.id})
+                    ansDic[ansers.id] = nil
+//                    if dummyAns.contains(where: {$0 == value}) {
+//                        dummyAns.removeAll(where: {$0.id == value.id})
+//                        //enterAns.append(i)
+//                    }
                     isHS = false
                 }
             }
