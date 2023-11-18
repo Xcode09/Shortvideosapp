@@ -155,8 +155,10 @@ class MatchQuizController: UIViewController {
         
         
     }
-    func setGrayColor(){
+    func setGrayColor(button:UIButton){
         lastButtonSelected?.layer.borderColor = UIColor.gray.cgColor
+        
+        
     }
     @IBAction func checkAnswerAction(_ sender: Any) {
         let vc = UIHostingController(rootView: FillintheBlanksQuizView())
@@ -228,16 +230,21 @@ class MatchQuizController: UIViewController {
             if let layer = lineLayerMap[sender] {
                 layer.removeFromSuperlayer()
                 lineLayerMap[sender] = nil
+                
             }
             
             if let b = lastSourceButtonSelected, let layer = lineLayerMap[b] {
                 layer.removeFromSuperlayer()
                 lineLayerMap[b] = nil
+                setGrayColor(button: sender)
             }
             
                 
                 
             addedTargetsButton.removeAll(where: {$0 == sender.tag})
+            
+            
+            
             if isSource {
                 self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
             }else{
@@ -313,18 +320,26 @@ class MatchQuizController: UIViewController {
     }
     
     @IBAction func btn4Action(_ sender: UIButton) {
+        
         if addedTargetsButton.contains(where: {$0 == sender.tag}) {
             if let layer = lineLayerMap[sender] {
                 layer.removeFromSuperlayer()
                 lineLayerMap[sender] = nil
+                
             }
             
             if let b = lastSourceButtonSelected, let layer = lineLayerMap[b] {
                 layer.removeFromSuperlayer()
                 lineLayerMap[b] = nil
+                setGrayColor(button: sender)
+                
             }
             
+            
+            
             addedTargetsButton.removeAll(where: {$0 == sender.tag})
+            
+            
             if isSource {
                 self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
             }else{
@@ -413,13 +428,17 @@ class MatchQuizController: UIViewController {
             if let layer = lineLayerMap[sender] {
                 layer.removeFromSuperlayer()
                 lineLayerMap[sender] = nil
+                
             }
             if let b = lastSourceButtonSelected, let layer = lineLayerMap[b] {
                 layer.removeFromSuperlayer()
                 lineLayerMap[b] = nil
+                setGrayColor(button: sender)
             }
             
             addedTargetsButton.removeAll(where: {$0 == sender.tag})
+            
+            
             if isSource {
                 self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
             }else{
@@ -589,12 +608,19 @@ class MatchQuizController: UIViewController {
             if let layer = lineLayerMap[sender] {
                 layer.removeFromSuperlayer()
                 lineLayerMap[sender] = nil
+                
             }
             if let b = lastSourceButtonSelected, let layer = lineLayerMap[b] {
                 layer.removeFromSuperlayer()
                 lineLayerMap[b] = nil
+                
+                setGrayColor(button: sender)
             }
             addedTargetsButton.removeAll(where: {$0 == sender.tag})
+            
+            
+            
+            
             if isSource {
                 self.sourcePoints.append(CGPoint(x: sender.frame.midX-55, y: sender.frame.midY))
             }else{

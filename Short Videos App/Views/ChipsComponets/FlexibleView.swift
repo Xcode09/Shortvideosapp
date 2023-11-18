@@ -58,7 +58,7 @@ public struct FlexibleView<Data: Collection, Content: View>: View where Data.Ele
             }
         }
     }
-
+    
     private func computeRows() -> [[Data.Element]] {
         var rows: [[Data.Element]] = [[]]
         var currentRow = 0
@@ -67,20 +67,55 @@ public struct FlexibleView<Data: Collection, Content: View>: View where Data.Ele
         for element in data {
             let elementSize = elementsSize[element, default: CGSize(width: availableWidth, height: 1)]
 
-            if remainingWidth - elementSize.width >= 0 {
-                rows[currentRow].append(element)
-            } else {
-                // start a new row
-                currentRow = currentRow + 1
+            if elementSize.width > availableWidth {
+                // If the element itself is wider than availableWidth, start a new row
+                currentRow += 1
                 rows.append([element])
                 remainingWidth = availableWidth
+            } else if remainingWidth < elementSize.width {
+                // If adding the element to the current row exceeds the available width, start a new row
+                currentRow += 1
+                rows.append([element])
+                remainingWidth = availableWidth - elementSize.width
+            } else {
+                // Add the element to the current row
+                rows[currentRow].append(element)
+                remainingWidth -= elementSize.width
             }
-
-            remainingWidth = remainingWidth - elementSize.width
         }
 
         return rows
     }
+    
+
+//    private func computeRows() -> [[Data.Element]] {
+//        var rows: [[Data.Element]] = [[]]
+//        var currentRow = 0
+//        var remainingWidth = availableWidth
+//
+//        for element in data {
+//            let elementSize = elementsSize[element, default: CGSize(width: availableWidth, height: 1)]
+//
+//            if elementSize.width > availableWidth {
+//                // Start a new row for this oversized element
+//                currentRow += 1
+//                rows.append([element])
+//                remainingWidth = availableWidth
+//            }
+//            else if remainingWidth - elementSize.width >= 0 {
+//                rows[currentRow].append(element)
+//            } else {
+//                // start a new row
+//                currentRow = currentRow + 1
+//                rows.append([element])
+//                remainingWidth = availableWidth
+//            }
+//
+//            remainingWidth = remainingWidth - elementSize.width
+//        }
+//
+//        return rows
+//    }
 }
 
 extension View {

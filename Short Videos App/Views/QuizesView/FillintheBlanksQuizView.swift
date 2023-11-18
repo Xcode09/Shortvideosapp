@@ -22,7 +22,7 @@ struct FillintheBlanksQuizView: View {
     
     @State var dummyQuestions = ["The sky is","Trees are","The sun is a","Sea water is", "The snow is The snow is "]
     
-    @State var dummyAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The electirc are way better than", answer: "cricle"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
+    @State var dummyAnswers : [Anse] = [.init(question: "The sky is blue and water is", answer: "quizzically"),.init(question: "Trees are", answer: "Resilience"),.init(question: "The electirc are way better than", answer: "Ineffable"),.init(question: "Sea water is", answer: "unbelievable"),.init(question: "The snow is", answer: "Ephemeral")]
     //["blue","green","cricle","salty", "white"]
     
     @State var items = [
@@ -33,7 +33,7 @@ struct FillintheBlanksQuizView: View {
         ChipItem(name: "Orange")
     ]
     
-    @State var userAnswers : [Anse] = [.init(question: "The sky is", answer: "blue"),.init(question: "Trees are", answer: "green"),.init(question: "The electirc are way better than", answer: "Pertol Cars"),.init(question: "Sea water is", answer: "salty"),.init(question: "The snow is", answer: "white")]
+    @State var userAnswers : [Anse] = [.init(question: "The sky is blue and water is", answer: "quizzically"),.init(question: "Trees are", answer: "Resilience"),.init(question: "The electirc are way better than", answer: "Ineffable"),.init(question: "Sea water is", answer: "unbelievable"),.init(question: "The snow is", answer: "Ephemeral")]
     
     @State var userAnswersD:[Anse] = []
     
@@ -105,23 +105,32 @@ struct FillintheBlanksQuizView: View {
                                 .customRoundedRectangle(cornerRadiusValue:16,borderWidth:2,backgroundColor: .init(hex: "#E5E3EE"))
                             
                             Spacer().frame(height:viewPadding)
-                            ScrollView
-                            {
-                                FlexibleView(availableWidth: UIScreen.main.bounds.width - 20, data: dummyAnswers, spacing: 10, alignment: .leading) { item in
-                                    
+                            ScrollView {
+                                FlexibleView(availableWidth: CGFloat.zero, data: dummyAnswers, spacing: 10, alignment: .leading) { item in
                                     FillintheBlankView(ansers: item, dummyAns: $userAnswers, enterAns: $userAnswersD)
                                         .frame(height:24)
-                                    
-//                                    HStack{
-//                                        Text(item.question)
-//
-//                                        Rectangle()
-//                                    }
-
-                                    
                                 }
-                                .padding(.top)
+                                .padding(viewPadding)
                             }
+                            
+                            
+//                            ScrollView
+//                            {
+//                                FlexibleView(availableWidth: UIScreen.main.bounds.width - 20, data: dummyAnswers, spacing: 10, alignment: .leading) { item in
+//                                    
+//                                    FillintheBlankView(ansers: item, dummyAns: $userAnswers, enterAns: $userAnswersD)
+//                                        .frame(height:24)
+//                                    
+////                                    HStack{
+////                                        Text(item.question)
+////
+////                                        Rectangle()
+////                                    }
+//
+//                                    
+//                                }
+//                                .padding(.top)
+//                            }
                             
                             
                             
@@ -137,6 +146,7 @@ struct FillintheBlanksQuizView: View {
                                         .draggable(item)
                                 }
                                 .padding(viewPadding)
+                                
                                 
  
                                 
@@ -481,13 +491,15 @@ struct FillintheBlankView:View {
 //                        guard enterAns.count == dummyAns.count else{
 //                            return
 //                        }
-                        dummyAns.contains(where: {$0.id == anser.id}) ? dummyAns.removeAll(where: {$0.id == anser.id}) : dummyAns.insert(anser, at: 0)
-                        enterAns.removeAll(where: {$0.id == anser.id})
-                        dropAns = i.answer
-                        dropAnsId = i.id
-                        ansDic[ansers.id] = nil
-                        dummyAns.removeAll(where: {$0.id == i.id})
-                        enterAns.append(i)
+//                        dummyAns.contains(where: {$0.id == anser.id}) ? dummyAns.removeAll(where: {$0.id == anser.id}) : dummyAns.insert(anser, at: 0)
+//                        enterAns.removeAll(where: {$0.id == anser.id})
+//                        dropAns = i.answer
+//                        dropAnsId = i.id
+//                        ansDic[ansers.id] = nil
+//                        dummyAns.removeAll(where: {$0.id == i.id})
+//                        enterAns.append(i)
+                        
+                        return false
                         
                     }else{
                         dropAns = i.answer
